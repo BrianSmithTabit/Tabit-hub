@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Pappas — Tabit KAM">
+<meta name="theme-color" content="#0d0f12">
+<title>Pappas Restaurants — Tabit Account Intelligence</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:#0d0f12; --surface:#141720; --surface2:#1c2030; --surface3:#222840;
+  --border:#252a3a; --text:#e2e6f0; --muted:#6b7590;
+  --accent:#4f8aff; --accent2:#00d4a0; --warn:#f5a623; --danger:#ff4d6d;
+  --mono:'IBM Plex Mono',monospace; --sans:'IBM Plex Sans',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{min-height:100%}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:14px}
+
+.topbar{display:flex;align-items:center;gap:12px;padding:0 24px;height:52px;border-bottom:1px solid var(--border);background:var(--surface);position:sticky;top:0;z-index:50}
+.topbar-brand{font-family:var(--mono);font-size:9px;color:var(--muted);letter-spacing:.15em;text-transform:uppercase}
+.topbar-title{font-size:14px;font-weight:700;flex:1}
+.topbar-date{font-family:var(--mono);font-size:11px;color:var(--muted)}
+.topbar-badge{font-family:var(--mono);font-size:9px;background:rgba(79,138,255,.1);color:var(--accent);border:1px solid rgba(79,138,255,.25);padding:2px 8px;border-radius:3px}
+
+.page-content{padding:24px;max-width:1400px;margin:0 auto}
+
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:16px}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:16px}
+
+.stat-card{background:var(--surface);border:1px solid var(--border);padding:18px;border-radius:6px;position:relative;overflow:hidden}
+.stat-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px}
+.stat-card.blue::before{background:var(--accent)}
+.stat-card.green::before{background:var(--accent2)}
+.stat-card.warn::before{background:var(--warn)}
+.stat-card.danger::before{background:var(--danger)}
+.stat-card.muted::before{background:var(--muted)}
+.stat-label{font-family:var(--mono);font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px}
+.stat-value{font-size:30px;font-weight:600;line-height:1;font-family:var(--mono)}
+.stat-value.blue{color:var(--accent)}
+.stat-value.green{color:var(--accent2)}
+.stat-value.warn{color:var(--warn)}
+.stat-value.danger{color:var(--danger)}
+.stat-sub{font-size:11px;color:var(--muted);margin-top:5px;font-family:var(--mono)}
+
+.panel{background:var(--surface);border:1px solid var(--border);border-radius:6px;overflow:hidden;margin-bottom:16px}
+.panel-header{padding:11px 18px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;background:var(--surface2)}
+.panel-title{font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted)}
+.panel-badge{font-family:var(--mono);font-size:10px;color:var(--accent);background:rgba(79,138,255,.1);border:1px solid rgba(79,138,255,.25);padding:2px 7px;border-radius:3px}
+.panel-badge.warn{color:var(--warn);background:rgba(245,166,35,.1);border-color:rgba(245,166,35,.25)}
+.panel-badge.danger{color:var(--danger);background:rgba(255,77,109,.1);border-color:rgba(255,77,109,.25)}
+
+.alert-row{display:flex;align-items:flex-start;gap:10px;padding:11px 18px;border-left:3px solid var(--danger);background:rgba(255,77,109,.06);font-size:12px;line-height:1.5}
+.alert-row.warn{border-left-color:var(--warn);background:rgba(245,166,35,.06)}
+.alert-row.info{border-left-color:var(--accent);background:rgba(79,138,255,.06)}
+.alert-row+.alert-row{border-top:1px solid var(--border)}
+.alert-row strong{color:var(--danger)}
+.alert-row.warn strong{color:var(--warn)}
+.alert-row.info strong{color:var(--accent)}
+
+@media(max-width:768px){
+  .grid-4{grid-template-columns:repeat(2,1fr)}
+  .grid-2{grid-template-columns:1fr}
+  .page-content{padding:14px}
+  .topbar{padding:0 14px}
+}
+
+.footer{padding:16px 24px;border-top:1px solid var(--border);font-family:var(--mono);font-size:10px;color:var(--muted);text-align:center;margin-top:8px}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div>
+    <div class="topbar-brand">Tabit · Key Account Intelligence</div>
+    <div class="topbar-title">🍽️ Pappas Restaurants</div>
+  </div>
+  <span class="topbar-badge">63 sites · 5 brands</span>
+  <span class="topbar-date" id="topbar-date"></span>
+</div>
+
+<div class="page-content">
+
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px">
+    <div>
+      <div style="font-size:18px;font-weight:700;letter-spacing:-.02em">Pappas Restaurants</div>
+      <div style="font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:3px">Key Account Intelligence &nbsp;·&nbsp; Customer Command Center</div>
+    </div>
+    <div style="font-family:var(--mono);font-size:10px;color:var(--muted);text-align:right">Sites: <span style="color:var(--accent)" id="pappas-site-count">63</span></div>
+  </div>
+
+  <!-- EXEC SNAPSHOT -->
+  <div class="grid-4" style="margin-bottom:20px">
+    <div class="stat-card danger">
+      <div class="stat-label">Health Score</div>
+      <div class="stat-value danger">CRITICAL</div>
+      <div class="stat-sub">5 active clusters today</div>
+    </div>
+    <div class="stat-card warn">
+      <div class="stat-label">Open SUP Tickets</div>
+      <div class="stat-value warn">10</div>
+      <div class="stat-sub">2 Highest · 2 High · 5 Med · 1 Low</div>
+    </div>
+    <div class="stat-card warn">
+      <div class="stat-label">Open Commitments</div>
+      <div class="stat-value warn">4</div>
+      <div class="stat-sub">3 ours · 1 theirs</div>
+    </div>
+    <div class="stat-card blue">
+      <div class="stat-label">Last Contact</div>
+      <div class="stat-value blue" style="font-size:20px">Today</div>
+      <div class="stat-sub">SUP-10163 &amp; SUP-10174 updated Jun 21 · 2 Highest open</div>
+    </div>
+  </div>
+
+  <!-- NARRATIVE -->
+  <div class="panel" style="margin-bottom:16px">
+    <div class="panel-header"><span class="panel-title">Customer Narrative</span><span class="panel-badge">Executive Summary</span></div>
+    <div style="padding:18px;font-size:13px;line-height:1.7;color:var(--text)" id="pappas-narrative">
+      Pappas is in a <strong style="color:var(--danger)">multi-cluster crisis state</strong> as of June 19, 2026. The PRI Support board reveals six concurrent issue categories active today — Ingenico unpairing across 5+ locations, Gift Card app crashes at multiple Pappadeaux sites, <strong style="color:var(--danger)">tip pool discrepancies active at 4+ locations</strong> (wage/labor risk), MediaExchange failures at 3 sites, Payment Assist lockouts, and open offline payment checks. This is not a two-issue situation — it is a systemic support load that spans hardware, payments, and reporting simultaneously.<br><br>
+      Layered on top: a <strong style="color:var(--danger)">May 30 Ingenico/ROAM RCA is still unsent</strong> to Cameron Richards despite exec sign-off from Dror today. The printer estate issue (SUP-10163, Highest) has Vincente doing daily PAD restarts as a stopgap. Pappas is also <strong style="color:var(--warn)">excluded from the June 21 iOS 26.4 rollout</strong> pending April Lozano's window confirmation. 113 TAB tickets are actively tracked by Pappas, with 5 Critical-flagged TABs in development or pending release. This account requires immediate triage attention and a coordinated communication plan — they escalate fast and parse responses carefully.
+    </div>
+  </div>
+
+  <!-- 2-COL PANELS -->
+  <div class="grid-2">
+    <div>
+      <!-- OPEN ESCALATIONS -->
+      <div class="panel" style="margin-bottom:14px">
+        <div class="panel-header"><span class="panel-title">Open Escalations</span><span class="panel-badge danger" id="pappas-esc-badge">12</span></div>
+        <div id="pappas-escalations" style="padding:0">
+          <div class="alert-row danger"><div><strong>SUP-10163</strong> — Pappas Restaurants | Printers Dropping Offline. Highest. In Progress. Updated Jun 21. Estate-wide issue, daily PAD restarts by Vincente as interim stopgap.</div></div>
+          <div class="alert-row danger"><div><strong>SUP-10174</strong> — Pappasito's 03 (016) | Kitchen Printer Delays. Highest. In Progress. Opened Jun 19. Updated Jun 21.</div></div>
+          <div class="alert-row warn"><div><strong>SUP-10164</strong> — Pappadeaux 40 (060) | Stuck MediaExchange Order. High. New. Updated Jun 17.</div></div>
+          <div class="alert-row warn"><div><strong>SUP-8745</strong> — Pappadeaux 27 (078) | API Call Missing Order Data. High. Accepted. <span style="color:var(--warn)">Opened Sep 2025 — 268 days old.</span></div></div>
+          <div class="alert-row warn"><div><strong>Tip Pool — 4 items active (Jun 18)</strong> — PDX27 + Sitos02 tip pool discrepancies, no tip out on order team checks, tip out/Payment Assist discrepancies. Job code changes causing calculation errors across brands. <span style="color:var(--danger);font-weight:600">Wage/labor liability if unresolved.</span></div></div>
+          <div class="alert-row warn"><div><strong>Ingenico/Device — 2 items active (Jun 17–19)</strong> — PDX 08 unpaired Ingenicos (Jun 19), Sitos 3/PDX 21 devices swipe-only (Jun 17).</div></div>
+          <div class="alert-row warn"><div><strong>MediaExchange — 2 items active (Jun 19)</strong> — Sitos 12 open MediaExchange order, PDX 09 MediaExchange funding issue. Both updated Jun 19. SUP-10164 also linked.</div></div>
+          <div class="alert-row warn"><div><strong>Payment Assist — 2 items active (Jun 18–21)</strong> — Sitos 11 Payment Assist Not Unlocking (Jun 21), tip out/Payment Assist discrepancy (Jun 18).</div></div>
+          <div class="alert-row warn"><div><strong>Offline Payments — 1 item active (Jun 19)</strong> — Pappas Restaurants-wide open checks stuck from offline payment mode.</div></div>
+          <div class="alert-row info"><div><strong>SUP-10166</strong> — Pappasito's 03 (016) | Ingenico 2012 Code during Payment. Medium. Accepted. Updated Jun 18.</div></div>
+          <div class="alert-row info"><div><strong>SUP-10167</strong> — Pappadeaux 40 (060) | MediaExchange - Cannot Swipe Card Error. Medium. New. Updated Jun 18.</div></div>
+          <div class="alert-row info"><div><strong>SUP-9997</strong> — Pappadeaux HQ | PAD User Credentials Not Saved when Changing Site. Medium. Pending. Updated Jun 9.</div></div>
+          <div style="padding:10px 18px;font-family:var(--mono);font-size:10px;color:var(--muted);border-top:1px solid var(--border)">3 additional items tracked in PRI Support board (SUP-10128, SUP-10068, SUP-9967)</div>
+        </div>
+      </div>
+      <!-- COMMITMENTS: US -->
+      <div class="panel" style="margin-bottom:14px">
+        <div class="panel-header"><span class="panel-title">Commitments — We Owe Them</span><span class="panel-badge warn" id="pappas-commit-us-badge">0</span></div>
+        <div id="pappas-commit-us" style="padding:0">
+          <div class="alert-row danger"><div><strong>Send Ingenico/ROAM RCA to Cameron Richards</strong> — Response approved by Dror today. Drafted by John Ygartua. Must go out immediately. Do not let this sit another day.</div></div>
+          <div class="alert-row warn"><div><strong>iOS 26.4 Update scheduling</strong> — Pappas excluded from 6/21 rollout. John waiting on their preferred window. Must coordinate with April Lozano before rollout proceeds without them.</div></div>
+          <div class="alert-row warn"><div><strong>Prod deploy of Liz's fix — July 6 target</strong> — Liz in QA now, Demo deploy next week. Casey has already told Pappas. Must not slip the holiday week.</div></div>
+          <div class="alert-row info"><div><strong>PDX 4 Print Formatting</strong> — Active request from Rod Scheirman today. Multiple email updates. Status unclear.</div></div>
+        </div>
+      </div>
+      <!-- COMMITMENTS: THEM -->
+      <div class="panel" style="margin-bottom:14px">
+        <div class="panel-header"><span class="panel-title">Commitments — They Owe Us</span><span class="panel-badge" id="pappas-commit-them-badge">0</span></div>
+        <div id="pappas-commit-them" style="padding:0">
+          <div class="alert-row warn"><div><strong>iOS 26.4 update window confirmation</strong> — April Lozano needs to confirm their preferred maintenance window before June 21. John sent the request today. No response yet.</div></div>
+        </div>
+      </div>
+      <!-- WAITING ON -->
+      <div class="panel">
+        <div class="panel-header"><span class="panel-title">Waiting On / Blockers</span></div>
+        <div id="pappas-waiting" style="padding:0">
+          <div class="alert-row danger"><div><strong>RCA delivery to Cameron</strong> — Blocked on someone hitting send. Approved, drafted, no action needed except execution.</div></div>
+          <div class="alert-row warn"><div><strong>iOS 26.4 window</strong> — Waiting on April Lozano (Pappas) to confirm preferred update time. June 21 rollout is 2 days away.</div></div>
+          <div class="alert-row warn"><div><strong>Printer/PAD root cause</strong> — Waiting on Chad/Alon/Nicole/Alex investigation. Daily restarts are the stopgap. Tie "Gotham example" into existing SUP per Chad's instruction (John → Vincente).</div></div>
+          <div class="alert-row info"><div><strong>Liz's fix QA</strong> — In QA now. Waiting on IL approval to deploy to Demo next week, then July 6 Prod. No blocker yet.</div></div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <!-- RISK ASSESSMENT -->
+      <div class="panel" style="margin-bottom:14px">
+        <div class="panel-header"><span class="panel-title">Risk Assessment</span><span class="panel-badge danger" id="pappas-risk-badge">–</span></div>
+        <div id="pappas-risk" style="padding:0">
+          <div class="alert-row danger"><div><strong>Wage/labor liability — tip pool discrepancies</strong> — Tip pool calculation errors at 4+ locations updated 6/18–6/19. If employees are being underpaid or overpaid due to a platform bug, this becomes a legal exposure issue for Pappas. Needs resolution urgency above a normal ops ticket.</div></div>
+          <div class="alert-row danger"><div><strong>Payment processing credibility risk</strong> — Cameron Richards is digging on the 5/30 ROAM incident and getting stonewalled with delays. The PRI Support board also shows 5+ Ingenico unpairing incidents across the estate — pattern is impossible to ignore. Prolonged silence on RCA + active payment failures = serious trust erosion.</div></div>
+          <div class="alert-row danger"><div><strong>Six concurrent issue clusters — systemic signal</strong> — Ingenico, GC crashes, tip pool, MediaExchange, Payment Assist, offline checks all active simultaneously. This is not bad luck. If these share a root cause (payment stack, version, config), we don't know yet. If unrelated, the breadth signals operational fragility at this account.</div></div>
+          <div class="alert-row warn"><div><strong>Gift card revenue impact</strong> — GC app crashes at PDX 14 (two separate items), PDX 16, plus negative balance bugs at PDX 04, 09, 40. If GC sales are failing silently, Pappas may have already lost transactions they don't know about.</div></div>
+          <div class="alert-row warn"><div><strong>iOS 26.4 exclusion window closing</strong> — Rollout is June 21. If Pappas doesn't confirm their window by EOD today, they either get updated without consent or fall further behind. Both outcomes are bad.</div></div>
+          <div class="alert-row warn"><div><strong>PAD daily restarts as SOP</strong> — Vincente restarting PADs every day is a workaround that Pappas is aware of. This signals an unresolved underlying issue and sets a precedent of manual intervention as "support."</div></div>
+          <div class="alert-row info"><div><strong>SUP-8745 age risk</strong> — API Call Missing Order Data at Pappadeaux 27 is 9 months old. Old open tickets at high-touch accounts become leverage in contract and relationship conversations.</div></div>
+        </div>
+      </div>
+      <!-- FEATURE REQUEST HISTORY -->
+      <div class="panel" style="margin-bottom:14px">
+        <div class="panel-header"><span class="panel-title">Feature Request History</span></div>
+        <div id="pappas-features" style="padding:0">
+          <div class="alert-row danger"><div><strong>113 TABs tracked in Pappas TABs board</strong> — Grant Ewing manages. Grouped by priority (Critical → Highest → High → Medium → Low). 5 Critical-flagged TABs still open as of 6/19.</div></div>
+          <div class="alert-row warn"><div><strong>TAB-39845 · Critical · Design</strong> — Allow cancelling void offline payment intents at any time (yellow offline payment line). Still in Design phase — directly related to active offline payments cluster.</div></div>
+          <div class="alert-row warn"><div><strong>TAB-48344 · Critical · Ready for Verification</strong> — Ingenico Device Setup should retry on 4939 error before displaying health check outcome. Directly addresses Ingenico unpairing epidemic.</div></div>
+          <div class="alert-row warn"><div><strong>TAB-41667 · Highest · Code Review</strong> — Requested payment amount should equal split check total when order has a discount or promotion. Directly related to tip/balance discrepancy cluster.</div></div>
+          <div class="alert-row warn"><div><strong>TAB-45405 · Highest · Todo</strong> — Payment Assist: enable joiner to log a cash drawer action. Related to Payment Assist Not Unlocking escalation.</div></div>
+          <div class="alert-row warn"><div><strong>TAB-45204 · Critical · Todo</strong> — Site Parameters: validate and sanitize input values. Infrastructure safety fix, still unstarted.</div></div>
+          <div class="alert-row info"><div><strong>Pending Release (Critical/Highest)</strong> — TAB-45945 (print on transfer regression), TAB-47050 (dinerAssigning enum), TAB-48103 (GC load after tip auth). All cleared dev, awaiting release.</div></div>
+          <div class="alert-row info"><div><strong>PDX 4 | Print Formatting</strong> — Rod Scheirman. Active today. Multiple email threads. Likely a receipt/ticket layout request.</div></div>
+          <div class="alert-row info"><div><strong>Microsoft SSO Credential Saving</strong> — SUP-10128, Pending. PAD users losing saved credentials when switching sites. Affects multi-site SSO users.</div></div>
+        </div>
+      </div>
+      <!-- CUSTOMER EXCEPTIONS -->
+      <div class="panel" style="margin-bottom:14px">
+        <div class="panel-header"><span class="panel-title">Customer Exceptions</span></div>
+        <div id="pappas-exceptions" style="padding:0">
+          <div class="alert-row warn"><div><strong>PAD daily restarts authorized</strong> — Vincente Zavala performing daily PAD restarts across Pappas estate as an interim operational exception while printer/connection issues are investigated. Not a permanent fix.</div></div>
+          <div class="alert-row info"><div><strong>iOS 26.4 exclusion</strong> — Pappas explicitly excluded from June 21 iOS rollout. All other accounts updated; Pappas on hold pending their window confirmation.</div></div>
+        </div>
+      </div>
+      <!-- STAKEHOLDER INTEL -->
+      <div class="panel" style="margin-bottom:14px">
+        <div class="panel-header"><span class="panel-title">Stakeholder Intelligence</span></div>
+        <div id="pappas-stakeholders" style="padding:14px;font-size:12px">
+          <div style="margin-bottom:12px">
+            <div style="font-family:var(--mono);font-size:10px;color:var(--accent);text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px">Pappas Restaurants, Inc. — IT Team</div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px">
+              <div style="background:var(--surface2);border:1px solid var(--border);border-radius:4px;padding:8px"><div style="font-weight:600;color:var(--text)">Cameron Richards</div><div style="color:var(--muted);margin-top:2px">crichards@pappas.com</div><div style="color:var(--warn);font-size:11px;margin-top:2px">Primary escalation contact · pushing hard on 5/30 RCA</div></div>
+              <div style="background:var(--surface2);border:1px solid var(--border);border-radius:4px;padding:8px"><div style="font-weight:600;color:var(--text)">April Lozano</div><div style="color:var(--muted);margin-top:2px">alozano@pappas.com · 713.248.3001</div><div style="color:var(--muted);font-size:11px;margin-top:2px">Director, IT Restaurant Deployment · iOS update decision maker</div></div>
+              <div style="background:var(--surface2);border:1px solid var(--border);border-radius:4px;padding:8px"><div style="font-weight:600;color:var(--text)">Luis Moreno</div><div style="color:var(--muted);margin-top:2px">luis.moreno@pappas.com</div><div style="color:var(--muted);font-size:11px;margin-top:2px">Restaurant Systems Analyst · submits printer/ops tickets</div></div>
+              <div style="background:var(--surface2);border:1px solid var(--border);border-radius:4px;padding:8px"><div style="font-weight:600;color:var(--text)">Rod Scheirman</div><div style="color:var(--muted);margin-top:2px">rod.scheirman@pappas.com</div><div style="color:var(--muted);font-size:11px;margin-top:2px">Active submitter · print formatting, Store & Forward</div></div>
+              <div style="background:var(--surface2);border:1px solid var(--border);border-radius:4px;padding:8px"><div style="font-weight:600;color:var(--text)">Leslie Snow</div><div style="color:var(--muted);margin-top:2px">lsnow@pappas.com</div><div style="color:var(--muted);font-size:11px;margin-top:2px">On iOS update email chain</div></div>
+              <div style="background:var(--surface2);border:1px solid var(--border);border-radius:4px;padding:8px"><div style="font-weight:600;color:var(--text)">Ken Wood</div><div style="color:var(--muted);margin-top:2px">kwood@pappas.com</div><div style="color:var(--muted);font-size:11px;margin-top:2px">On iOS update email chain</div></div>
+            </div>
+          </div>
+          <div>
+            <div style="font-family:var(--mono);font-size:10px;color:var(--accent2);text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px">Tabit Team — Pappas Owners</div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px">
+              <div style="background:var(--surface2);border:1px solid var(--border);border-radius:4px;padding:8px"><div style="font-weight:600;color:var(--text)">John Ygartua</div><div style="color:var(--muted);font-size:11px;margin-top:2px">john.ygartua@tabit.cloud · Primary account manager</div></div>
+              <div style="background:var(--surface2);border:1px solid var(--border);border-radius:4px;padding:8px"><div style="font-weight:600;color:var(--text)">Casey Grant</div><div style="color:var(--muted);font-size:11px;margin-top:2px">casey@tabit.cloud · Regional Ops Manager</div></div>
+              <div style="background:var(--surface2);border:1px solid var(--border);border-radius:4px;padding:8px"><div style="font-weight:600;color:var(--text)">Tyler Dillon</div><div style="color:var(--muted);font-size:11px;margin-top:2px">tyler@tabit.cloud · Escalation lead</div></div>
+              <div style="background:var(--surface2);border:1px solid var(--border);border-radius:4px;padding:8px"><div style="font-weight:600;color:var(--text)">Vincente Zavala</div><div style="color:var(--muted);font-size:11px;margin-top:2px">vincente.zavala@tabit.cloud · Field ops / PAD restarts</div></div>
+              <div style="background:var(--surface2);border:1px solid var(--border);border-radius:4px;padding:8px"><div style="font-weight:600;color:var(--text)">Liz Benavides</div><div style="color:var(--muted);font-size:11px;margin-top:2px">liz.benavides@tabit.cloud · PM on active fix (Jul 6 deploy)</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- ORG MEMORY -->
+      <div class="panel">
+        <div class="panel-header"><span class="panel-title">Organizational Memory</span></div>
+        <div id="pappas-orgmem" style="padding:0">
+          <div class="alert-row warn"><div><strong>Ingenico/payment issues are a multi-year recurring pattern</strong> — May 2026: tip settlement (SUP-9922) never completed in ROAM but order showed closed. Auth voided 14 mins late. PRI Support board shows 5+ Ingenico unpairing incidents across the estate in May–Jun 2026 alone. TAB-48344 addresses the 4939 error retry — once released, this should reduce unpair frequency. Do not treat each Ingenico incident as isolated.</div></div>
+          <div class="alert-row warn"><div><strong>Tip pool discrepancy pattern — recurring across brands</strong> — PRI Support board has 4+ tip pool items updated 6/18–6/19 across Pappadeaux and Pappasito's. Root cause: job code changes during multi-shift days corrupting tip pool calculation. If dev hasn't been engaged on a TAB for this, it needs one immediately given wage liability.</div></div>
+          <div class="alert-row warn"><div><strong>MediaExchange is a recurring failure mode</strong> — PDX 40 stuck order + cannot-swipe (this week), PDX 09 funding issue (today), Sitos 12 open order (today), plus historical double CC cancel (PDX 10). Pattern suggests MediaExchange reliability degrades under specific payment flows. TAB-48103 (GC load after tip auth) was a related Critical fix — now Done.</div></div>
+          <div class="alert-row info"><div><strong>Gift Card crashes are a pattern, not a one-off</strong> — PDX 14 has two separate GC crash PRI items. PDX 16 also. Negative balance bugs at PDX 04, 09, 40. SVS redemption errors at PDX 37. GC stack at Pappas has known instability — coordinate with dev to understand if these are all the same root cause.</div></div>
+          <div class="alert-row info"><div><strong>DoorDash tax issue emerged June 2026</strong> — PDX 20 | Taxes on DoorDash Orders. New issue category for Pappas — watch for it spreading to other PDX locations with OLO/DoorDash integration.</div></div>
+          <div class="alert-row info"><div><strong>Yiayia's (084) has API/Shift Scheduler issues</strong> — Two PRI items in May 2026: Tabit Attendance API for production 084, and Shift Scheduler reporting unusual data. Yiayia's is a smaller brand but has unique integration challenges.</div></div>
+          <div class="alert-row info"><div><strong>Locked orders from app termination — Aug 2025</strong> — Pappadeaux 02: user "Tameara Ford" repeatedly force-closed PAD mid-payment causing locks. Training response sent. Pattern: user behavior gap, not a platform bug — important distinction when Pappas escalates.</div></div>
+          <div class="alert-row info"><div><strong>PAD restarts have precedent</strong> — Tabit has performed PAD restarts on Pappas' behalf historically. Tyler confirmed this is acceptable. Current daily restarts by Vincente are within established norms.</div></div>
+          <div class="alert-row info"><div><strong>Dror not always on Pappas email chains</strong> — Explicitly flagged 6/19: Dror missed context because he wasn't copied. Any exec-level or sensitive escalation response should include him proactively.</div></div>
+          <div class="alert-row info"><div><strong>Cameron Richards escalates fast and expects specifics</strong> — Tyler's standing guidance: get Dror + Etai sign-off before replying to Cameron on incident RCAs. Do not send ad-hoc language; Pappas will parse it carefully.</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SITES -->
+  <div class="panel" style="margin-top:4px">
+    <div class="panel-header"><span class="panel-title">Sites Under This Account</span><span class="panel-badge">63 sites · 5 brands</span></div>
+    <div style="padding:16px;display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px">
+      <!-- Pappadeaux -->
+      <div>
+        <div style="font-family:var(--mono);font-size:10px;color:var(--accent);text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px">Pappadeaux (34)</div>
+        <div style="font-size:11px;color:var(--muted);line-height:1.9">
+          Pappadeaux 01 (002) &nbsp;·&nbsp; Pappadeaux 02 (021) &nbsp;·&nbsp; Pappadeaux 03 (024)<br>
+          Pappadeaux 04 (025) &nbsp;·&nbsp; Pappadeaux 05 (028) &nbsp;·&nbsp; Pappadeaux 06 (026)<br>
+          Pappadeaux 07 (036) &nbsp;·&nbsp; Pappadeaux 08 (030) &nbsp;·&nbsp; Pappadeaux 09 (037)<br>
+          Pappadeaux 10 (040) &nbsp;·&nbsp; Pappadeaux 11 (043) &nbsp;·&nbsp; Pappadeaux 12 (045)<br>
+          Pappadeaux 14 (059) &nbsp;·&nbsp; Pappadeaux 15 (057) &nbsp;·&nbsp; Pappadeaux 16 (063)<br>
+          Pappadeaux 18 (054) &nbsp;·&nbsp; Pappadeaux 19 (065) &nbsp;·&nbsp; Pappadeaux 20 (068)<br>
+          Pappadeaux 21 (058) &nbsp;·&nbsp; Pappadeaux 23 (071) &nbsp;·&nbsp; Pappadeaux 26 (077)<br>
+          Pappadeaux 27 (078) &nbsp;·&nbsp; Pappadeaux 29 (089) &nbsp;·&nbsp; Pappadeaux 32 (086)<br>
+          Pappadeaux 34 (056) &nbsp;·&nbsp; Pappadeaux 36 (047) &nbsp;·&nbsp; Pappadeaux 37 (076)<br>
+          Pappadeaux 39 (081) &nbsp;·&nbsp; Pappadeaux 40 (060) &nbsp;·&nbsp; Pappadeaux 41 (069)<br>
+          Pappadeaux 43 (066) &nbsp;·&nbsp; Pappadeaux 44 (010)<br>
+          <span style="color:var(--border)">Pappadeaux HQ &nbsp;·&nbsp; Pappadeaux-OLO Test</span>
+        </div>
+      </div>
+      <!-- Pappasito's -->
+      <div>
+        <div style="font-family:var(--mono);font-size:10px;color:var(--accent2);text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px">Pappasito's (18)</div>
+        <div style="font-size:11px;color:var(--muted);line-height:1.9">
+          Little Pappasito's (022)<br>
+          Pappasito's 02 (012) &nbsp;·&nbsp; Pappasito's 03 (016)<br>
+          Pappasito's 05 (027) &nbsp;·&nbsp; Pappasito's 06 (029)<br>
+          Pappasito's 07 (032) &nbsp;·&nbsp; Pappasito's 08 (033)<br>
+          Pappasito's 09 (034) &nbsp;·&nbsp; Pappasito's 10 (039)<br>
+          Pappasito's 11 (035) &nbsp;·&nbsp; Pappasito's 12 (041)<br>
+          Pappasito's 13 (042) &nbsp;·&nbsp; Pappasito's 14 (051)<br>
+          Pappasito's 15 (064) &nbsp;·&nbsp; Pappasito's 16 (038)<br>
+          Pappasito's 17 (062) &nbsp;·&nbsp; Pappasito's 21 (079)<br>
+          <span style="color:var(--border)">Pappasito's HQ &nbsp;·&nbsp; Pappasito's-OLO Test</span>
+        </div>
+      </div>
+      <!-- Other brands -->
+      <div>
+        <div style="font-family:var(--mono);font-size:10px;color:var(--warn);text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px">Pappas BBQ</div>
+        <div style="font-size:11px;color:var(--muted);line-height:1.9;margin-bottom:16px">
+          <span style="color:var(--border)">Pappas BBQ HQ &nbsp;·&nbsp; Pappas BBQ-OLO Test</span>
+        </div>
+        <div style="font-family:var(--mono);font-size:10px;color:var(--warn);text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px">Pappas Seafood House</div>
+        <div style="font-size:11px;color:var(--muted);line-height:1.9;margin-bottom:16px">
+          <span style="color:var(--border)">Pappas Seafood House HQ &nbsp;·&nbsp; Pappas Seafood House-OLO Test</span>
+        </div>
+        <div style="font-family:var(--mono);font-size:10px;color:var(--warn);text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px">Yiayia's Greek Kitchen</div>
+        <div style="font-size:11px;color:var(--muted);line-height:1.9;margin-bottom:16px">
+          Yiayia's Greek Kitchen (084)<br>
+          <span style="color:var(--border)">Yiayia's HQ &nbsp;·&nbsp; OLO Test &nbsp;·&nbsp; OpenTable Lab</span>
+        </div>
+        <div style="font-family:var(--mono);font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px">Corporate</div>
+        <div style="font-size:11px;color:var(--muted);line-height:1.9">
+          Pappas Restaurants Incorporated
+        </div>
+      </div>
+    </div>
+    <div style="padding:10px 16px;border-top:1px solid var(--border);font-family:var(--mono);font-size:10px;color:var(--muted)">
+      Slack: <span style="color:var(--accent)">#prj-pappas-ops-n-support</span> &nbsp;·&nbsp; Jira refs: <span style="color:var(--accent)">PRI</span> or <span style="color:var(--accent)">Pappas</span> &nbsp;·&nbsp; Monday: <span style="color:var(--accent)">PRI Support</span> (9079142933) &nbsp;·&nbsp; <span style="color:var(--accent)">Pappas TABs</span> (18410953571) &nbsp;·&nbsp; <span style="color:var(--accent)">Pappas | Roll Out</span> (8752028456) &nbsp;·&nbsp; Last refreshed: <span style="color:var(--accent2)" id="pappas-last-refreshed">Jun 21 2026</span>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  Tabit Ops Hub &nbsp;·&nbsp; Pappas Restaurants Account Intelligence &nbsp;·&nbsp; For internal use only
+</div>
+
+<script>
+document.getElementById('topbar-date').textContent = new Date().toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'});
+</script>
+</body>
+</html>
