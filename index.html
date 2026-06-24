@@ -198,163 +198,161 @@ body.show-completed tr.cc-item.completed{display:table-row;opacity:.38}
 
     <div class="page" id="page-command-center">
 <!-- CC-DATA-START -->
-
       <!-- HEADER BAR -->
       <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px">
         <div>
           <div style="font-size:18px;font-weight:700;letter-spacing:-.02em">Command Center</div>
-          <div style="font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:3px">Monday, June 23 2026 &nbsp;&middot;&nbsp; Sources: Slack &middot; Outlook &middot; Jira &middot; Monday.com &middot; Zoom &middot; Calendar</div>
+          <div style="font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:3px">Tuesday, June 24 2026 &nbsp;&middot;&nbsp; Sources: Slack &middot; Jira &middot; Monday.com &nbsp;<span style="color:var(--warn)">&middot; Outlook/Zoom offline</span></div>
         </div>
         <div style="display:flex;align-items:center;gap:8px">
+          <a id="cc-dl-btn" href='data:application/json,{"version":1,"items":[]}' download="completions.json" style="font-family:var(--mono);font-size:10px;color:var(--muted);text-decoration:none;padding:4px 8px;border:1px solid var(--border);border-radius:3px;display:none">Download blank</a>
           <button class="cc-conn-btn" id="cc-conn-btn" onclick="connectCompletionsFile()">Connect completions.json</button>
           <button class="cc-show-btn" id="cc-show-btn" onclick="toggleShowCompleted()">Show completed</button>
-          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);text-align:right">Last run: today ~6:05am MT<br><span id="cc-file-status"></span></div>
+          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);text-align:right">Last run: today 6/24<br><span id="cc-file-status"></span></div>
         </div>
       </div>
 
       <!-- STAT CARDS -->
       <div class="grid-4" style="margin-bottom:20px">
-        <div class="stat-card danger"><div class="stat-label">Questions Overdue</div><div class="stat-value danger">1</div><div class="stat-sub">Alon &mdash; Caravan Court mappings 2am</div></div>
-        <div class="stat-card danger"><div class="stat-label">Escalations Flagged</div><div class="stat-value danger">7</div><div class="stat-sub">4 Highest &middot; 3 High &mdash; 5 at Pappas</div></div>
-        <div class="stat-card warn"><div class="stat-label">Uncaptured Commits</div><div class="stat-value warn">3</div><div class="stat-sub">Zoom meetings &mdash; no AI Companion records</div></div>
-        <div class="stat-card warn"><div class="stat-label">At Risk Items</div><div class="stat-value warn">4</div><div class="stat-sub">Board update &middot; Cash Discount &middot; MagTek PO &middot; Casey PTO</div></div>
+        <div class="stat-card danger"><div class="stat-label">Questions Overdue</div><div class="stat-value danger">1</div><div class="stat-sub">Unanswered &gt;24h &mdash; Pappas context</div></div>
+        <div class="stat-card danger"><div class="stat-label">Escalations Flagged</div><div class="stat-value danger">8</div><div class="stat-sub">4 Highest + 4 High (Pappas cluster)</div></div>
+        <div class="stat-card warn"><div class="stat-label">Uncaptured Commits</div><div class="stat-value warn">?</div><div class="stat-sub">Outlook offline &mdash; Zoom not scanned</div></div>
+        <div class="stat-card warn"><div class="stat-label">At Risk Items</div><div class="stat-value warn">6</div><div class="stat-sub">Likely to fall through cracks</div></div>
       </div>
 
-      <!-- ORG MEMORY MATCH 1 -->
+      <!-- ORG MEMORY MATCH -->
       <div style="font-family:var(--mono);font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:.12em;margin-bottom:8px">We Have Seen This Before</div>
-      <div style="border:1px solid rgba(79,138,255,.35);border-radius:6px;background:rgba(79,138,255,.04);margin-bottom:12px;overflow:hidden">
-        <div style="padding:12px 18px;border-bottom:1px solid rgba(79,138,255,.2);background:rgba(79,138,255,.08);display:flex;align-items:center;justify-content:space-between">
-          <div>
-            <div style="font-size:13px;font-weight:600;color:var(--accent)">Match Found &mdash; Incoming: &ldquo;Spooler Error Code 17 &mdash; Multiple Sites (SUP-10130)&rdquo;</div>
-            <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Matched against org memory &middot; Native Printing Redirect (Spooler Migration)</div>
-          </div>
-          <span style="font-family:var(--mono);font-size:11px;background:rgba(79,138,255,.15);color:var(--accent);border:1px solid rgba(79,138,255,.3);padding:3px 9px;border-radius:3px">95% match</span>
-        </div>
-        <div style="padding:16px 18px;display:grid;grid-template-columns:repeat(3,1fr);gap:10px">
-          <div style="background:var(--surface2);border:1px solid var(--border);border-radius:5px;padding:10px 13px"><div style="font-family:var(--mono);font-size:9px;color:var(--muted);text-transform:uppercase;margin-bottom:4px">Related Feature</div><div style="font-size:12px;font-weight:600">Native Printing Redirect (Spooler Migration)</div></div>
-          <div style="background:var(--surface2);border:1px solid var(--border);border-radius:5px;padding:10px 13px"><div style="font-family:var(--mono);font-size:9px;color:var(--muted);text-transform:uppercase;margin-bottom:4px">Prior Discussion</div><div style="font-size:12px;font-weight:600">L3 Queue Sync Jun 19 &mdash; spooler redirect, printer delays discussed. Partners notified Jun 22.</div></div>
-          <div style="background:var(--surface2);border:1px solid var(--border);border-radius:5px;padding:10px 13px"><div style="font-family:var(--mono);font-size:9px;color:var(--muted);text-transform:uppercase;margin-bottom:4px">Decision</div><div style="font-size:12px;font-weight:600;color:var(--warn)">Go-live June 23 &mdash; TODAY</div></div>
-          <div style="background:var(--surface2);border:1px solid var(--border);border-radius:5px;padding:10px 13px"><div style="font-family:var(--mono);font-size:9px;color:var(--muted);text-transform:uppercase;margin-bottom:4px">Reason</div><div style="font-size:12px;font-weight:600">Error Code 17 pre-dates redirect. Active ticket. Monitoring needed all day.</div></div>
-          <div style="background:var(--surface2);border:1px solid var(--border);border-radius:5px;padding:10px 13px"><div style="font-family:var(--mono);font-size:9px;color:var(--muted);text-transform:uppercase;margin-bottom:4px">Related Customers</div><div style="font-size:12px;font-weight:600">Multiple sites &middot; Pappas (SUP-10163, SUP-10174)</div></div>
-          <div style="background:var(--surface2);border:1px solid var(--border);border-radius:5px;padding:10px 13px"><div style="font-family:var(--mono);font-size:9px;color:var(--muted);text-transform:uppercase;margin-bottom:4px">Last Reviewed</div><div style="font-size:12px;font-weight:600;color:var(--warn)">Jun 19 2026</div></div>
-        </div>
-      </div>
-
-      <!-- ORG MEMORY MATCH 2 -->
       <div style="border:1px solid rgba(79,138,255,.35);border-radius:6px;background:rgba(79,138,255,.04);margin-bottom:16px;overflow:hidden">
         <div style="padding:12px 18px;border-bottom:1px solid rgba(79,138,255,.2);background:rgba(79,138,255,.08);display:flex;align-items:center;justify-content:space-between">
           <div>
-            <div style="font-size:13px;font-weight:600;color:var(--accent)">Match Found &mdash; Incoming: &ldquo;Tip Settlement Error &mdash; Barbacoa (SUP-10189, Highest)&rdquo;</div>
-            <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Matched against org memory &middot; Tip Settlement Errors recurring cluster</div>
+            <div style="font-size:13px;font-weight:600;color:var(--accent)">Match Found &mdash; Incoming: "New MediaExchange failure mode at Yiayia's Greek Kitchen (SUP-10198)"</div>
+            <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Matched against org memory &mdash; MediaExchange Recurring Escalation Pattern</div>
           </div>
-          <span style="font-family:var(--mono);font-size:11px;background:rgba(79,138,255,.15);color:var(--accent);border:1px solid rgba(79,138,255,.3);padding:3px 9px;border-radius:3px">85% match</span>
+          <span style="font-family:var(--mono);font-size:11px;background:rgba(79,138,255,.15);color:var(--accent);border:1px solid rgba(79,138,255,.3);padding:3px 9px;border-radius:3px">92% match</span>
         </div>
         <div style="padding:16px 18px;display:grid;grid-template-columns:repeat(3,1fr);gap:10px">
-          <div style="background:var(--surface2);border:1px solid var(--border);border-radius:5px;padding:10px 13px"><div style="font-family:var(--mono);font-size:9px;color:var(--muted);text-transform:uppercase;margin-bottom:4px">Related Feature</div><div style="font-size:12px;font-weight:600">Tip Settlement &mdash; TAB-37118 (Design, Chloe Gloger)</div></div>
-          <div style="background:var(--surface2);border:1px solid var(--border);border-radius:5px;padding:10px 13px"><div style="font-family:var(--mono);font-size:9px;color:var(--muted);text-transform:uppercase;margin-bottom:4px">Prior Discussions</div><div style="font-size:12px;font-weight:600">SUP-10154, SUP-10155, SUP-10005 (Khashoka), TAB-37118</div></div>
-          <div style="background:var(--surface2);border:1px solid var(--border);border-radius:5px;padding:10px 13px"><div style="font-family:var(--mono);font-size:9px;color:var(--muted);text-transform:uppercase;margin-bottom:4px">Decision</div><div style="font-size:12px;font-weight:600;color:var(--warn)">Design phase &mdash; no ETA, cluster expanding</div></div>
-          <div style="background:var(--surface2);border:1px solid var(--border);border-radius:5px;padding:10px 13px"><div style="font-family:var(--mono);font-size:9px;color:var(--muted);text-transform:uppercase;margin-bottom:4px">Reason</div><div style="font-size:12px;font-weight:600">Systemic gap in tip settlement reporting and adjustment flows</div></div>
-          <div style="background:var(--surface2);border:1px solid var(--border);border-radius:5px;padding:10px 13px"><div style="font-family:var(--mono);font-size:9px;color:var(--muted);text-transform:uppercase;margin-bottom:4px">Related Customers</div><div style="font-size:12px;font-weight:600">Barbacoa &middot; Saints Pub &middot; Khashoka &middot; multiple</div></div>
-          <div style="background:var(--surface2);border:1px solid var(--border);border-radius:5px;padding:10px 13px"><div style="font-family:var(--mono);font-size:9px;color:var(--muted);text-transform:uppercase;margin-bottom:4px">Last Reviewed</div><div style="font-size:12px;font-weight:600;color:var(--warn)">Jun 19 2026</div></div>
+          <div style="background:var(--surface2);border:1px solid var(--border);border-radius:5px;padding:10px 13px"><div style="font-family:var(--mono);font-size:9px;color:var(--muted);text-transform:uppercase;margin-bottom:4px">Related Feature</div><div style="font-size:12px;font-weight:600">MediaExchange Gift Card Order Flow (TAB-45803)</div></div>
+          <div style="background:var(--surface2);border:1px solid var(--border);border-radius:5px;padding:10px 13px"><div style="font-family:var(--mono);font-size:9px;color:var(--muted);text-transform:uppercase;margin-bottom:4px">Prior Discussions</div><div style="font-size:12px;font-weight:600">SUP-10164, SUP-10167 (June 2026) &mdash; 3 failure modes now active</div></div>
+          <div style="background:var(--surface2);border:1px solid var(--border);border-radius:5px;padding:10px 13px"><div style="font-family:var(--mono);font-size:9px;color:var(--muted);text-transform:uppercase;margin-bottom:4px">Decision</div><div style="font-size:12px;font-weight:600;color:var(--accent2)">TAB-45803 moved to Development today (Binyamin Trachtman)</div></div>
+          <div style="background:var(--surface2);border:1px solid var(--border);border-radius:5px;padding:10px 13px"><div style="font-family:var(--mono);font-size:9px;color:var(--muted);text-transform:uppercase;margin-bottom:4px">Reason</div><div style="font-size:12px;font-weight:600">Multiple distinct payment failure modes cluster at same customer sites</div></div>
+          <div style="background:var(--surface2);border:1px solid var(--border);border-radius:5px;padding:10px 13px"><div style="font-family:var(--mono);font-size:9px;color:var(--muted);text-transform:uppercase;margin-bottom:4px">Related Customers</div><div style="font-size:12px;font-weight:600">Pappas (Pappadeaux 40), Yiayia&rsquo;s Greek Kitchen &mdash; new site today</div></div>
+          <div style="background:var(--surface2);border:1px solid var(--border);border-radius:5px;padding:10px 13px"><div style="font-family:var(--mono);font-size:9px;color:var(--muted);text-transform:uppercase;margin-bottom:4px">Last Reviewed</div><div style="font-size:12px;font-weight:600;color:var(--muted)">2026-06-19</div></div>
         </div>
       </div>
 
       <!-- QUESTIONS OWED BY BRIAN -->
       <div class="panel" style="margin-bottom:16px">
         <div class="panel-header"><span class="panel-title">Immediate Attention &mdash; Questions Owed By Brian</span><span class="panel-badge danger">1 item</span></div>
-        <div class="alert-row cc-item" data-item-id="q-alon-caravan-mappings">
-          <input type="checkbox" class="cc-chk" onchange="toggleCompletion('q-alon-caravan-mappings',this.checked)">
-          <div style="flex:1"><strong>Alon Eyal &mdash; Caravan Court charge code mappings</strong> &mdash; After running the reprocess script, 29 transactions remain failed with &ldquo;Invalid item or charge code.&rdquo; Occurring across multiple brands and room charges. Predates the main fix. Alon asks Brian to review the charge code mappings.
-          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Slack DM &middot; Sent 2:04am Jun 23 &middot; <strong style="color:var(--danger)">UNANSWERED &mdash; respond before standup</strong></div></div>
+        <div class="alert-row cc-item" data-item-id="q-john-y-ofer-jun24">
+          <input type="checkbox" class="cc-chk" onchange="toggleCompletion('q-john-y-ofer-jun24',this.checked)">
+          <div style="flex:1"><strong>John Ygartua (Pappas)</strong> &mdash; &ldquo;Would it help if I add pressure here and reach out to Alon or Ofer via slack or email? I want to help.&rdquo; (re: Pappasito&rsquo;s 03 kitchen printer delays)
+          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">#prj-pappas-ops-n-support &middot; Jun 23 ~9:31am MDT &middot; <strong style="color:var(--danger)">Respond today &mdash; Pappas team is anxious, call happened Jun 23. Decide yes/no on Alon/Ofer loop-in.</strong></div></div>
         </div>
       </div>
 
       <!-- SUPPORT ESCALATIONS -->
       <div class="panel" style="margin-bottom:16px">
-        <div class="panel-header"><span class="panel-title">Support Escalations &mdash; Highest Priority</span><span class="panel-badge danger">7 flagged (5 at Pappas)</span></div>
+        <div class="panel-header"><span class="panel-title">Support Escalations &mdash; Highest Priority</span><span class="panel-badge danger">4 Highest &middot; 4 High</span></div>
+
+        <div style="font-family:var(--mono);font-size:9px;color:var(--muted);text-transform:uppercase;padding:8px 18px 4px;letter-spacing:.08em;border-bottom:1px solid var(--border)">Highest</div>
 
         <div class="alert-row">
-          <div style="flex:1"><a href="https://tabitros.atlassian.net/browse/SUP-10189" target="_blank" class="key-link">SUP-10189</a> &nbsp; <strong>Barbacoa</strong> &mdash; Tip Settlement Error: Transaction Already Modified
-          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Status: In Progress &middot; Assignee: Chad Shankman &middot; Updated: Jun 23 &middot; <strong style="color:var(--danger)">NEW TODAY &mdash; Highest &middot; Dev: TAB-37118 (Design, no ETA)</strong></div></div>
-        </div>
-
-        <div class="alert-row">
-          <div style="flex:1"><a href="https://tabitros.atlassian.net/browse/SUP-10174" target="_blank" class="key-link">SUP-10174</a> &nbsp; <strong>Pappasito&rsquo;s 03 (016)</strong> &mdash; Kitchen Printer Delays
-          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Status: In Progress &middot; Assignee: Nicole Kogan &middot; Updated: Jun 22 &middot; <strong style="color:var(--danger)">Highest &middot; Pappas anchor &middot; Spooler go-live TODAY</strong></div></div>
+          <div style="flex:1"><a href="https://tabitros.atlassian.net/browse/SUP-10188" target="_blank" class="key-link">SUP-10188</a> &nbsp; <strong>Pappas HQ &mdash; Multi-Site</strong> &mdash; ToGo KDS Stuck on White Screen
+          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Status: Accepted &middot; Assignee: Shiran Horesh &middot; Updated: Jun 24 &middot; <strong style="color:var(--danger)">ROOT CAUSE FOUND &mdash; WebSocket (WSS port 443) to cloudamqp.com blocked on Pappas network. Vincente must contact Pappas IT today re: firewall change around Jun 21.</strong></div></div>
         </div>
 
         <div class="alert-row">
           <div style="flex:1"><a href="https://tabitros.atlassian.net/browse/SUP-10163" target="_blank" class="key-link">SUP-10163</a> &nbsp; <strong>Pappas Restaurants</strong> &mdash; Printers Dropping Offline
-          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Status: In Progress &middot; Assignee: Nicole Kogan &middot; Updated: Jun 22 &middot; <strong style="color:var(--danger)">Highest &middot; Pappas anchor &middot; Spooler go-live TODAY</strong></div></div>
+          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Status: Pending &middot; Assignee: Nicole Kogan &middot; Last investigative comment: Jun 21 &middot; <strong style="color:var(--danger)">STALE &mdash; 3+ days no engineering update on Highest ticket</strong></div></div>
+        </div>
+
+        <div class="alert-row">
+          <div style="flex:1"><a href="https://tabitros.atlassian.net/browse/SUP-10174" target="_blank" class="key-link">SUP-10174</a> &nbsp; <strong>Pappasito&rsquo;s 03 (016)</strong> &mdash; Kitchen Printer Delays (up to 4 min)
+          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Status: In Progress &middot; Assignee: Nicole Kogan &middot; Updated: Jun 23 &middot; <strong style="color:var(--warn)">Recurring despite printer + cable replacement. $85k nights affected. Pappasito&rsquo;s 15 also impacted.</strong></div></div>
         </div>
 
         <div class="alert-row">
           <div style="flex:1"><a href="https://tabitros.atlassian.net/browse/SUP-10130" target="_blank" class="key-link">SUP-10130</a> &nbsp; <strong>Multiple Sites</strong> &mdash; Error Code 17 &ldquo;File Exists&rdquo; on Spooler Devices
-          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Status: Pending &middot; Assignee: Nicole Kogan &middot; Updated: Jun 21 &middot; <strong style="color:var(--danger)">Highest &middot; Native printing redirect GO-LIVE TODAY</strong></div></div>
+          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Status: Pending &middot; Assignee: Nicole Kogan &middot; Updated: Jun 20 &middot; <strong style="color:var(--danger)">STALE &mdash; 4 days no update, zero comments on Highest ticket</strong></div></div>
         </div>
 
-        <div class="alert-row warn">
-          <div style="flex:1"><a href="https://tabitros.atlassian.net/browse/SUP-10188" target="_blank" class="key-link">SUP-10188</a> &nbsp; <strong>Pappas HQ &mdash; Multiple Sites</strong> &mdash; ToGo KDS Stuck on White Screen
-          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Status: Accepted &middot; Assignee: Shiran Horesh &middot; Updated: Jun 23 &middot; <strong style="color:var(--warn)">High &middot; NEW TODAY &middot; Pappas call happening now</strong></div></div>
-        </div>
+        <div style="font-family:var(--mono);font-size:9px;color:var(--muted);text-transform:uppercase;padding:8px 18px 4px;letter-spacing:.08em;border-bottom:1px solid var(--border);border-top:1px solid var(--border)">High</div>
 
         <div class="alert-row warn">
           <div style="flex:1"><a href="https://tabitros.atlassian.net/browse/SUP-10164" target="_blank" class="key-link">SUP-10164</a> &nbsp; <strong>Pappadeaux 40 (060)</strong> &mdash; Stuck MediaExchange Order
-          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Status: Accepted &middot; Assignee: Chad Shankman &middot; Updated: Jun 22 &middot; <strong style="color:var(--warn)">High &middot; Pappas &middot; Dev: TAB-45803 (Todo, no ETA)</strong></div></div>
+          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Status: Pending &middot; Assignee: Chad Shankman &middot; Updated: Jun 24 &middot; <strong style="color:var(--warn)">GC removal needed (Vincente asked Jun 23) &mdash; no action visible. Dev: TAB-45803 moved to Development today.</strong></div></div>
         </div>
 
         <div class="alert-row warn">
-          <div style="flex:1"><a href="https://tabitros.atlassian.net/browse/SUP-10167" target="_blank" class="key-link">SUP-10167</a> &nbsp; <strong>Pappadeaux 40 (060)</strong> &mdash; MediaExchange: Cannot Swipe Card
-          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Status: Accepted &middot; Assignee: Chad Shankman &middot; Updated: Jun 22 &middot; <strong style="color:var(--warn)">Medium &middot; Pappas &middot; Dev: TAB-45803 (Todo, no ETA)</strong></div></div>
+          <div style="flex:1"><a href="https://tabitros.atlassian.net/browse/SUP-10198" target="_blank" class="key-link">SUP-10198</a> &nbsp; <strong>Yiayia&rsquo;s Greek Kitchen (084)</strong> &mdash; MediaExchange Order Freezing
+          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Status: New &middot; Assignee: Unassigned &middot; Updated: Jun 24 &middot; <strong style="color:var(--danger)">NEW TODAY &mdash; UNASSIGNED. 3rd MediaExchange failure mode. Assign immediately.</strong></div></div>
+        </div>
+
+        <div class="alert-row warn">
+          <div style="flex:1"><a href="https://tabitros.atlassian.net/browse/SUP-10203" target="_blank" class="key-link">SUP-10203</a> &nbsp; <strong>Pappasito&rsquo;s 02 (012)</strong> &mdash; MagTek ARQC Failed: Transaction Failed
+          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Status: New &middot; Assignee: Unassigned &middot; Updated: Jun 24 &middot; <strong style="color:var(--danger)">NEW TODAY &mdash; UNASSIGNED. Vincente notes logs show bad swipe; verify before treating as system bug.</strong></div></div>
+        </div>
+
+        <div class="alert-row warn">
+          <div style="flex:1"><a href="https://tabitros.atlassian.net/browse/SUP-8745" target="_blank" class="key-link">SUP-8745</a> &nbsp; <strong>Pappadeaux 27 (078)</strong> &mdash; API Call Missing Order Data
+          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Status: Accepted &middot; Assignee: Liz Benavides &middot; Updated: Apr 16 &middot; <strong style="color:var(--danger)">68 DAYS STALE &mdash; Alon requested engineering investigation Feb 4, never actioned</strong></div></div>
+        </div>
+
+        <div style="padding:10px 18px;font-size:11px;border-top:1px solid var(--border)">
+          <span style="font-family:var(--mono);font-size:9px;color:var(--muted);text-transform:uppercase">Dev cross-ref:</span>
+          <span style="margin-left:8px"><a href="https://tabitros.atlassian.net/browse/TAB-45803" target="_blank" class="key-link">TAB-45803</a> MediaExchange Redesign &rarr; <strong style="color:var(--accent2)">Development</strong> (Binyamin Trachtman &mdash; updated today)</span>
+          &nbsp;&nbsp;
+          <a href="https://tabitros.atlassian.net/browse/TAB-37118" target="_blank" class="key-link">TAB-37118</a> Tip Settlement &rarr; <strong style="color:var(--muted)">Design</strong> (Chloe Gloger)
+          &nbsp;&nbsp;
+          <a href="https://tabitros.atlassian.net/browse/TAB-48625" target="_blank" class="key-link">TAB-48625</a> Payment Assist Joiner &rarr; <strong style="color:var(--muted)">Todo</strong> &mdash; <span style="color:var(--warn)">&ldquo;Pappas continues to have issues with payment assist not unlocking checks&rdquo;</span>
         </div>
       </div>
 
       <!-- UNCAPTURED ZOOM COMMITMENTS -->
       <div class="panel" style="margin-bottom:16px">
-        <div class="panel-header"><span class="panel-title">Uncaptured Commitments &mdash; Zoom</span><span class="panel-badge warn">3 items</span></div>
-
-        <div class="alert-row warn cc-item" data-item-id="zoom-releases-june22">
-          <input type="checkbox" class="cc-chk" onchange="toggleCompletion('zoom-releases-june22',this.checked)">
-          <div style="flex:1"><strong>US Releases (Jun 22 8am)</strong> &mdash; Brian&rsquo;s meeting. No AI Companion summary. Version milestones discussed: 12.0.4 targeting close today (Aviya back), 12.1.0 best case July 2. Not in any system.
-          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Attendees: Tyler, Alon, Gabriel, Roi, Rotem, Fiana, Tamar, Casey &middot; <strong style="color:var(--warn)">Communicate version ETAs to field team today</strong></div></div>
-        </div>
-
-        <div class="alert-row warn cc-item" data-item-id="zoom-ops-mgmt-june22">
-          <input type="checkbox" class="cc-chk" onchange="toggleCompletion('zoom-ops-mgmt-june22',this.checked)">
-          <div style="flex:1"><strong>Weekly Ops Mgmt Meeting (Jun 22 9:15am)</strong> &mdash; Jessica&rsquo;s meeting. No summary. Any ops decisions made are unrecorded.
-          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Attendees: Jessica, Brian, Michael, Carolina, John, Casey &middot; <strong style="color:var(--warn)">Ask Jessica for action items</strong></div></div>
-        </div>
-
-        <div class="alert-row warn cc-item" data-item-id="zoom-mtech-standup-june22">
-          <input type="checkbox" class="cc-chk" onchange="toggleCompletion('zoom-mtech-standup-june22',this.checked)">
-          <div style="flex:1"><strong>MTech/Tabit Daily Standup (Jun 22 2pm)</strong> &mdash; Recurring standup. Per pattern, decisions from these standups are never written down.
-          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Attendees: Robert Tucker, Brian, Shawn Dwyer, Etai, Dror, Sagi &middot; <strong style="color:var(--warn)">Raise open items at today&rsquo;s 2pm standup; capture owners</strong></div></div>
+        <div class="panel-header"><span class="panel-title">Uncaptured Commitments &mdash; Zoom</span><span class="panel-badge warn">Source offline</span></div>
+        <div class="alert-row warn cc-item" data-item-id="zoom-outlook-unavailable">
+          <input type="checkbox" class="cc-chk" onchange="toggleCompletion('zoom-outlook-unavailable',this.checked)">
+          <div style="flex:1"><strong>Outlook / M365 MCP not connected this run</strong> &mdash; Zoom AI Companion emails not scanned. Any verbal commitments from Zoom meetings Jun 21&ndash;24 are unverified.
+          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Per org memory: Zoom meetings are the highest-risk source of dropped follow-ups. &middot; <strong style="color:var(--warn)">ACTION: Check Zoom AI Companion email manually for any meetings this week.</strong></div></div>
         </div>
       </div>
 
       <!-- COMMITMENTS DUE -->
       <div class="panel" style="margin-bottom:16px">
-        <div class="panel-header"><span class="panel-title">Commitments Due</span><span class="panel-badge warn">3 items</span></div>
+        <div class="panel-header"><span class="panel-title">Commitments Due</span><span class="panel-badge warn">5 items</span></div>
         <table class="p-table" style="width:100%">
           <thead><tr><th>Commitment</th><th>To</th><th>Source</th><th>Flag</th></tr></thead>
           <tbody>
-            <tr>
-              <td><strong>Update Feature Requests priority board</strong><div class="reason-text">Tyler wants to review before his &ldquo;doubles&rdquo; meeting today</div></td>
-              <td>Tyler Dillon</td>
-              <td>Slack DM Jun 22</td>
-              <td style="color:var(--danger)"><strong>TODAY before 1:30pm</strong></td>
+            <tr class="cc-item" data-item-id="commit-hannah-call-jun24">
+              <td><input type="checkbox" class="cc-chk" onchange="toggleCompletion('commit-hannah-call-jun24',this.checked)" style="margin-right:6px">Call re: KDS offline / mobile router network setup<div class="reason-text">Brian agreed Jun 23, Hannah was scheduling for today</div></td>
+              <td>Hannah Potts</td>
+              <td>Slack DM</td>
+              <td style="color:var(--danger);font-family:var(--mono);font-size:10px">DUE TODAY</td>
             </tr>
-            <tr>
-              <td><strong>Cash Discount beta status update to team</strong><div class="reason-text">Committed to send &ldquo;when week of June 22 arrived&rdquo; &mdash; no evidence sent</div></td>
+            <tr class="cc-item" data-item-id="commit-dave-tip-jun24">
+              <td><input type="checkbox" class="cc-chk" onchange="toggleCompletion('commit-dave-tip-jun24',this.checked)" style="margin-right:6px">Run through tip behaviors with Dave when he returns<div class="reason-text">Brian: &ldquo;I&rsquo;ll look to run through things with Dave when he is back&rdquo; &mdash; Tyler DM Jun 23</div></td>
+              <td>Tyler / Dave</td>
+              <td>Slack DM</td>
+              <td style="color:var(--warn);font-family:var(--mono);font-size:10px">AT RISK &mdash; no date</td>
+            </tr>
+            <tr class="cc-item" data-item-id="commit-ofer-printing-jun24">
+              <td><input type="checkbox" class="cc-chk" onchange="toggleCompletion('commit-ofer-printing-jun24',this.checked)" style="margin-right:6px">Bring Ofer into printer delays investigation<div class="reason-text">Referenced in #prj-pappas-ops-n-support Jun 23 &mdash; no follow-through visible</div></td>
+              <td>Pappas team</td>
+              <td>Slack channel</td>
+              <td style="color:var(--warn);font-family:var(--mono);font-size:10px">AT RISK</td>
+            </tr>
+            <tr class="cc-item" data-item-id="commit-cash-discount-jun24">
+              <td><input type="checkbox" class="cc-chk" onchange="toggleCompletion('commit-cash-discount-jun24',this.checked)" style="margin-right:6px">Cash Discount beta outcome &mdash; send team update<div class="reason-text">Beta was week of Jun 22. No outcome captured. Brian committed to update.</div></td>
               <td>Internal team</td>
-              <td>Org Memory</td>
-              <td style="color:var(--warn)"><strong>AT RISK &mdash; Day 2</strong></td>
+              <td>Org memory</td>
+              <td style="color:var(--danger);font-family:var(--mono);font-size:10px">OVERDUE</td>
             </tr>
-            <tr>
-              <td><strong>MagTek DynaFlex 6-month PO to Tri Nguyen</strong><div class="reason-text">Casey on PTO &mdash; no backup owner for this today</div></td>
-              <td>MagTek (Tri)</td>
-              <td>Entity Log</td>
-              <td style="color:var(--warn)"><strong>Due today &mdash; Casey out</strong></td>
+            <tr class="cc-item" data-item-id="commit-magtek-april-jun24">
+              <td><input type="checkbox" class="cc-chk" onchange="toggleCompletion('commit-magtek-april-jun24',this.checked)" style="margin-right:6px">MagTek hub shipment confirmation (Casey, 25 units to April)<div class="reason-text">Promised before Father&rsquo;s Day (Jun 15). Still unconfirmed.</div></td>
+              <td>Casey / April</td>
+              <td>Org memory</td>
+              <td style="color:var(--warn);font-family:var(--mono);font-size:10px">STALE</td>
             </tr>
           </tbody>
         </table>
@@ -365,71 +363,61 @@ body.show-completed tr.cc-item.completed{display:table-row;opacity:.38}
         <div class="panel-header"><span class="panel-title">Waiting On Others</span></div>
 
         <div class="alert-row info"><div style="flex:1"><strong style="color:var(--accent)">Engineering</strong></div></div>
-        <div class="alert-row info"><div style="flex:1">12.0.4 release &mdash; target close today; depends on Aviya (back today). No formal ETA communicated to field.
-        <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:2px">Next: communicate after US Dev Support Sync tomorrow</div></div></div>
-        <div class="alert-row info"><div style="flex:1">12.1.0 release &mdash; best case July 2 for device install. Told Tyler only &mdash; not formally communicated.
-        <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:2px">Next: send field team note this week</div></div></div>
-        <div class="alert-row info"><div style="flex:1"><a href="https://tabitros.atlassian.net/browse/TAB-45803" target="_blank" class="key-link">TAB-45803</a> MediaExchange Redesign &mdash; Todo, Chloe Gloger, no ETA. SUP-10164/10167 have no fix path.
-        <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:2px">Raise in Feature Requests Priorities meeting today at 1:30pm</div></div></div>
-        <div class="alert-row info"><div style="flex:1"><a href="https://tabitros.atlassian.net/browse/TAB-37118" target="_blank" class="key-link">TAB-37118</a> Tip Settlement Fix &mdash; Design, Chloe Gloger. SUP-10189 (Highest) opened today.
-        <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:2px">New Highest ticket may warrant escalating TAB-37118 priority</div></div></div>
+        <div class="alert-row info"><div style="flex:1">Liz Benavides &mdash; Pappas KDS white screen update (committed to today &mdash; check for Slack message)</div></div>
+        <div class="alert-row info"><div style="flex:1">Nicole Kogan &mdash; SUP-10174 (printer delays), SUP-10163 (printers dropping offline), SUP-10130 (Error 17 spooler) &mdash; all stale or no visible traction</div></div>
+        <div class="alert-row info"><div style="flex:1">Chad Shankman &mdash; remove GC from SUP-10164 order (Vincente requested Jun 23)</div></div>
 
-        <div class="alert-row info" style="margin-top:8px"><div style="flex:1"><strong style="color:var(--accent)">Customers</strong></div></div>
-        <div class="alert-row info"><div style="flex:1">Caravan Court &mdash; 29 failed reprocessed transactions need charge code mapping clarification. Alon waiting on Brian.
-        <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:2px">Next: Brian reviews StayNTouch charge codes, replies to Alon today</div></div></div>
+        <div class="alert-row info" style="margin-top:4px"><div style="flex:1"><strong style="color:var(--accent)">Customers</strong></div></div>
+        <div class="alert-row info"><div style="flex:1">Pappas IT &mdash; check firewall / Wi-Fi for WebSocket port 443 to calm-raccoon.rmq.cloudamqp.com (per Shiran&rsquo;s finding on SUP-10188, around Jun 21)</div></div>
+        <div class="alert-row info"><div style="flex:1">Hadar Chadad Korenblum &mdash; response to Brian&rsquo;s Jun 22 question on <a href="https://tabitros.atlassian.net/browse/SUP-9800" target="_blank" class="key-link">SUP-9800</a> (Dog and Duck &mdash; undefined item pattern)</div></div>
 
-        <div class="alert-row info" style="margin-top:8px"><div style="flex:1"><strong style="color:var(--accent)">Vendors</strong></div></div>
-        <div class="alert-row info"><div style="flex:1">MagTek &mdash; Dynaflex pricing (Etai sent inquiry Jun 23 2am). Awaiting John Arato / Tri Nguyen response.
-        <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:2px">Brian is CC&rsquo;d on the thread</div></div></div>
-        <div class="alert-row info"><div style="flex:1">BlueStar &mdash; PO-US-000173 item C31CJ57052 has October ETA; conflicts with Pappas rollout cutoff.
-        <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:2px">Next: identify alternate supplier or adjust Pappas plan</div></div></div>
+        <div class="alert-row info" style="margin-top:4px"><div style="flex:1"><strong style="color:var(--accent)">Vendors</strong></div></div>
+        <div class="alert-row info"><div style="flex:1">Worldline &mdash; ticket 965120 status unknown (Outlook offline). Compulocks &mdash; Joel CFO escalation from Jun 21 unverified this run.</div></div>
 
-        <div class="alert-row info" style="margin-top:8px"><div style="flex:1"><strong style="color:var(--accent)">Internal</strong></div></div>
-        <div class="alert-row info"><div style="flex:1">Casey on PTO today &mdash; MagTek RMA intake, DynaFlex PO, BlueStar follow-up all floating without backup owner.
-        <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:2px">Next: determine who covers Casey&rsquo;s open items today</div></div></div>
+        <div class="alert-row info" style="margin-top:4px"><div style="flex:1"><strong style="color:var(--accent)">Internal</strong></div></div>
+        <div class="alert-row info"><div style="flex:1">Casey Grant &mdash; MagTek hub shipment to April (25 units, unconfirmed since Father&rsquo;s Day)</div></div>
+        <div class="alert-row info"><div style="flex:1">Dave (returning) &mdash; tip behavior review pending his return date</div></div>
       </div>
 
       <!-- UPCOMING COMMITMENTS -->
       <div class="panel" style="margin-bottom:16px">
         <div class="panel-header"><span class="panel-title">Upcoming Commitments</span></div>
 
-        <div class="alert-row info"><div style="flex:1"><strong>Today &mdash; June 23</strong></div></div>
-        <div class="alert-row info"><div style="flex:1">12&ndash;1pm &middot; <strong>Pappas Weekly Touch Base</strong> (HAPPENING NOW) &mdash; SUP-10188 KDS and spooler issues will likely surface</div></div>
-        <div class="alert-row info"><div style="flex:1">1:30pm &middot; <strong>Feature Requests Priorities</strong> (Brian&rsquo;s meeting &mdash; Casey, Jessica, Dave) &mdash; update board first</div></div>
-        <div class="alert-row info"><div style="flex:1">2pm &middot; <strong>MTech/Tabit Daily Standup</strong> &mdash; raise open action items; explicitly capture any decisions made</div></div>
-        <div class="alert-row info"><div style="flex:1">2:30pm &middot; <strong>Dabush Feature Requests</strong> &mdash; Brian attending</div></div>
+        <div class="alert-row"><div style="flex:1"><strong style="color:var(--danger)">Today</strong></div></div>
+        <div class="alert-row"><div style="flex:1">Respond to John Y in #prj-pappas-ops-n-support &mdash; decide on Alon/Ofer pressure for printer delays</div></div>
+        <div class="alert-row"><div style="flex:1">Call with Hannah Potts &mdash; KDS offline mode / mobile router (confirm if scheduled)</div></div>
+        <div class="alert-row"><div style="flex:1">Expect Liz Benavides update on Pappas KDS investigation findings</div></div>
 
-        <div class="alert-row info" style="margin-top:6px"><div style="flex:1"><strong>This Week</strong></div></div>
-        <div class="alert-row info"><div style="flex:1">iOS 26.4 push to remaining Pappas sites tonight &mdash; Daniel/John handling; April confirmed</div></div>
-        <div class="alert-row info"><div style="flex:1">Compulocks invoice escalation &mdash; Joel (CFO) escalated Jun 21, Fany loop-in needed, due Jun 26</div></div>
-        <div class="alert-row info"><div style="flex:1">Pre Q3 Version Training Alignment &mdash; Rotem Ifrah invite received Jun 23; needs response</div></div>
+        <div class="alert-row" style="margin-top:4px"><div style="flex:1"><strong style="color:var(--warn)">This Week</strong></div></div>
+        <div class="alert-row"><div style="flex:1">Thursday Jun 25 &mdash; Sync with Emma Gosselin re: Crave label printer setup</div></div>
+        <div class="alert-row"><div style="flex:1">Assign owners to SUP-10198 (Yiayia&rsquo;s MediaExchange) and SUP-10203 (Pappasito&rsquo;s MagTek)</div></div>
+        <div class="alert-row"><div style="flex:1">Review Cash Discount beta outcome &mdash; send team update</div></div>
 
-        <div class="alert-row info" style="margin-top:6px"><div style="flex:1"><strong>Next Week</strong></div></div>
-        <div class="alert-row info"><div style="flex:1">12.1.0 device install target July 2 &mdash; communicate timeline to field team this week</div></div>
-        <div class="alert-row info"><div style="flex:1">Pappas Weekly Touch Base (recurring) &mdash; expect status on spooler, KDS, MediaExchange</div></div>
+        <div class="alert-row" style="margin-top:4px"><div style="flex:1"><strong style="color:var(--muted)">Next Week / TBD</strong></div></div>
+        <div class="alert-row"><div style="flex:1">Run through tip behaviors with Dave (pending his return)</div></div>
       </div>
 
       <!-- THINGS LIKELY TO FALL THROUGH THE CRACKS -->
       <div class="panel" style="margin-bottom:16px">
         <div class="panel-header"><span class="panel-title">Things Likely To Fall Through The Cracks</span><span class="panel-badge warn">6 items</span></div>
 
-        <div class="alert-row warn"><div style="flex:1"><strong>1. Caravan Court &mdash; 29 &ldquo;Invalid item or charge code&rdquo; secondary errors.</strong> No SUP created. No system record. Full reprocess stalled until Brian responds to Alon.
-        <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:2px">Next: Respond to Alon before 10am</div></div></div>
+        <div class="alert-row warn"><div style="flex:1"><strong>1. Zoom AI Companion emails not scanned</strong> &mdash; Outlook MCP offline. Per org memory, Zoom meetings are the highest-risk source of dropped follow-ups. Any verbal commitments from meetings Jun 21&ndash;24 are unverified.
+        <div class="reason-text">Check Zoom AI Companion inbox manually.</div></div></div>
 
-        <div class="alert-row warn"><div style="flex:1"><strong>2. Spooler migration go-live TODAY fallout.</strong> SUP-10130 pending. Three Pappas printer tickets active. No monitoring plan or rollback owner named.
-        <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:2px">Next: Confirm with Nicole Kogan that SUP-10130 is on track for today</div></div></div>
+        <div class="alert-row warn"><div style="flex:1"><strong>2. SUP-10130 (Error Code 17 Spooler &mdash; Highest)</strong> &mdash; 4 days no update, zero comments. Nicole Kogan holds it but no visible investigation activity.
+        <div class="reason-text">Escalate to Nicole for update today.</div></div></div>
 
-        <div class="alert-row warn"><div style="flex:1"><strong>3. Cash Discount beta status update.</strong> Brian committed to send team an update &ldquo;when week of June 22 arrived.&rdquo; No evidence it was sent. Day 2 of that trigger week.
-        <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:2px">Next: Check with Alon on Cash Discount beta status; send to team today</div></div></div>
+        <div class="alert-row warn"><div style="flex:1"><strong>3. Cash Discount beta outcome</strong> &mdash; Beta was week of Jun 22. Nothing captured in any system. Brian committed to a team status update.
+        <div class="reason-text">Find the outcome and send the update.</div></div></div>
 
-        <div class="alert-row warn"><div style="flex:1"><strong>4. Casey on PTO &mdash; no named backup owner.</strong> MagTek RMA new intake (auto-assigned to Brian), DynaFlex PO, BlueStar supplier issue all floating.
-        <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:2px">Next: Assign backup or handle directly before EOD</div></div></div>
+        <div class="alert-row warn"><div style="flex:1"><strong>4. MagTek runbook</strong> &mdash; Casey committed to a troubleshooting flowchart in the Jun 10 meeting. No evidence it was ever completed.
+        <div class="reason-text">Check with Casey; if not done, assign or deprioritize explicitly.</div></div></div>
 
-        <div class="alert-row warn"><div style="flex:1"><strong>5. MTech standup Jun 22 decisions &mdash; zero written record.</strong> Per org memory pattern, verbal decisions from this recurring standup evaporate.
-        <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:2px">Next: At today&rsquo;s 2pm standup, ask explicitly for recap of yesterday&rsquo;s decisions</div></div></div>
+        <div class="alert-row warn"><div style="flex:1"><strong>5. SUP-8745 (Pappadeaux 27 &mdash; High)</strong> &mdash; 68 days stale. Alon explicitly asked for engineering investigation in Feb. Never happened.
+        <div class="reason-text">Escalate to Liz / Alon for decision: investigate or close.</div></div></div>
 
-        <div class="alert-row warn"><div style="flex:1"><strong>6. SUP-10068 &mdash; Pappasito&rsquo;s 07 Cash Drawer Assignment Error.</strong> Medium, UNASSIGNED, created June 2. Pappas anchor site. Sitting unowned for 3 weeks.
-        <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:2px">Next: Assign to Chad Shankman or ask John to assign</div></div></div>
+        <div class="alert-row warn"><div style="flex:1"><strong>6. MediaExchange cluster is growing</strong> &mdash; SUP-10164, SUP-10167, and now SUP-10198. Three failure modes across three sites. TAB-45803 is in Development but no ETA to share with Pappas.
+        <div class="reason-text">Get an ETA from Binyamin Trachtman before the next Pappas call.</div></div></div>
       </div>
 
       <!-- KNOWLEDGE OPPORTUNITIES -->
@@ -438,10 +426,10 @@ body.show-completed tr.cc-item.completed{display:table-row;opacity:.38}
         <table class="p-table" style="width:100%">
           <thead><tr><th>Topic</th><th>Occurrences</th><th>Source</th><th>Recommendation</th></tr></thead>
           <tbody>
-            <tr><td><strong>Spooler migration troubleshooting</strong></td><td>3+ this week</td><td>Slack, Jira, Email</td><td>Runbook: symptom &rarr; action &rarr; escalate. Go-live day &mdash; high volume incoming.</td></tr>
-            <tr><td><strong>PMS + Magensa payment object architecture</strong></td><td>2+ (Jun 10 + Jun 23)</td><td>Slack (Alon DMs)</td><td>1-page brief for L2/L3 &mdash; Magensa field, payment brand, SNT endpoint logic.</td></tr>
-            <tr><td><strong>MediaExchange failure modes at Pappas</strong></td><td>3 open SUPs</td><td>Jira (SUP-10164, -10167, -9967)</td><td>Decision tree: stuck order vs. cannot swipe vs. crash &mdash; different resolution paths.</td></tr>
-            <tr><td><strong>Tip settlement: system vs. training vs. data</strong></td><td>4 open SUPs</td><td>Jira</td><td>Root cause decision tree before TAB-37118 ships.</td></tr>
+            <tr><td>KDS Offline Mode &mdash; network/IP requirements for mobile routers</td><td>3+</td><td>Hannah DMs, field</td><td>Help Center article exists but field staff confused. 1-page visual for mobile/non-standard network setups.</td></tr>
+            <tr><td>MediaExchange failure modes (stuck order, cannot swipe, freezing)</td><td>4 open tickets</td><td>Jira</td><td>Failure mode runbook &mdash; decision tree covering all 3 error types. Would serve Pappas team directly.</td></tr>
+            <tr><td>Post-spooler-migration printer troubleshooting</td><td>2 threads + 4 tickets</td><td>Slack + Jira</td><td>Post-redirect SOP: when to reboot PADs, diagnosing spooler showing offline in site profile.</td></tr>
+            <tr><td>Tip adjust &mdash; staff data entry error vs. system bug triage</td><td>Recurring</td><td>Org memory</td><td>1-page training note for partner accounts: verify staff workflow before escalating tip adjust complaints.</td></tr>
           </tbody>
         </table>
       </div>
@@ -449,18 +437,17 @@ body.show-completed tr.cc-item.completed{display:table-row;opacity:.38}
       <!-- BRIAN LEVERAGE REPORT -->
       <div class="panel" style="margin-bottom:16px">
         <div class="panel-header"><span class="panel-title">Brian Leverage Report</span></div>
-        <div style="padding:12px 18px;font-size:12px;color:var(--muted);border-bottom:1px solid var(--border)">Estimated time spent this week on repeated explanations: ~3.5 hours</div>
+        <div style="padding:12px 18px;font-size:12px;color:var(--muted);border-bottom:1px solid var(--border)">Estimated time this week on repeated explanations: ~2.5 hours</div>
         <table class="p-table" style="width:100%">
           <thead><tr><th>Topic</th><th>Est. Time</th><th>Recommended Asset</th></tr></thead>
           <tbody>
-            <tr><td>Spooler migration support triage</td><td>1.5 hrs</td><td>Troubleshooting runbook &mdash; symptom, fix, escalation path</td></tr>
-            <tr><td>PMS / payment object architecture</td><td>1 hr</td><td>Architecture brief &mdash; 1 page, shareable with L2/L3</td></tr>
-            <tr><td>Tip settlement: system vs. training vs. data</td><td>1 hr</td><td>Decision tree KB article</td></tr>
+            <tr><td>MediaExchange troubleshooting</td><td>1h</td><td>Failure mode runbook (decision tree covering 3 error types)</td></tr>
+            <tr><td>KDS Offline / network requirements</td><td>45min</td><td>1-page visual quick-start for mobile/non-standard networks</td></tr>
+            <tr><td>Post-migration printer process</td><td>45min</td><td>Post-redirect SOP (reboot sequence, offline spooler diagnosis)</td></tr>
           </tbody>
         </table>
-        <div class="alert-row info" style="margin-top:0"><div style="flex:1"><strong>Highest-leverage first action:</strong> Write the spooler migration runbook today &mdash; three Highest-priority tickets active, go-live just happened. Every L2 question about Error Code 17 burns 20+ minutes without it.</div></div>
+        <div class="alert-row info" style="margin-top:0"><div style="flex:1"><strong>Highest-leverage first action:</strong> MediaExchange failure runbook &mdash; covers 4 active tickets, reduces Chad/Vincente triage cycles, and gives Pappas a concrete answer when they ask about the GC issues from their Jun 23 call.</div></div>
       </div>
-
 <!-- CC-DATA-END -->
     </div><!-- /page-command-center -->
 
@@ -1270,10 +1257,7 @@ body.show-completed tr.cc-item.completed{display:table-row;opacity:.38}
 // ── DATA ─────────────────────────────────────────────────────────
 // Generated by Claude from Jira · filter: US | DEV Support Escalations
 // Scoring: Financial(+40) · Print outage(+30) · Sites ≥8(+30)/≥4(+20)/≥2(+10) · Age >90d(+20)/>30d(+12)/>14d(+5) · Forgotten 90d no-update no-TAB(+10) · Core(+5) · TAB linked(−5)
-const GENERATED_AT = "2026-06-23T12:15:16.139Z";
-const JIRA_BASE = 'https://tabitros.atlassian.net/browse/';
-const Q_TARGET = 35;
-const TICKETS = [{key:"SUP-10130",summary:"Multiple Sites |  (Error Code=17 \"File Exists”) On Spooler Devices",status:"Pending",priority:"Highest",issueType:"Core",created:"2026-06-09T22:20:14.499+0300",updated:"2026-06-21T08:42:00.804+0300",ageDays:13.7,daysSinceUpdate:2.3,account:"Multiple Sites",tabLinks:"",tabCount:0,score:55,reasons:"Financial/payment issue; Printing/KDS issue; 2 sites affected",isFin:true,isOffline:false,isPrinting:true,isForgotten:false,isDemoOnly:false,isCosmetic:false,sites:2},{key:"SUP-10188",summary:"Pappas HQ - Multiple Sites | ToGo KDS Stuck on White Screen",status:"Accepted",priority:"High",issueType:"Other",created:"2026-06-22T18:16:56.555+0300",updated:"2026-06-23T09:01:30.873+0300",ageDays:0.9,daysSinceUpdate:0.3,account:"Pappas HQ - Multiple Sites",tabLinks:"",tabCount:0,score:50,reasons:"Financial/payment issue; Printing/KDS issue; 2 sites affected",isFin:true,isOffline:false,isPrinting:true,isForgotten:false,isDemoOnly:false,isCosmetic:false,sites:2},{key:"SUP-10163",summary:"Pappas Restaurants | Printers Dropping Offline",status:"In Progress",priority:"Highest",issueType:"Core",created:"2026-06-17T00:17:17.312+0300",updated:"2026-06-22T22:44:47.626+0300",ageDays:6.6,daysSinceUpdate:0.7,account:"Pappas Restaurants",tabLinks:"",tabCount:0,score:35,reasons:"Printing/KDS issue; Offline/S&F issue",isFin:false,isOffline:true,isPrinting:true,isForgotten:false,isDemoOnly:false,isCosmetic:false,sites:1},{key:"SUP-10189",summary:"Barbacoa | Tip Settlement Error Transaction Already Modified",status:"In Progress",priority:"Highest",issueType:"Core",created:"2026-06-23T06:26:28.027+0300",updated:"2026-06-23T15:05:03.310+0300",ageDays:0.4,daysSinceUpdate:0,account:"Barbacoa",tabLinks:"",tabCount:0,score:35,reasons:"Financial/payment issue",isFin:true,isOffline:false,isPrinting:false,isForgotten:false,isDemoOnly:false,isCosmetic:false,sites:1},{key:"SUP-10174",summary:"Pappasito's 03 (016) | Kitchen Printer Delays",status:"In Progress",priority:"Highest",issueType:"Core",created:"2026-06-20T01:37:48.919+0300",updated:"2026-06-22T23:57:34.665+0300",ageDays:3.6,daysSinceUpdate:0.6,account:"Pappasito's 03 (016)",tabLinks:"",tabCount:0,score:30,reasons:"Printing/KDS issue",isFin:false,isOffline:false,isPrinting:true,isForgotten:false,isDemoOnly:false,isCosmetic:false,sites:1},{key:"SUP-9599",summary:"Rulli's Italian Restaurant Elkhart | Tabit Order Payment Issue",status:"Support",priority:"Low",issueType:"Other",created:"2026-02-27T19:09:17.770+0300",updated:"2026-06-23T01:20:19.587+0300",ageDays:115.8,daysSinceUpdate:0.6,account:"Rulli's Italian Restaurant Elkhart",tabLinks:"",tabCount:0,score:28,reasons:"Financial/payment issue",isFin:true,isOffline:false,isPrinting:false,isForgotten:false,isDemoOnly:false,isCosmetic:false,sites:1},{key:"SUP-10068",summary:"Pappasito's 07 (032) | Cash Drawer Assignment Error",status:"New",priority:"Medium",issueType:"Core",created:"2026-05-29T00:35:07.131+0300",updated:"2026-06-02T00:49:40.020+0300",ageDays:25.6,daysSinceUpdate:21.6,account:"Pappasito's 07 (032)",tabLinks:"",tabCount:0,score:26,reasons:"Financial/payment issue",isFin:true,isOffline:false,isPrinting:false,isForgotten:false,isDemoOnly:false,isCosmetic:false,sites:1},{key:"SUP-10102",summary:"Tabit US | Manager Name Missing from Discount Bon",status:"New",priority:"Medium",issueType:"Core",created:"2026-06-04T21:15:22.069+0300",updated:"2026-06-08T18:50:40.458+0300",ageDays:18.7,daysSinceUpdate:14.9,account:"Tabit US",tabLinks:"",tabCount:0,score:26,reasons:"Financial/payment issue",isFin:true,isOffline:false,isPrinting:false,isForgotten:false,isDemoOnly:false,isCosmetic:false,sites:1},{key:"SUP-10005",summary:"Khashoka | Hide Extremely Large Tip",status:"Support",priority:"Low",issueType:"Core",created:"2026-05-14T03:52:40.618+0300",updated:"2026-06-23T01:20:17.878+0300",ageDays:40.5,daysSinceUpdate:0.6,account:"Khashoka",tabLinks:"",tabCount:0,score:25,reasons:"Financial/payment issue",isFin:true,isOffline:false,isPrinting:false,isForgotten:false,isDemoOnly:false,isCosmetic:false,sites:1},{key:"SUP-10141",summary:"Zipps Sports Grill Park Central | Comps & Discounts Having Blank Reason",status:"New",priority:"Medium",issueType:"Core",created:"2026-06-12T23:21:23.357+0300",updated:"2026-06-15T16:58:52.183+0300",ageDays:10.7,daysSinceUpdate:7.9,account:"Zipps Sports Grill Park Central",tabLinks:"",tabCount:0,score:25,reasons:"Financial/payment issue",isFin:true,isOffline:false,isPrinting:false,isForgotten:false,isDemoOnly:false,isCosmetic:false,sites:1},{key:"SUP-7516",summary:"Cattle Baron 3 (SECR) | Data Discrepancy for 3/29/2025",status:"Accepted",priority:"Medium",issueType:"Core",created:"2025-04-03T03:34:18.808+0300",updated:"2025-04-30T20:59:28.582+0300",ageDays:446.5,daysSinceUpdate:418.8,account:"Cattle Baron 3 (SECR)",tabLinks:"",tabCount:0,score:25,reasons:"Stale: 446.5d; No update 418.8d",isFin:false,isOffline:false,isPrinting:false,isForgotten:true,isDemoOnly:false,isCosmetic:false,sites:1},{key:"SUP-10166",summary:"Pappasito's 03 (016) | Ingenico 2012 Code during Payment",status:"Accepted",priority:"Medium",issueType:"Core",created:"2026-06-17T18:27:35.705+0300",updated:"2026-06-18T10:54:06.822+0300",ageDays:5.9,daysSinceUpdate:5.2,account:"Pappasito's 03 (016)",tabLinks:"",tabCount:0,score:25,reasons:"Financial/payment issue",isFin:true,isOffline:false,isPrinting:false,isForgotten:false,isDemoOnly:false,isCosmetic:false,sites:1},{key:"SUP-10175",summary:"Rio Mambo - Colleyville | Negative Balance on OLO Order",status:"New",priority:"Medium",issueType:"Core",created:"2026-06-20T05:13:27.156+0300",updated:"2026-06-20T17:27:04.756+0300",ageDays:3.4,daysSinceUpdate:2.9,account:"Rio Mambo - Colleyville",tabLinks:"",tabCount:0,score:25,reasons:"Financial/payment issue",isFin:true,isOffline:false,isPrinting:false,isForgotten:false,isDemoOnly:false,isCosmetic:false,sites:1},{key:"SUP-10167",summary:"Pappadeaux 40 (060) | MediaExchange - Cannot Swipe Card Error",status:"Accepted",priority:"Medium",issueType:"Core",created:"2026-06-17T19:59:03.885+0300",updated:"2026-06-22T09:47:15.650+0300",ageDays:5.8,daysSinceUpdate:1.2,account:"Pappadeaux 40 (060)",tabLinks:"",tabCount:0,score:25,reasons:"Financial/payment issue",isFin:true,isOffline:false,isPrinting:false,isForgotten:false,isDemoOnly:false,isCosmetic:false,sites:1},{key:"SUP-9163",summary:"Testing Ticket - No Action Please",status:"No Conclusion",priority:"Medium",issueType:"Core",created:"2025-12-12T20:03:54.744+0300",updated:"2025-12-12T20:34:02.565+0300",ageDays:192.8,daysSinceUpdate:192.8,account:"",tabLinks:"",tabCount:0,score:23,reasons:"Stale: 192.8d; No update 192.8d",isFin:false,isOffline:false,isPrinting:false,isForgotten:true,isDemoOnly:false,isCosmetic:false,sites:1},{key:"SUP-8745",summary:"Pappadeaux 27 (078) | API Call Missing Order Data",status:"Accepted",priority:"High",issueType:"Core",created:"2025-09-26T18:12:49.376+0300",updated:"2026-04-16T21:11:42.301+0300",ageDays:269.9,daysSinceUpdate:67.8,account:"Pappadeaux 27 (078)",tabLinks:"",tabCount:0,score:18,reasons:"Core",isFin:false,isOffline:false,isPrinting:false,isForgotten:false,isDemoOnly:false,isCosmetic:false,sites:1},{key:"SUP-9800",summary:"Dog and Duck Park West | Undefined Item in Reporting",status:"Accepted",priority:"High",issueType:"BI & Chef",created:"2026-04-06T04:32:57.857+0300",updated:"2026-06-23T02:07:53.772+0300",ageDays:78.4,daysSinceUpdate:0.5,account:"Dog and Duck Park West",tabLinks:"",tabCount:0,score:13,reasons:"BI & Chef",isFin:false,isOffline:false,isPrinting:false,isForgotten:false,isDemoOnly:false,isCosmetic:false,sites:1},{key:"SUP-8929",summary:"HQ menu management & new Child site - No Published menu created on HQ publish",status:"Accepted",priority:"Medium",issueType:"Core",created:"2025-11-06T19:47:48.707+0300",updated:"2026-03-27T19:42:44.116+0300",ageDays:228.8,daysSinceUpdate:87.8,account:"",tabLinks:"",tabCount:0,score:13,reasons:"Core",isFin:false,isOffline:false,isPrinting:false,isForgotten:false,isDemoOnly:false,isCosmetic:false,sites:1},{key:"SUP-9796",summary:"Eatapas | PADs unable to enter offline mode",status:"New",priority:"Medium",issueType:"Core",created:"2026-04-05T04:54:56.442+0300",updated:"2026-04-15T19:30:18.313+0300",ageDays:79.4,daysSinceUpdate:68.8,account:"Eatapas",tabLinks:"",tabCount:0,score:13,reasons:"Offline/S&F issue",isFin:false,isOffline:true,isPrinting:false,isForgotten:false,isDemoOnly:false,isCosmetic:false,sites:1},{key:"SUP-10164",summary:"Pappadeaux 40 (060) | Stuck MediaExchange Order",status:"Accepted",priority:"High",issueType:"Core",created:"2026-06-17T01:26:13.429+0300",updated:"2026-06-22T09:41:11.526+0300",ageDays:6.6,daysSinceUpdate:1.2,account:"Pappadeaux 40 (060)",tabLinks:"",tabCount:0,score:10,reasons:"Core",isFin:false,isOffline:false,isPrinting:false,isForgotten:false,isDemoOnly:false,isCosmetic:false,sites:1},{key:"SUP-9914",summary:"Pi On Main | Third Party Send Catalog Error caused by hidden tax rule",status:"Accepted",priority:"Medium",issueType:"Core",created:"2026-04-29T19:00:02.545+0300",updated:"2026-05-27T15:41:18.842+0300",ageDays:54.8,daysSinceUpdate:27,account:"Pi On Main",tabLinks:"",tabCount:0,score:8,reasons:"Core",isFin:false,isOffline:false,isPrinting:false,isForgotten:false,isDemoOnly:false,isCosmetic:false,sites:1},{key:"SUP-9906",summary:"Loyalty-Promo Code Module Bug",status:"Accepted",priority:"Medium",issueType:"Loyalty",created:"2026-04-27T21:56:54.655+0300",updated:"2026-06-12T22:37:07.101+0300",ageDays:56.7,daysSinceUpdate:10.7,account:"",tabLinks:"",tabCount:0,score:8,reasons:"Loyalty",isFin:false,isOffline:false,isPrinting:false,isForgotten:false,isDemoOnly:false,isCosmetic:false,sites:1},{key:"SUP-9997",summary:"Pappadeaux HQ | PAD User Credentials Not Saved when Changing Site",status:"Pending",priority:"Medium",issueType:"Core",created:"2026-05-11T22:37:54.989+0300",updated:"2026-06-09T21:32:32.046+0300",ageDays:42.7,daysSinceUpdate:13.7,account:"Pappadeaux HQ",tabLinks:"",tabCount:0,score:8,reasons:"Core",isFin:false,isOffline:false,isPrinting:false,isForgotten:false,isDemoOnly:false,isCosmetic:false,sites:1},{key:"SUP-9861",summary:"Peppercrust Steakhouse | Report Discrepancy",status:"Accepted",priority:"Medium",issueType:"BI & Chef",created:"2026-04-17T18:01:16.357+0300",updated:"2026-04-19T09:48:01.674+0300",ageDays:66.9,daysSinceUpdate:65.2,account:"Peppercrust Steakhouse",tabLinks:"",tabCount:0,score:8,reasons:"BI & Chef",isFin:false,isOffline:false,isPrinting:false,isForgotten:false,isDemoOnly:false,isCosmetic:false,sites:1},{key:"SUP-10071",summary:"Tabit US | House Account Load Limitation",status:"New",priority:"Medium",issueType:"Core",created:"2026-05-29T23:38:08.174+0300",updated:"2026-05-30T00:34:01.193+0300",ageDays:24.7,daysSinceUpdate:24.6,account:"Tabit US",tabLinks:"",tabCount:0,score:6,reasons:"Core",isFin:false,isOffline:false,isPrinting:false,isForgotten:false,isDemoOnly:false,isCosmetic:false,sites:1},{key:"SUP-10097",summary:"The Grove House | Unable to Publish",status:"Accepted",priority:"Medium",issueType:"Core",created:"2026-06-04T00:02:41.130+0300",updated:"2026-06-04T08:48:44.014+0300",ageDays:19.6,daysSinceUpdate:19.3,account:"The Grove House",tabLinks:"",tabCount:0,score:6,reasons:"Core",isFin:false,isOffline:false,isPrinting:false,isForgotten:false,isDemoOnly:false,isCosmetic:false,sites:1},{key:"SUP-10089",summary:"Loyalty-Submit Key Largo Restaurants (Cafe Largo) to Twilio for Verification",status:"Pending",priority:"Medium",issueType:"Loyalty",created:"2026-06-02T18:29:55.250+0300",updated:"2026-06-22T16:38:12.102+0300",ageDays:20.9,daysSinceUpdate:0.9,account:"",tabLinks:"",tabCount:0,score:6,reasons:"Loyalty",isFin:false,isOffline:false,isPrinting:false,isForgotten:false,isDemoOnly:false,isCosmetic:false,sites:1},{key:"SUP-10080",summary:"Loyalty-Submit Local Yocal to Twilio for Verification",status:"Pending",priority:"Medium",issueType:"Loyalty",created:"2026-06-02T00:22:30.754+0300",updated:"2026-06-22T16:38:06.471+0300",ageDays:21.6,daysSinceUpdate:0.9,account:"",tabLinks:"",tabCount:0,score:6,reasons:"Loyalty",isFin:false,isOffline:false,isPrinting:false,isForgotten:false,isDemoOnly:false,isCosmetic:false,sites:1},{key:"SUP-10128",summary:"Tabit US | Microsoft SSO Saving Credentials",status:"Pending",priority:"Medium",issueType:"Core",created:"2026-06-09T21:30:33.383+0300",updated:"2026-06-15T10:52:13.338+0300",ageDays:13.7,daysSinceUpdate:8.2,account:"Tabit US",tabLinks:"",tabCount:0,score:5,reasons:"Core",isFin:false,isOffline:false,isPrinting:false,isForgotten:false,isDemoOnly:false,isCosmetic:false,sites:1},{key:"SUP-10165",summary:"Corner Cafe Riverside | CC slip Formatting Issue",status:"New",priority:"Medium",issueType:"Core",created:"2026-06-17T04:54:55.487+0300",updated:"2026-06-17T19:08:23.441+0300",ageDays:6.4,daysSinceUpdate:5.8,account:"Corner Cafe Riverside",tabLinks:"",tabCount:0,score:5,reasons:"Core",isFin:false,isOffline:false,isPrinting:false,isForgotten:false,isDemoOnly:false,isCosmetic:false,sites:1},{key:"SUP-10176",summary:"M.Bird | Error 409944 (Pre-Auth) Cannot Close Order",status:"In Progress",priority:"Medium",issueType:"Core",created:"2026-06-20T23:02:00.751+0300",updated:"2026-06-23T11:01:23.636+0300",ageDays:2.7,daysSinceUpdate:0.2,account:"M.Bird",tabLinks:"",tabCount:0,score:5,reasons:"Core",isFin:false,isOffline:false,isPrinting:false,isForgotten:false,isDemoOnly:false,isCosmetic:false,sites:1},{key:"SUP-9967",summary:"PDX10 |  Double CC Cancel On MediaExchange Order",status:"Accepted",priority:"Low",issueType:"Core",created:"2026-05-09T01:20:46.062+0300",updated:"2026-05-12T17:20:27.793+0300",ageDays:45.6,daysSinceUpdate:41.9,account:"PDX10",tabLinks:"",tabCount:0,score:5,reasons:"Core",isFin:false,isOffline:false,isPrinting:false,isForgotten:false,isDemoOnly:false,isCosmetic:false,sites:1},{key:"SUP-10170",summary:"Billy's Stone Crab | Tabit Chef Daily Labor Cost Missing on First Weekday",status:"Accepted",priority:"Medium",issueType:"BI & Chef",created:"2026-06-19T00:50:20.551+0300",updated:"2026-06-21T17:06:18.999+0300",ageDays:4.6,daysSinceUpdate:1.9,account:"Billy's Stone Crab",tabLinks:"",tabCount:0,score:5,reasons:"BI & Chef",isFin:false,isOffline:false,isPrinting:false,isForgotten:false,isDemoOnly:false,isCosmetic:false,sites:1},{key:"SUP-9924",summary:"Cattle Baron 7 - El Paso | Order Missing from DSR/Database",status:"Support",priority:"Low",issueType:"BI & Chef",created:"2026-05-02T20:12:09.411+0300",updated:"2026-06-23T01:20:24.655+0300",ageDays:51.8,daysSinceUpdate:0.6,account:"Cattle Baron 7 - El Paso",tabLinks:"",tabCount:0,score:5,reasons:"BI & Chef",isFin:false,isOffline:false,isPrinting:false,isForgotten:false,isDemoOnly:false,isCosmetic:false,sites:1},{key:"SUP-10146",summary:"Roast Coffee House ATL Airport B Food Court | Reporting Discrepancy 5/31/26",status:"Support",priority:"Low",issueType:"BI & Chef",created:"2026-06-15T02:40:32.594+0300",updated:"2026-06-23T01:20:22.596+0300",ageDays:8.5,daysSinceUpdate:0.6,account:"Roast Coffee House ATL Airport B Food Court",tabLinks:"",tabCount:0,score:2,reasons:"BI & Chef",isFin:false,isOffline:false,isPrinting:false,isForgotten:false,isDemoOnly:false,isCosmetic:false,sites:1}];
+
 
 // ── NAV ───────────────────────────────────────────────────────────
 function navigate(key, el) {
