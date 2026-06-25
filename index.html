@@ -206,8 +206,7 @@ body.show-completed tr.cc-item.completed{display:table-row;opacity:.38}
           <div style="font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:3px">Wednesday, June 25 2026 &nbsp;&middot;&nbsp; Sources: Slack &middot; Outlook &middot; Jira &middot; Monday.com &middot; Zoom &middot; Calendar</div>
         </div>
         <div style="display:flex;align-items:center;gap:8px">
-          <a id="cc-dl-btn" href='data:application/json,{"version":1,"items":[]}' download="completions.json" style="font-family:var(--mono);font-size:10px;color:var(--muted);text-decoration:none;padding:4px 8px;border:1px solid var(--border);border-radius:3px;display:none">Download blank</a>
-          <button class="cc-conn-btn" id="cc-conn-btn" onclick="connectCompletionsFile()">Connect completions.json</button>
+          <button class="cc-conn-btn" id="cc-conn-btn" onclick="connectCompletionsFile()" style="display:none">Setup Sync</button>
           <button class="cc-show-btn" id="cc-show-btn" onclick="toggleShowCompleted()">Show completed</button>
           <div style="font-family:var(--mono);font-size:10px;color:var(--muted);text-align:right">Last run: today 7:05am<br><span id="cc-file-status"></span></div>
         </div>
@@ -2067,45 +2066,46 @@ function renderTabReport() {
 }
 // ── COMPLETIONS ──────────────────────────────────────────────────
 let _cHandle = null;
+// ── COMPLETIONS — GitHub Gist sync ────────────────────────────────
 let _cData = { version:1, items:[] };
+const _LS_TOKEN = 'hub_gh_token';
+const _LS_GIST  = 'hub_gist_id';
+let _saveTimer  = null;
 
-function _idb() {
-  return new Promise((res,rej) => {
-    const r = indexedDB.open('tabit-hub',1);
-    r.onupgradeneeded = e => e.target.result.createObjectStore('fsa');
-    r.onsuccess = e => res(e.target.result);
-    r.onerror = () => rej(r.error);
+function _ghToken() { return localStorage.getItem(_LS_TOKEN); }
+function _gistId()  { return localStorage.getItem(_LS_GIST); }
+
+async function _fetchGist() {
+  const r = await fetch(`https://api.github.com/gists/${_gistId()}`, {
+    headers: { Authorization: `token ${_ghToken()}`, Accept: 'application/vnd.github+json' }
   });
+  if (!r.ok) throw new Error('fetch failed');
+  const g = await r.json();
+  const raw = g.files['completions.json']?.content;
+  return raw ? JSON.parse(raw) : { version:1, items:[] };
 }
-async function _getH() {
-  const db = await _idb();
-  return new Promise(res => {
-    const tx = db.transaction('fsa','readonly');
-    const q = tx.objectStore('fsa').get('completions');
-    q.onsuccess = () => res(q.result||null);
-    q.onerror = () => res(null);
+
+async function _patchGist(data) {
+  const r = await fetch(`https://api.github.com/gists/${_gistId()}`, {
+    method: 'PATCH',
+    headers: { Authorization: `token ${_ghToken()}`, Accept: 'application/vnd.github+json', 'Content-Type': 'application/json' },
+    body: JSON.stringify({ files: { 'completions.json': { content: JSON.stringify(data, null, 2) } } })
   });
+  if (!r.ok) throw new Error('patch failed');
 }
-async function _putH(h) {
-  const db = await _idb();
-  return new Promise(res => {
-    const tx = db.transaction('fsa','readwrite');
-    tx.objectStore('fsa').put(h,'completions');
-    tx.oncomplete = res;
+
+async function _createGist(token) {
+  const r = await fetch('https://api.github.com/gists', {
+    method: 'POST',
+    headers: { Authorization: `token ${token}`, Accept: 'application/vnd.github+json', 'Content-Type': 'application/json' },
+    body: JSON.stringify({ description: 'Tabit Hub completions', public: false, files: { 'completions.json': { content: JSON.stringify({ version:1, items:[] }, null, 2) } } })
   });
-}
-async function _readJ(h) {
-  const f = await h.getFile();
-  try { return JSON.parse(await f.text()); } catch { return {version:1,items:[]}; }
-}
-async function _writeJ(h,d) {
-  const w = await h.createWritable();
-  await w.write(JSON.stringify(d,null,2));
-  await w.close();
+  if (!r.ok) throw new Error('create failed');
+  return (await r.json()).id;
 }
 
 function _applyCompletions() {
-  const ids = new Set(_cData.items.map(i=>i.id));
+  const ids = new Set(_cData.items.map(i => i.id));
   let n = 0;
   document.querySelectorAll('.cc-item').forEach(el => {
     const done = ids.has(el.dataset.itemId);
@@ -2120,18 +2120,19 @@ function _applyCompletions() {
 
 async function toggleCompletion(id, checked) {
   if (checked) {
-    if (!_cData.items.find(i=>i.id===id))
-      _cData.items.push({id, method:'manual', completedAt: new Date().toISOString()});
+    if (!_cData.items.find(i => i.id === id))
+      _cData.items.push({ id, method: 'manual', completedAt: new Date().toISOString() });
   } else {
-    _cData.items = _cData.items.filter(i=>i.id!==id);
+    _cData.items = _cData.items.filter(i => i.id !== id);
   }
   _applyCompletions();
-  if (_cHandle) {
-    try { await _writeJ(_cHandle, _cData); }
-    catch {
-      _setStatus('reconnect needed', false);
-      document.getElementById('cc-conn-btn').style.display = 'inline-block';
-    }
+  if (_ghToken() && _gistId()) {
+    clearTimeout(_saveTimer);
+    _setStatus('saving…', true);
+    _saveTimer = setTimeout(async () => {
+      try { await _patchGist(_cData); _setStatus('synced via GitHub', true); }
+      catch { _setStatus('save failed — check token', false); }
+    }, 800);
   }
 }
 
@@ -2151,60 +2152,35 @@ function _setStatus(msg, ok) {
 }
 
 async function connectCompletionsFile() {
-  // If we have a stored handle that just needs re-permission
-  if (window._pendingH) {
-    try {
-      const p = await window._pendingH.requestPermission({mode:'readwrite'});
-      if (p === 'granted') {
-        _cHandle = window._pendingH;
-        window._pendingH = null;
-        await _putH(_cHandle);
-        _cData = await _readJ(_cHandle);
-        document.getElementById('cc-conn-btn').style.display = 'none';
-        document.getElementById('cc-dl-btn').style.display = 'none';
-        _setStatus('completions synced', true);
-        _applyCompletions();
-        return;
-      }
-    } catch {}
-  }
-  // Open file picker
+  const token = prompt('Paste your GitHub Personal Access Token (gist scope required).\n\nCreate one at: github.com → Settings → Developer settings → Personal access tokens → Tokens (classic)\nScopes needed: ✓ gist');
+  if (!token || !token.trim()) return;
+  _setStatus('connecting…', true);
   try {
-    const [h] = await window.showOpenFilePicker({
-      id:'tabit-cc',
-      types:[{description:'JSON',accept:{'application/json':['.json']}}],
-      multiple:false
-    });
-    _cHandle = h;
-    await _putH(h);
-    _cData = await _readJ(h);
+    const id = await _createGist(token.trim());
+    localStorage.setItem(_LS_TOKEN, token.trim());
+    localStorage.setItem(_LS_GIST, id);
+    _cData = { version:1, items:[] };
     document.getElementById('cc-conn-btn').style.display = 'none';
-    document.getElementById('cc-dl-btn').style.display = 'none';
-    _setStatus('completions synced', true);
+    _setStatus('synced via GitHub', true);
     _applyCompletions();
-  } catch(e) {
-    if (e.name !== 'AbortError')
-      _setStatus('pick failed', false);
+  } catch {
+    _setStatus('setup failed — check token and try again', false);
   }
 }
 
 async function _initCompletions() {
-  const stored = await _getH();
-  if (!stored) {
-    document.getElementById('cc-conn-btn').style.display = 'inline-block';
-    document.getElementById('cc-dl-btn').style.display = 'inline-block';
+  const btn = document.getElementById('cc-conn-btn');
+  if (!_ghToken() || !_gistId()) {
+    if (btn) btn.style.display = 'inline-block';
     return;
   }
-  let perm = 'prompt';
-  try { perm = await stored.queryPermission({mode:'readwrite'}); } catch {}
-  if (perm === 'granted') {
-    _cHandle = stored;
-    _cData = await _readJ(stored);
-    _setStatus('completions synced', true);
+  _setStatus('loading…', true);
+  try {
+    _cData = await _fetchGist();
+    _setStatus('synced via GitHub', true);
     _applyCompletions();
-  } else {
-    window._pendingH = stored;
-    const btn = document.getElementById('cc-conn-btn');
+  } catch {
+    _setStatus('sync failed — reconnect', false);
     if (btn) { btn.style.display = 'inline-block'; btn.textContent = 'Reconnect'; }
   }
 }
