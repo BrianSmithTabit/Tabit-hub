@@ -291,6 +291,81 @@ body.show-completed tr.cc-item.completed{display:table-row;opacity:.38}
         </div>
       </div>
 
+      <!-- REPORTING ISSUES WATCH -->
+      <div class="panel" style="margin-bottom:16px">
+        <div class="panel-header"><span class="panel-title">Reporting Issues Watch &mdash; BI &amp; Chef</span><span class="panel-badge warn">6 active</span></div>
+
+        <!-- Summary stat bar -->
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border-bottom:1px solid var(--border)">
+          <div style="background:var(--surface);padding:10px 14px;text-align:center"><div style="font-family:var(--mono);font-size:9px;color:var(--muted);text-transform:uppercase;margin-bottom:3px">2026 YTD Tickets</div><div style="font-size:20px;font-weight:700;color:var(--danger)">20</div></div>
+          <div style="background:var(--surface);padding:10px 14px;text-align:center"><div style="font-family:var(--mono);font-size:9px;color:var(--muted);text-transform:uppercase;margin-bottom:3px">Still Open</div><div style="font-size:20px;font-weight:700;color:var(--warn)">4</div></div>
+          <div style="background:var(--surface);padding:10px 14px;text-align:center"><div style="font-family:var(--mono);font-size:9px;color:var(--muted);text-transform:uppercase;margin-bottom:3px">Prior Linked SUPs</div><div style="font-size:20px;font-weight:700;color:var(--danger)">13+</div></div>
+          <div style="background:var(--surface);padding:10px 14px;text-align:center"><div style="font-family:var(--mono);font-size:9px;color:var(--muted);text-transform:uppercase;margin-bottom:3px">Fix Method</div><div style="font-size:13px;font-weight:700;color:var(--warn);margin-top:3px">Manual Reprocess</div></div>
+        </div>
+
+        <!-- Key finding callout -->
+        <div style="padding:10px 18px;background:rgba(255,77,109,.05);border-bottom:1px solid var(--border);font-size:12px;color:var(--text)">
+          <strong style="color:var(--danger)">Pattern:</strong> Every closed ticket was resolved by manual reprocess &mdash; not a code fix. Root cause has never been identified. Hadar&rsquo;s own words on Jun 25 (SUP-9924): <em>&ldquo;I do not know why it happened.&rdquo;</em> The order-missing-from-BI failure mode alone has been filed <strong>17+ times</strong> across 2025&ndash;2026.
+        </div>
+
+        <!-- 2026 volume by sub-pattern -->
+        <div style="padding:8px 18px 4px;font-family:var(--mono);font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;border-bottom:1px solid var(--border)">2026 YTD &mdash; 20 Tickets by Sub-Pattern</div>
+        <table class="p-table" style="width:100%">
+          <thead><tr><th>Sub-Pattern</th><th style="text-align:center">Count</th><th>Open</th><th>Closed By</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Orders missing from BI / DSR</strong></td><td style="text-align:center;font-weight:700;color:var(--danger)">4</td><td><a href="https://tabitros.atlassian.net/browse/SUP-9924" target="_blank" class="key-link">SUP-9924</a></td><td style="color:var(--muted)">Manual reprocess &mdash; no root cause</td></tr>
+            <tr><td>Tip / tax amounts wrong in BI</td><td style="text-align:center">4</td><td><a href="https://tabitros.atlassian.net/browse/SUP-10200" target="_blank" class="key-link">SUP-10200</a> (done)</td><td style="color:var(--muted)">Manual reprocess &mdash; no root cause</td></tr>
+            <tr><td>Undefined items in reporting</td><td style="text-align:center">2</td><td><a href="https://tabitros.atlassian.net/browse/SUP-9800" target="_blank" class="key-link">SUP-9800</a></td><td style="color:var(--muted)">Self-corrects after 1&ndash;2 days</td></tr>
+            <tr><td>DSR vs Payments Report discrepancy</td><td style="text-align:center">2</td><td><a href="https://tabitros.atlassian.net/browse/SUP-9861" target="_blank" class="key-link">SUP-9861</a> &middot; <a href="https://tabitros.atlassian.net/browse/SUP-10146" target="_blank" class="key-link">SUP-10146</a></td><td style="color:var(--muted)">Reproducible bug &mdash; no fix</td></tr>
+            <tr><td>EOD emails / daily summary not loading</td><td style="text-align:center">3</td><td>&mdash;</td><td style="color:var(--muted)">Closed &mdash; method unknown</td></tr>
+            <tr><td>Chef labor / scheduling data wrong</td><td style="text-align:center">4</td><td><a href="https://tabitros.atlassian.net/browse/SUP-10170" target="_blank" class="key-link">SUP-10170</a></td><td style="color:var(--muted)">TAB-39509 stalled since Oct 2024</td></tr>
+            <tr><td>Chef / BI data integrity (past years, tax rate)</td><td style="text-align:center">2</td><td>&mdash;</td><td style="color:var(--muted)">Closed (Highest priority SUP-9939)</td></tr>
+            <tr><td>Other</td><td style="text-align:center">2</td><td>&mdash;</td><td style="color:var(--muted)">&mdash;</td></tr>
+          </tbody>
+        </table>
+
+        <!-- Pattern tickets -->
+        <div style="padding:8px 18px 4px;font-family:var(--mono);font-size:9px;color:var(--warn);text-transform:uppercase;letter-spacing:.1em;border-top:1px solid var(--border)">Pattern SUPs &mdash; Longest-Running, Linked to Prior Reports</div>
+
+        <div class="alert-row warn">
+          <div style="flex:1"><a href="https://tabitros.atlassian.net/browse/SUP-9924" target="_blank" class="key-link">SUP-9924</a> &nbsp; <strong>Cattle Baron 7 &mdash; El Paso</strong> &mdash; Order Missing from DSR / BI [Low]
+          <div style="font-size:11px;color:var(--muted);margin-top:2px">Linked to 13 prior SUPs (SUP-9417, 9418, 9398, 8911, 8617, 8727, 8497, 8933, 8675, 8674, 8647, 8502, 5665) &middot; Each closed by reprocess &middot; Hadar Jun 25: &ldquo;I do not know why it happened&rdquo;</div>
+          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Status: Support &middot; Assigned: Brian &middot; Updated: Jun 25 &middot; <strong style="color:var(--danger)">17+ TOTAL INCIDENTS &mdash; no root cause ever identified</strong></div></div>
+        </div>
+        <div class="alert-row warn">
+          <div style="flex:1"><a href="https://tabitros.atlassian.net/browse/SUP-10146" target="_blank" class="key-link">SUP-10146</a> &nbsp; <strong>Roast Coffee House ATL Airport B</strong> &mdash; 15 Orders Missing from BI, $255.30 Gap [Low]
+          <div style="font-size:11px;color:var(--muted);margin-top:2px">DSR $8,176.73 vs BI $7,921.43 &middot; Hadar reprocessed last month &middot; Tony asked for root cause explanation Jun 18 &mdash; still no answer</div>
+          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Status: Support &middot; Assigned: Brian &middot; Updated: Jun 23 &middot; <strong style="color:var(--warn)">Same failure mode as SUP-9924 cluster &mdash; follow up with Hadar</strong></div></div>
+        </div>
+
+        <!-- Active open tickets -->
+        <div style="padding:8px 18px 4px;font-family:var(--mono);font-size:9px;color:var(--accent);text-transform:uppercase;letter-spacing:.1em;border-top:1px solid var(--border)">Active Open Tickets</div>
+
+        <div class="alert-row">
+          <div style="flex:1"><a href="https://tabitros.atlassian.net/browse/SUP-9800" target="_blank" class="key-link">SUP-9800</a> &nbsp; <strong>Dog and Duck Park West</strong> &mdash; Undefined Item in Reporting [High]
+          <div style="font-size:11px;color:var(--muted);margin-top:2px">~$9 undefined items appear then self-correct after 1&ndash;2 days &middot; Also hit Gianni&rsquo;s Versace (SUP-10104, closed Jun 5) &mdash; same behavior, 2 sites in 2026</div>
+          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Status: Accepted &middot; Assignee: Hadar &middot; Updated: Jun 25 &middot; <strong style="color:var(--warn)">Opened Apr 6 &mdash; oldest active, no reproduction path identified</strong></div></div>
+        </div>
+        <div class="alert-row">
+          <div style="flex:1"><a href="https://tabitros.atlassian.net/browse/SUP-9861" target="_blank" class="key-link">SUP-9861</a> &nbsp; <strong>Peppercrust Steakhouse</strong> &mdash; House Account Refund DSR Discrepancy [Medium]
+          <div style="font-size:11px;color:var(--muted);margin-top:2px">$1,250 gap between DSR and Payments Report &middot; DSR shows double-negative on HA refund &middot; Reproducible in PROD and Sandbox &middot; Cayenne Corp partner</div>
+          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Status: Accepted &middot; Assignee: Hadar &middot; Updated: Apr 19 &middot; <strong style="color:var(--danger)">STALE 67 DAYS &mdash; reproducible bug, no fix path, partner workaround only</strong></div></div>
+        </div>
+        <div class="alert-row">
+          <div style="flex:1"><a href="https://tabitros.atlassian.net/browse/SUP-10170" target="_blank" class="key-link">SUP-10170</a> &nbsp; <strong>Billy&rsquo;s Stone Crab</strong> &mdash; Chef Daily Labor Cost Missing on First Weekday [Medium]
+          <div style="font-size:11px;color:var(--muted);margin-top:2px">Fixed Wage employees missing from Day view on first weekday &middot; Previously filed as SUP-6373 &middot; TAB-39509 linked &mdash; in dev backlog since Oct 2024 with zero movement</div>
+          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Status: Accepted &middot; Assignee: Hadar &middot; Updated: Jun 21 &middot; <strong style="color:var(--warn)">TAB-39509 stalled 8 months &mdash; needs escalation to dev</strong></div></div>
+        </div>
+
+        <!-- Resolved for context -->
+        <div style="padding:6px 18px 4px;font-family:var(--mono);font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;border-top:1px solid var(--border)">Recently Closed &mdash; Pattern Context</div>
+        <div class="alert-row" style="opacity:.7">
+          <div style="flex:1"><a href="https://tabitros.atlassian.net/browse/SUP-10200" target="_blank" class="key-link">SUP-10200</a> &nbsp; <strong>Pappadeaux 39 (081)</strong> &mdash; BI Tax Discrepancy [Medium] &nbsp;&middot;&nbsp; <a href="https://tabitros.atlassian.net/browse/SUP-9939" target="_blank" class="key-link">SUP-9939</a> &nbsp; <strong>Multiple Sites</strong> &mdash; Tax Rate Data Unavailable for May in BI [Highest]
+          <div style="font-size:11px;color:var(--muted);margin-top:2px">SUP-10200: transaction duplicated in tax table, reprocessed, confirmed resolved Jun 25 &middot; SUP-9939: Highest priority, closed May &mdash; same reprocess pattern</div>
+          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px"><strong style="color:var(--accent2)">Both resolved by manual reprocess &mdash; root cause unknown in both cases</strong></div></div>
+        </div>
+      </div>
+
       <!-- UNCAPTURED ZOOM COMMITMENTS -->
       <div class="panel" style="margin-bottom:16px">
         <div class="panel-header"><span class="panel-title">Uncaptured Commitments &mdash; Zoom</span><span class="panel-badge warn">8 items</span></div>
