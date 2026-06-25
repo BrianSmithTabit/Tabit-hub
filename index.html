@@ -2066,42 +2066,24 @@ function renderTabReport() {
 }
 // ── COMPLETIONS ──────────────────────────────────────────────────
 let _cHandle = null;
-// ── COMPLETIONS — GitHub Gist sync ────────────────────────────────
-let _cData = { version:1, items:[] };
-const _LS_TOKEN = 'hub_gh_token';
-const _LS_GIST  = 'hub_gist_id';
-let _saveTimer  = null;
+// ── COMPLETIONS — Cloudflare Worker sync ──────────────────────────
+const _WORKER = 'https://tabit-hub-completions.brian-smith-673.workers.dev';
+let _cData    = { version:1, items:[] };
+let _saveTimer = null;
 
-function _ghToken() { return localStorage.getItem(_LS_TOKEN); }
-function _gistId()  { return localStorage.getItem(_LS_GIST); }
-
-async function _fetchGist() {
-  const r = await fetch(`https://api.github.com/gists/${_gistId()}`, {
-    headers: { Authorization: `token ${_ghToken()}`, Accept: 'application/vnd.github+json' }
-  });
+async function _fetchCompletions() {
+  const r = await fetch(_WORKER);
   if (!r.ok) throw new Error('fetch failed');
-  const g = await r.json();
-  const raw = g.files['completions.json']?.content;
-  return raw ? JSON.parse(raw) : { version:1, items:[] };
+  return await r.json();
 }
 
-async function _patchGist(data) {
-  const r = await fetch(`https://api.github.com/gists/${_gistId()}`, {
+async function _saveCompletions(data) {
+  const r = await fetch(_WORKER, {
     method: 'PATCH',
-    headers: { Authorization: `token ${_ghToken()}`, Accept: 'application/vnd.github+json', 'Content-Type': 'application/json' },
-    body: JSON.stringify({ files: { 'completions.json': { content: JSON.stringify(data, null, 2) } } })
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data),
   });
-  if (!r.ok) throw new Error('patch failed');
-}
-
-async function _createGist(token) {
-  const r = await fetch('https://api.github.com/gists', {
-    method: 'POST',
-    headers: { Authorization: `token ${token}`, Accept: 'application/vnd.github+json', 'Content-Type': 'application/json' },
-    body: JSON.stringify({ description: 'Tabit Hub completions', public: false, files: { 'completions.json': { content: JSON.stringify({ version:1, items:[] }, null, 2) } } })
-  });
-  if (!r.ok) throw new Error('create failed');
-  return (await r.json()).id;
+  if (!r.ok) throw new Error('save failed');
 }
 
 function _applyCompletions() {
@@ -2126,14 +2108,12 @@ async function toggleCompletion(id, checked) {
     _cData.items = _cData.items.filter(i => i.id !== id);
   }
   _applyCompletions();
-  if (_ghToken() && _gistId()) {
-    clearTimeout(_saveTimer);
-    _setStatus('saving…', true);
-    _saveTimer = setTimeout(async () => {
-      try { await _patchGist(_cData); _setStatus('synced via GitHub', true); }
-      catch { _setStatus('save failed — check token', false); }
-    }, 800);
-  }
+  clearTimeout(_saveTimer);
+  _setStatus('saving…', true);
+  _saveTimer = setTimeout(async () => {
+    try { await _saveCompletions(_cData); _setStatus('synced', true); }
+    catch { _setStatus('save failed', false); }
+  }, 800);
 }
 
 function toggleShowCompleted() {
@@ -2151,37 +2131,16 @@ function _setStatus(msg, ok) {
     : `<span style="color:var(--muted);font-size:10px">${msg}</span>`;
 }
 
-async function connectCompletionsFile() {
-  const token = prompt('Paste your GitHub Personal Access Token (gist scope required).\n\nCreate one at: github.com → Settings → Developer settings → Personal access tokens → Tokens (classic)\nScopes needed: ✓ gist');
-  if (!token || !token.trim()) return;
-  _setStatus('connecting…', true);
-  try {
-    const id = await _createGist(token.trim());
-    localStorage.setItem(_LS_TOKEN, token.trim());
-    localStorage.setItem(_LS_GIST, id);
-    _cData = { version:1, items:[] };
-    document.getElementById('cc-conn-btn').style.display = 'none';
-    _setStatus('synced via GitHub', true);
-    _applyCompletions();
-  } catch {
-    _setStatus('setup failed — check token and try again', false);
-  }
-}
+function connectCompletionsFile() { _initCompletions(); }
 
 async function _initCompletions() {
-  const btn = document.getElementById('cc-conn-btn');
-  if (!_ghToken() || !_gistId()) {
-    if (btn) btn.style.display = 'inline-block';
-    return;
-  }
   _setStatus('loading…', true);
   try {
-    _cData = await _fetchGist();
-    _setStatus('synced via GitHub', true);
+    _cData = await _fetchCompletions();
+    _setStatus('synced', true);
     _applyCompletions();
   } catch {
-    _setStatus('sync failed — reconnect', false);
-    if (btn) { btn.style.display = 'inline-block'; btn.textContent = 'Reconnect'; }
+    _setStatus('sync failed', false);
   }
 }
 _initCompletions();
