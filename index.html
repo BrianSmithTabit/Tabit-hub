@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -203,223 +203,155 @@ body.show-completed tr.cc-item.completed{display:table-row;opacity:.38}
       <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px">
         <div>
           <div style="font-size:18px;font-weight:700;letter-spacing:-.02em">Command Center</div>
-          <div style="font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:3px">Wednesday, June 25 2026 &nbsp;&middot;&nbsp; Sources: Slack &middot; Outlook &middot; Jira &middot; Monday.com &middot; Zoom &middot; Calendar</div>
+          <div style="font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:3px">Thursday, June 26 2026 &nbsp;&middot;&nbsp; Sources: Slack &middot; Outlook &middot; Jira &middot; Monday.com &middot; Zoom &middot; Calendar</div>
         </div>
         <div style="display:flex;align-items:center;gap:8px">
-          <button class="cc-conn-btn" id="cc-conn-btn" onclick="connectCompletionsFile()" style="display:none">Setup Sync</button>
+          <a id="cc-dl-btn" href='data:application/json,{"version":1,"items":[]}' download="completions.json" style="font-family:var(--mono);font-size:10px;color:var(--muted);text-decoration:none;padding:4px 8px;border:1px solid var(--border);border-radius:3px;display:none">Download blank</a>
+          <button class="cc-conn-btn" id="cc-conn-btn" onclick="connectCompletionsFile()">Connect completions.json</button>
           <button class="cc-show-btn" id="cc-show-btn" onclick="toggleShowCompleted()">Show completed</button>
-          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);text-align:right">Last run: today 7:05am<br><span id="cc-file-status"></span></div>
+          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);text-align:right">Last run: Jun 26 6:05am<br><span id="cc-file-status"></span></div>
         </div>
       </div>
 
       <!-- STAT CARDS -->
       <div class="grid-4" style="margin-bottom:20px">
-        <div class="stat-card danger"><div class="stat-label">Questions Overdue</div><div class="stat-value danger">3</div><div class="stat-sub">Unanswered &gt;24h or today</div></div>
-        <div class="stat-card danger"><div class="stat-label">Escalations Flagged</div><div class="stat-value danger">6</div><div class="stat-sub">Stale / unassigned / anchor</div></div>
-        <div class="stat-card warn"><div class="stat-label">Uncaptured Commits</div><div class="stat-value warn">8</div><div class="stat-sub">From Zoom Jun 23 &mdash; no system record</div></div>
-        <div class="stat-card warn"><div class="stat-label">At Risk Items</div><div class="stat-value warn">4</div><div class="stat-sub">Likely to fall through cracks</div></div>
+        <div class="stat-card danger"><div class="stat-label">Questions Overdue</div><div class="stat-value danger">3</div><div class="stat-sub">Unanswered &gt;48h or today</div></div>
+        <div class="stat-card danger"><div class="stat-label">Escalations Flagged</div><div class="stat-value danger">8</div><div class="stat-sub">Stale / unassigned / Pappas</div></div>
+        <div class="stat-card warn"><div class="stat-label">Uncaptured Commits</div><div class="stat-value warn">6</div><div class="stat-sub">From Zoom &#8212; no system record</div></div>
+        <div class="stat-card warn"><div class="stat-label">At Risk Items</div><div class="stat-value warn">5</div><div class="stat-sub">Likely to fall through cracks</div></div>
       </div>
 
-      <!-- ORG MEMORY MATCH -->
+      <!-- OOO BANNER -->
+      <div style="background:rgba(245,166,35,.08);border:1px solid rgba(245,166,35,.3);border-radius:6px;padding:10px 16px;margin-bottom:16px;font-family:var(--mono);font-size:11px;color:var(--warn)">BRIAN OOO TODAY (Jun 26) &nbsp;&middot;&nbsp; Items below require attention on return or delegation to Tyler / Jessica / Casey</div>
+
+      <!-- WE HAVE SEEN THIS BEFORE -->
       <div style="font-family:var(--mono);font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:.12em;margin-bottom:8px">We Have Seen This Before</div>
       <div style="border:1px solid rgba(79,138,255,.35);border-radius:6px;background:rgba(79,138,255,.04);margin-bottom:16px;overflow:hidden">
         <div style="padding:12px 18px;border-bottom:1px solid rgba(79,138,255,.2);background:rgba(79,138,255,.08);display:flex;align-items:center;justify-content:space-between">
           <div>
-            <div style="font-size:13px;font-weight:600;color:var(--accent)">Match Found &mdash; Incoming: &ldquo;Error Code 17 / Spooler Printer Failures (SUP-10130, SUP-10163, SUP-10174)&rdquo;</div>
-            <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Matched against org memory &middot; Native Printing Redirect (Spooler Migration)</div>
+            <div style="font-size:13px;font-weight:600;color:var(--accent)">Match Found &#8212; Incoming: &ldquo;SUP-10198 MediaExchange Order Freezing (Yiayia&#8217;s 084)&rdquo;</div>
+            <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Matched against org memory &middot; MediaExchange Payment Failures pattern</div>
           </div>
-          <span style="font-family:var(--mono);font-size:11px;background:rgba(79,138,255,.15);color:var(--accent);border:1px solid rgba(79,138,255,.3);padding:3px 9px;border-radius:3px">92% match</span>
+          <span style="font-family:var(--mono);font-size:11px;background:rgba(79,138,255,.15);color:var(--accent);border:1px solid rgba(79,138,255,.3);padding:3px 9px;border-radius:3px">85% match</span>
         </div>
         <div style="padding:16px 18px;display:grid;grid-template-columns:repeat(3,1fr);gap:10px">
-          <div style="background:var(--surface2);border:1px solid var(--border);border-radius:5px;padding:10px 13px"><div style="font-family:var(--mono);font-size:9px;color:var(--muted);text-transform:uppercase;margin-bottom:4px">Related Feature</div><div style="font-size:12px;font-weight:600">Native Printing Redirect / Spooler Migration</div></div>
-          <div style="background:var(--surface2);border:1px solid var(--border);border-radius:5px;padding:10px 13px"><div style="font-family:var(--mono);font-size:9px;color:var(--muted);text-transform:uppercase;margin-bottom:4px">Prior Discussion</div><div style="font-size:12px;font-weight:600">Launched June 23 &middot; Org memory flagged &ldquo;watch for Error Code 17 recurrence&rdquo;</div></div>
-          <div style="background:var(--surface2);border:1px solid var(--border);border-radius:5px;padding:10px 13px"><div style="font-family:var(--mono);font-size:9px;color:var(--muted);text-transform:uppercase;margin-bottom:4px">Decision</div><div style="font-size:12px;font-weight:600">Monitor post-launch &middot; No rollback committed</div></div>
-          <div style="background:var(--surface2);border:1px solid var(--border);border-radius:5px;padding:10px 13px"><div style="font-family:var(--mono);font-size:9px;color:var(--muted);text-transform:uppercase;margin-bottom:4px">Reason</div><div style="font-size:12px;font-weight:600">Spooler redirect live June 23 &middot; Error Code 17 is documented failure mode</div></div>
-          <div style="background:var(--surface2);border:1px solid var(--border);border-radius:5px;padding:10px 13px"><div style="font-family:var(--mono);font-size:9px;color:var(--muted);text-transform:uppercase;margin-bottom:4px">Related Customers</div><div style="font-size:12px;font-weight:600">Pappas (anchor) &middot; Multiple Sites</div></div>
-          <div style="background:var(--surface2);border:1px solid var(--border);border-radius:5px;padding:10px 13px"><div style="font-family:var(--mono);font-size:9px;color:var(--muted);text-transform:uppercase;margin-bottom:4px">Last Reviewed</div><div style="font-size:12px;font-weight:600;color:var(--warn)">June 23, 2026</div></div>
+          <div style="background:var(--surface2);border:1px solid var(--border);border-radius:5px;padding:10px 13px"><div style="font-family:var(--mono);font-size:9px;color:var(--muted);text-transform:uppercase;margin-bottom:4px">Related Feature</div><div style="font-size:12px;font-weight:600">MediaExchange Integration</div></div>
+          <div style="background:var(--surface2);border:1px solid var(--border);border-radius:5px;padding:10px 13px"><div style="font-family:var(--mono);font-size:9px;color:var(--muted);text-transform:uppercase;margin-bottom:4px">Prior Tickets</div><div style="font-size:12px;font-weight:600">SUP-10164, SUP-10167, SUP-9967</div></div>
+          <div style="background:var(--surface2);border:1px solid var(--border);border-radius:5px;padding:10px 13px"><div style="font-family:var(--mono);font-size:9px;color:var(--muted);text-transform:uppercase;margin-bottom:4px">Dev Status</div><div style="font-size:12px;font-weight:600;color:var(--accent2)">TAB-45803 IN DEVELOPMENT (Jun 25)</div></div>
+          <div style="background:var(--surface2);border:1px solid var(--border);border-radius:5px;padding:10px 13px"><div style="font-family:var(--mono);font-size:9px;color:var(--muted);text-transform:uppercase;margin-bottom:4px">Pattern</div><div style="font-size:12px;font-weight:600">Multiple failure modes cluster at same sites</div></div>
+          <div style="background:var(--surface2);border:1px solid var(--border);border-radius:5px;padding:10px 13px"><div style="font-family:var(--mono);font-size:9px;color:var(--muted);text-transform:uppercase;margin-bottom:4px">Related Customers</div><div style="font-size:12px;font-weight:600">Pappas / Pappadeaux, Yiayia&#8217;s</div></div>
+          <div style="background:var(--surface2);border:1px solid var(--border);border-radius:5px;padding:10px 13px"><div style="font-family:var(--mono);font-size:9px;color:var(--muted);text-transform:uppercase;margin-bottom:4px">Last Reviewed</div><div style="font-size:12px;font-weight:600;color:var(--warn)">2026-06-23</div></div>
         </div>
       </div>
 
       <!-- QUESTIONS OWED BY BRIAN -->
       <div class="panel" style="margin-bottom:16px">
-        <div class="panel-header"><span class="panel-title">Immediate Attention &mdash; Questions Owed By Brian</span><span class="panel-badge danger">3 items</span></div>
+        <div class="panel-header"><span class="panel-title">Immediate Attention &#8212; Questions Owed By Brian</span><span class="panel-badge danger">3 items</span></div>
         <div class="alert-row cc-item" data-item-id="q-magtek-forecast-tri">
           <input type="checkbox" class="cc-chk" onchange="toggleCompletion('q-magtek-forecast-tri',this.checked)">
-          <div style="flex:1"><strong>MagTek DynaFlex II Go &mdash; Release Schedule</strong> &mdash; Tri Nguyen (MagTek) asked twice on June 24 for release schedule on 4,000-unit forecast. No response yet.
-          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Outlook &middot; June 24 (2 emails) &middot; <strong style="color:var(--danger)">Reply: how many batches, approx qty per batch</strong></div></div>
+          <div style="flex:1"><strong>MagTek PO-US-000177 &#8212; Device Release Timeline</strong> &#8212; Brian sent PO to Tri Nguyen (tri.nguyen@magtek.com) Jun 25 asking for release timelines on Dynaflex II GO (1000x), Dynaflex Stand USB C (1000x), plus 3rd release. No reply captured yet.
+          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Outlook Sent &middot; Jun 25 &middot; <strong style="color:var(--warn)">Follow up if no reply by Jun 30</strong></div></div>
         </div>
         <div class="alert-row cc-item" data-item-id="q-tip-withholding-carolina">
           <input type="checkbox" class="cc-chk" onchange="toggleCompletion('q-tip-withholding-carolina',this.checked)">
-          <div style="flex:1"><strong>Tip Withholding in Sales &amp; Attendance</strong> &mdash; Carolina @mentioned Brian on Monday.com: &ldquo;Do we have any movement or visibility on this? It&rsquo;s coming up again with Santino&rsquo;s.&rdquo;
-          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Monday.com &middot; June 24 &middot; <strong style="color:var(--danger)">Reply with current status or escalation path</strong></div></div>
+          <div style="flex:1"><strong>Tip Withholding &#8212; Carolina</strong> &#8212; Pending from prior run. Source: Monday.com mention. Status unconfirmed.
+          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Monday.com &middot; <strong style="color:var(--danger)">Unresolved from prior run &#8212; verify status</strong></div></div>
         </div>
         <div class="alert-row cc-item" data-item-id="q-audit-reports-tyler">
           <input type="checkbox" class="cc-chk" onchange="toggleCompletion('q-audit-reports-tyler',this.checked)">
-          <div style="flex:1"><strong>Audit Reports &mdash; Define Priority Actions</strong> &mdash; Tyler @mentioned Brian on Monday.com: &ldquo;Start by capturing the most important, specific actions you all would like available.&rdquo;
-          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Monday.com &middot; June 24 &middot; <strong style="color:var(--danger)">Post initial list &mdash; overlaps Zoom commitment from June 23</strong></div></div>
+          <div style="flex:1"><strong>Audit Reports List &#8212; Tyler</strong> &#8212; Pending from prior run. Also aligns with Jun 23 Zoom action item (Brian tasked to start the audit reports list for development push, esp. as Dave returns).
+          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Monday.com + Zoom &middot; <strong style="color:var(--danger)">Unresolved &#8212; start the list</strong></div></div>
         </div>
       </div>
 
       <!-- SUPPORT ESCALATIONS -->
       <div class="panel" style="margin-bottom:16px">
-        <div class="panel-header"><span class="panel-title">Support Escalations &mdash; Highest Priority</span><span class="panel-badge danger">6 flagged</span></div>
+        <div class="panel-header"><span class="panel-title">Support Escalations &#8212; Highest Priority</span><span class="panel-badge danger">8 flagged</span></div>
         <div class="alert-row">
-          <div style="flex:1"><a href="https://tabitros.atlassian.net/browse/SUP-10130" target="_blank" class="key-link">SUP-10130</a> &nbsp; <strong>Multiple Sites</strong> &mdash; Error Code 17 &ldquo;File Exists&rdquo; on Spooler Devices
-          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Status: Pending &middot; Assignee: Nicole Kogan &middot; Updated: Jun 21 &middot; <strong style="color:var(--danger)">STALE 4 DAYS &mdash; exact failure mode org memory predicted post-launch</strong></div></div>
+          <div style="flex:1"><a href="https://tabitros.atlassian.net/browse/SUP-10188" target="_blank" class="key-link">SUP-10188</a> &nbsp; <strong>Pappas HQ / Multiple Sites</strong> &#8212; ToGo KDS Stuck on White Screen
+          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Highest &middot; Assignee: Shiran Horesh &middot; Updated: Jun 25 &middot; <strong style="color:var(--warn)">Brian commented Jun 25 &#8212; monitor for resolution</strong></div></div>
         </div>
         <div class="alert-row">
-          <div style="flex:1"><a href="https://tabitros.atlassian.net/browse/SUP-10174" target="_blank" class="key-link">SUP-10174</a> &nbsp; <strong>Pappasito&rsquo;s 03 (016)</strong> &mdash; Kitchen Printer Delays &middot; Ofer found Epson config param missing; email update today
-          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Status: In Progress &middot; Assignee: Nicole Kogan &middot; Updated: Jun 23 &middot; <strong style="color:var(--warn)">ACTIVE &mdash; update Pappas on call today at 7am MDT</strong></div></div>
+          <div style="flex:1"><a href="https://tabitros.atlassian.net/browse/SUP-10163" target="_blank" class="key-link">SUP-10163</a> &nbsp; <strong>Pappas Restaurants</strong> &#8212; Printers Dropping Offline
+          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Highest &middot; Assignee: Nicole Kogan &middot; Updated: Jun 24 &middot; <strong style="color:var(--danger)">STALE 2 days &middot; ANCHOR CUSTOMER</strong></div></div>
         </div>
         <div class="alert-row">
-          <div style="flex:1"><a href="https://tabitros.atlassian.net/browse/SUP-10163" target="_blank" class="key-link">SUP-10163</a> &nbsp; <strong>Pappas Restaurants</strong> &mdash; Printers Dropping Offline (anchor customer)
-          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Status: Pending &middot; Assignee: Nicole Kogan &middot; Updated: Jun 24 &middot; <strong style="color:var(--danger)">ANCHOR CUSTOMER &mdash; bring status to both Pappas calls today</strong></div></div>
+          <div style="flex:1"><a href="https://tabitros.atlassian.net/browse/SUP-10174" target="_blank" class="key-link">SUP-10174</a> &nbsp; <strong>Pappasito&#8217;s 03 (016)</strong> &#8212; Kitchen Printer Delays
+          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Highest &middot; Assignee: Nicole Kogan &middot; Updated: Jun 23 &middot; <strong style="color:var(--danger)">STALE 3 days</strong></div></div>
         </div>
         <div class="alert-row">
-          <div style="flex:1"><a href="https://tabitros.atlassian.net/browse/SUP-10188" target="_blank" class="key-link">SUP-10188</a> &nbsp; <strong>Pappas HQ &mdash; Multiple Sites</strong> &mdash; ToGo KDS White Screen &middot; WebSocket stomp_error to calm-racoon.rmq.cloudamqp.com blocked
-          <div style="font-size:11px;color:var(--accent2);margin-top:2px">Dev: TAB-45803 Media Exchange Redesign &rarr; Development (updated today)</div>
-          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Status: Accepted &middot; Assignee: Shiran Horesh &middot; Updated: Jun 25 &middot; <strong style="color:var(--warn)">NEW TODAY &mdash; ask Pappas for network logs on call today</strong></div></div>
+          <div style="flex:1"><a href="https://tabitros.atlassian.net/browse/SUP-10130" target="_blank" class="key-link">SUP-10130</a> &nbsp; <strong>Multiple Sites</strong> &#8212; Error Code 17 on Spooler Devices
+          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Highest &middot; Assignee: Nicole Kogan &middot; Updated: Jun 21 &middot; <strong style="color:var(--danger)">STALE 5 days &middot; Spooler launched Jun 23 &#8212; is this a regression?</strong></div></div>
         </div>
         <div class="alert-row warn">
-          <div style="flex:1"><a href="https://tabitros.atlassian.net/browse/SUP-8745" target="_blank" class="key-link">SUP-8745</a> &nbsp; <strong>Pappadeaux 27 (078)</strong> &mdash; API Call Missing Order Data [High]
-          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Status: Accepted &middot; Assignee: Liz Benavides &middot; Updated: Apr 16 &middot; <strong style="color:var(--danger)">STALE 70 DAYS &mdash; High priority Pappas ticket, zero recent activity</strong></div></div>
+          <div style="flex:1"><a href="https://tabitros.atlassian.net/browse/SUP-10196" target="_blank" class="key-link">SUP-10196</a> &nbsp; <strong>Boatyard / YOLO</strong> &#8212; Labor Percentage Report Continuous Loading
+          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">High &middot; Assignee: Chad Shankman &middot; Updated: Jun 26 &middot; <strong style="color:var(--warn)">Brian commented Jun 25 &#8212; active</strong></div></div>
         </div>
         <div class="alert-row warn">
-          <div style="flex:1"><a href="https://tabitros.atlassian.net/browse/SUP-10198" target="_blank" class="key-link">SUP-10198</a> &nbsp; <strong>Yiayia&rsquo;s Greek Kitchen (084)</strong> &mdash; MediaExchange Order Freezing [Medium]
-          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Status: New &middot; Assignee: Unassigned &middot; Updated: Jun 24 &middot; <strong style="color:var(--warn)">UNASSIGNED &mdash; MediaExchange cluster pattern (SUP-10164, SUP-10167)</strong></div></div>
-        </div>
-      </div>
-
-      <!-- REPORTING ISSUES WATCH -->
-      <div class="panel" style="margin-bottom:16px">
-        <div class="panel-header"><span class="panel-title">Reporting Issues Watch &mdash; BI &amp; Chef</span><span class="panel-badge warn">6 active</span></div>
-
-        <!-- Summary stat bar -->
-        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border-bottom:1px solid var(--border)">
-          <div style="background:var(--surface);padding:10px 14px;text-align:center"><div style="font-family:var(--mono);font-size:9px;color:var(--muted);text-transform:uppercase;margin-bottom:3px">2026 YTD Tickets</div><div style="font-size:20px;font-weight:700;color:var(--danger)">20</div></div>
-          <div style="background:var(--surface);padding:10px 14px;text-align:center"><div style="font-family:var(--mono);font-size:9px;color:var(--muted);text-transform:uppercase;margin-bottom:3px">Still Open</div><div style="font-size:20px;font-weight:700;color:var(--warn)">4</div></div>
-          <div style="background:var(--surface);padding:10px 14px;text-align:center"><div style="font-family:var(--mono);font-size:9px;color:var(--muted);text-transform:uppercase;margin-bottom:3px">Prior Linked SUPs</div><div style="font-size:20px;font-weight:700;color:var(--danger)">13+</div></div>
-          <div style="background:var(--surface);padding:10px 14px;text-align:center"><div style="font-family:var(--mono);font-size:9px;color:var(--muted);text-transform:uppercase;margin-bottom:3px">Fix Method</div><div style="font-size:13px;font-weight:700;color:var(--warn);margin-top:3px">Manual Reprocess</div></div>
-        </div>
-
-        <!-- Key finding callout -->
-        <div style="padding:10px 18px;background:rgba(255,77,109,.05);border-bottom:1px solid var(--border);font-size:12px;color:var(--text)">
-          <strong style="color:var(--danger)">Pattern:</strong> Every closed ticket was resolved by manual reprocess &mdash; not a code fix. Root cause has never been identified. Hadar&rsquo;s own words on Jun 25 (SUP-9924): <em>&ldquo;I do not know why it happened.&rdquo;</em> The order-missing-from-BI failure mode alone has been filed <strong>17+ times</strong> across 2025&ndash;2026.
-        </div>
-
-        <!-- 2026 volume by sub-pattern -->
-        <div style="padding:8px 18px 4px;font-family:var(--mono);font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;border-bottom:1px solid var(--border)">2026 YTD &mdash; 20 Tickets by Sub-Pattern</div>
-        <table class="p-table" style="width:100%">
-          <thead><tr><th>Sub-Pattern</th><th style="text-align:center">Count</th><th>Open</th><th>Closed By</th></tr></thead>
-          <tbody>
-            <tr><td><strong>Orders missing from BI / DSR</strong></td><td style="text-align:center;font-weight:700;color:var(--danger)">4</td><td><a href="https://tabitros.atlassian.net/browse/SUP-9924" target="_blank" class="key-link">SUP-9924</a></td><td style="color:var(--muted)">Manual reprocess &mdash; no root cause</td></tr>
-            <tr><td>Tip / tax amounts wrong in BI</td><td style="text-align:center">4</td><td><a href="https://tabitros.atlassian.net/browse/SUP-10200" target="_blank" class="key-link">SUP-10200</a> (done)</td><td style="color:var(--muted)">Manual reprocess &mdash; no root cause</td></tr>
-            <tr><td>Undefined items in reporting</td><td style="text-align:center">2</td><td><a href="https://tabitros.atlassian.net/browse/SUP-9800" target="_blank" class="key-link">SUP-9800</a></td><td style="color:var(--muted)">Self-corrects after 1&ndash;2 days</td></tr>
-            <tr><td>DSR vs Payments Report discrepancy</td><td style="text-align:center">2</td><td><a href="https://tabitros.atlassian.net/browse/SUP-9861" target="_blank" class="key-link">SUP-9861</a> &middot; <a href="https://tabitros.atlassian.net/browse/SUP-10146" target="_blank" class="key-link">SUP-10146</a></td><td style="color:var(--muted)">Reproducible bug &mdash; no fix</td></tr>
-            <tr><td>EOD emails / daily summary not loading</td><td style="text-align:center">3</td><td>&mdash;</td><td style="color:var(--muted)">Closed &mdash; method unknown</td></tr>
-            <tr><td>Chef labor / scheduling data wrong</td><td style="text-align:center">4</td><td><a href="https://tabitros.atlassian.net/browse/SUP-10170" target="_blank" class="key-link">SUP-10170</a></td><td style="color:var(--muted)">TAB-39509 stalled since Oct 2024</td></tr>
-            <tr><td>Chef / BI data integrity (past years, tax rate)</td><td style="text-align:center">2</td><td>&mdash;</td><td style="color:var(--muted)">Closed (Highest priority SUP-9939)</td></tr>
-            <tr><td>Other</td><td style="text-align:center">2</td><td>&mdash;</td><td style="color:var(--muted)">&mdash;</td></tr>
-          </tbody>
-        </table>
-
-        <!-- Pattern tickets -->
-        <div style="padding:8px 18px 4px;font-family:var(--mono);font-size:9px;color:var(--warn);text-transform:uppercase;letter-spacing:.1em;border-top:1px solid var(--border)">Pattern SUPs &mdash; Longest-Running, Linked to Prior Reports</div>
-
-        <div class="alert-row warn">
-          <div style="flex:1"><a href="https://tabitros.atlassian.net/browse/SUP-9924" target="_blank" class="key-link">SUP-9924</a> &nbsp; <strong>Cattle Baron 7 &mdash; El Paso</strong> &mdash; Order Missing from DSR / BI [Low]
-          <div style="font-size:11px;color:var(--muted);margin-top:2px">Linked to 13 prior SUPs (SUP-9417, 9418, 9398, 8911, 8617, 8727, 8497, 8933, 8675, 8674, 8647, 8502, 5665) &middot; Each closed by reprocess &middot; Hadar Jun 25: &ldquo;I do not know why it happened&rdquo;</div>
-          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Status: Support &middot; Assigned: Brian &middot; Updated: Jun 25 &middot; <strong style="color:var(--danger)">17+ TOTAL INCIDENTS &mdash; no root cause ever identified</strong></div></div>
+          <div style="flex:1"><a href="https://tabitros.atlassian.net/browse/SUP-10135" target="_blank" class="key-link">SUP-10135</a> &nbsp; <strong>Hwy Nine Grillhouse</strong> &#8212; Unable to Close TO Order
+          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">High &middot; Assignee: Chad Shankman &middot; Updated: Jun 25</div></div>
         </div>
         <div class="alert-row warn">
-          <div style="flex:1"><a href="https://tabitros.atlassian.net/browse/SUP-10146" target="_blank" class="key-link">SUP-10146</a> &nbsp; <strong>Roast Coffee House ATL Airport B</strong> &mdash; 15 Orders Missing from BI, $255.30 Gap [Low]
-          <div style="font-size:11px;color:var(--muted);margin-top:2px">DSR $8,176.73 vs BI $7,921.43 &middot; Hadar reprocessed last month &middot; Tony asked for root cause explanation Jun 18 &mdash; still no answer</div>
-          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Status: Support &middot; Assigned: Brian &middot; Updated: Jun 23 &middot; <strong style="color:var(--warn)">Same failure mode as SUP-9924 cluster &mdash; follow up with Hadar</strong></div></div>
+          <div style="flex:1"><a href="https://tabitros.atlassian.net/browse/SUP-10198" target="_blank" class="key-link">SUP-10198</a> &nbsp; <strong>Yiayia&#8217;s Greek Kitchen (084)</strong> &#8212; MediaExchange Order Freezing
+          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Medium &middot; Assignee: Unassigned &middot; Updated: Jun 24 &middot; <strong style="color:var(--warn)">Matches MediaExchange pattern &#8212; assign owner</strong></div></div>
         </div>
-
-        <!-- Active open tickets -->
-        <div style="padding:8px 18px 4px;font-family:var(--mono);font-size:9px;color:var(--accent);text-transform:uppercase;letter-spacing:.1em;border-top:1px solid var(--border)">Active Open Tickets</div>
-
-        <div class="alert-row">
-          <div style="flex:1"><a href="https://tabitros.atlassian.net/browse/SUP-9800" target="_blank" class="key-link">SUP-9800</a> &nbsp; <strong>Dog and Duck Park West</strong> &mdash; Undefined Item in Reporting [High]
-          <div style="font-size:11px;color:var(--muted);margin-top:2px">~$9 undefined items appear then self-correct after 1&ndash;2 days &middot; Also hit Gianni&rsquo;s Versace (SUP-10104, closed Jun 5) &mdash; same behavior, 2 sites in 2026</div>
-          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Status: Accepted &middot; Assignee: Hadar &middot; Updated: Jun 25 &middot; <strong style="color:var(--warn)">Opened Apr 6 &mdash; oldest active, no reproduction path identified</strong></div></div>
+        <div class="alert-row warn">
+          <div style="flex:1"><a href="https://tabitros.atlassian.net/browse/SUP-10203" target="_blank" class="key-link">SUP-10203</a> &nbsp; <strong>Pappasito&#8217;s 02 (012)</strong> &#8212; MagTek ARQC Failed: Transaction Failed
+          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Medium &middot; Assignee: Unassigned &middot; Updated: Jun 24 &middot; <strong style="color:var(--warn)">Pappas account &#8212; needs owner today</strong></div></div>
         </div>
-        <div class="alert-row">
-          <div style="flex:1"><a href="https://tabitros.atlassian.net/browse/SUP-9861" target="_blank" class="key-link">SUP-9861</a> &nbsp; <strong>Peppercrust Steakhouse</strong> &mdash; House Account Refund DSR Discrepancy [Medium]
-          <div style="font-size:11px;color:var(--muted);margin-top:2px">$1,250 gap between DSR and Payments Report &middot; DSR shows double-negative on HA refund &middot; Reproducible in PROD and Sandbox &middot; Cayenne Corp partner</div>
-          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Status: Accepted &middot; Assignee: Hadar &middot; Updated: Apr 19 &middot; <strong style="color:var(--danger)">STALE 67 DAYS &mdash; reproducible bug, no fix path, partner workaround only</strong></div></div>
-        </div>
-        <div class="alert-row">
-          <div style="flex:1"><a href="https://tabitros.atlassian.net/browse/SUP-10170" target="_blank" class="key-link">SUP-10170</a> &nbsp; <strong>Billy&rsquo;s Stone Crab</strong> &mdash; Chef Daily Labor Cost Missing on First Weekday [Medium]
-          <div style="font-size:11px;color:var(--muted);margin-top:2px">Fixed Wage employees missing from Day view on first weekday &middot; Previously filed as SUP-6373 &middot; TAB-39509 linked &mdash; in dev backlog since Oct 2024 with zero movement</div>
-          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Status: Accepted &middot; Assignee: Hadar &middot; Updated: Jun 21 &middot; <strong style="color:var(--warn)">TAB-39509 stalled 8 months &mdash; needs escalation to dev</strong></div></div>
-        </div>
-
-        <!-- Resolved for context -->
-        <div style="padding:6px 18px 4px;font-family:var(--mono);font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;border-top:1px solid var(--border)">Recently Closed &mdash; Pattern Context</div>
-        <div class="alert-row" style="opacity:.7">
-          <div style="flex:1"><a href="https://tabitros.atlassian.net/browse/SUP-10200" target="_blank" class="key-link">SUP-10200</a> &nbsp; <strong>Pappadeaux 39 (081)</strong> &mdash; BI Tax Discrepancy [Medium] &nbsp;&middot;&nbsp; <a href="https://tabitros.atlassian.net/browse/SUP-9939" target="_blank" class="key-link">SUP-9939</a> &nbsp; <strong>Multiple Sites</strong> &mdash; Tax Rate Data Unavailable for May in BI [Highest]
-          <div style="font-size:11px;color:var(--muted);margin-top:2px">SUP-10200: transaction duplicated in tax table, reprocessed, confirmed resolved Jun 25 &middot; SUP-9939: Highest priority, closed May &mdash; same reprocess pattern</div>
-          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px"><strong style="color:var(--accent2)">Both resolved by manual reprocess &mdash; root cause unknown in both cases</strong></div></div>
+        <div class="alert-row info">
+          <div style="flex:1" style="font-size:12px;color:var(--accent2)"><strong>Dev update:</strong> TAB-45803 MediaExchange redesign moved to <strong style="color:var(--accent2)">IN DEVELOPMENT</strong> (Binyamin Trachtman, Jun 25) &#8212; up from Todo. Covers long-term fix for open MediaExchange SUPs.</div>
         </div>
       </div>
 
       <!-- UNCAPTURED ZOOM COMMITMENTS -->
       <div class="panel" style="margin-bottom:16px">
-        <div class="panel-header"><span class="panel-title">Uncaptured Commitments &mdash; Zoom</span><span class="panel-badge warn">8 items</span></div>
-        <div style="font-family:var(--mono);font-size:10px;color:var(--muted);padding:8px 18px 4px">Source: Feature Requests Priorities &middot; June 23, 2026 &middot; Brian, Casey, Jessica, Dave</div>
+        <div class="panel-header"><span class="panel-title">Uncaptured Commitments &#8212; Zoom (Jun 23 Feature Requests Meeting)</span><span class="panel-badge warn">6 items</span></div>
         <div class="alert-row warn cc-item" data-item-id="zoom-add-pappas-items">
           <input type="checkbox" class="cc-chk" onchange="toggleCompletion('zoom-add-pappas-items',this.checked)">
-          <div style="flex:1"><strong>Add all Pappas items to the US Product Request list</strong> &mdash; Tyler requested this explicitly on the call.
-          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Zoom Jun 23 &middot; <strong style="color:var(--warn)">Update Monday.com US Product Request list</strong></div></div>
+          <div style="flex:1"><strong>Add all relevant Pappas items to main dev list</strong> &#8212; Tyler&#8217;s request. Not confirmed done.
+          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Jun 23 Zoom &middot; <strong style="color:var(--warn)">Update Monday list</strong></div></div>
         </div>
         <div class="alert-row warn cc-item" data-item-id="zoom-audit-reports-list">
           <input type="checkbox" class="cc-chk" onchange="toggleCompletion('zoom-audit-reports-list',this.checked)">
-          <div style="flex:1"><strong>Start list of audit reports to push for dev</strong> &mdash; Brian tasked; especially as Dave returns. Tyler also asking via Monday.com mention.
-          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Zoom Jun 23 &middot; <strong style="color:var(--warn)">Post initial list to Monday.com or reply to Tyler&rsquo;s mention</strong></div></div>
-        </div>
-        <div class="alert-row warn cc-item" data-item-id="zoom-hachiya-expediter">
-          <input type="checkbox" class="cc-chk" onchange="toggleCompletion('zoom-hachiya-expediter',this.checked)">
-          <div style="flex:1"><strong>Hachiya independent expediter screen</strong> &mdash; Work with Tony and/or SMEs on new template; engage SMEs directly if template doesn&rsquo;t cover it.
-          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Zoom Jun 23 &middot; <strong style="color:var(--warn)">Set up conversation with Tony &mdash; no ticket yet</strong></div></div>
+          <div style="flex:1"><strong>Start list of audit reports</strong> &#8212; push for development; Brian tasked to create item list. Esp. as Dave returns.
+          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Jun 23 Zoom &middot; <strong style="color:var(--warn)">Do with q-audit-reports-tyler &#8212; same deliverable</strong></div></div>
         </div>
         <div class="alert-row warn cc-item" data-item-id="zoom-penny-rounding">
           <input type="checkbox" class="cc-chk" onchange="toggleCompletion('zoom-penny-rounding',this.checked)">
-          <div style="flex:1"><strong>Move penny rounding up in priority</strong> &mdash; After cash discount refactor completes. Update list item to specifically reference penny rounding.
-          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Zoom Jun 23 &middot; <strong style="color:var(--warn)">Check cash discount beta outcome first (see At Risk &sect;4)</strong></div></div>
-        </div>
-        <div class="alert-row warn cc-item" data-item-id="zoom-share-claude-jessica">
-          <input type="checkbox" class="cc-chk" onchange="toggleCompletion('zoom-share-claude-jessica',this.checked)">
-          <div style="flex:1"><strong>Share Claude / context strategy file with Jessica</strong> &mdash; So she can build her own version of the monitoring tool.
-          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Zoom Jun 23 &middot; <strong style="color:var(--warn)">Do on Brian/Jess 1:1 today at 8:30am MDT</strong></div></div>
+          <div style="flex:1"><strong>Move penny rounding up in priority</strong> &#8212; after cash discount refactor completes. Beta week was Jun 22 &#8212; check outcome.
+          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Jun 23 Zoom &middot; <strong style="color:var(--warn)">Cash discount beta has passed &#8212; confirm outcome, then act</strong></div></div>
         </div>
         <div class="alert-row warn cc-item" data-item-id="zoom-george-sub-to-urls">
           <input type="checkbox" class="cc-chk" onchange="toggleCompletion('zoom-george-sub-to-urls',this.checked)">
-          <div style="flex:1"><strong>Follow up with George on sub-TO URLs</strong> &mdash; Report results back to Casey. George not visible in recent comms.
-          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Zoom Jun 23 &middot; <strong style="color:var(--warn)">Identify George, message today, report to Casey</strong></div></div>
+          <div style="flex:1"><strong>Follow up with George on sub-TO URLs</strong> &#8212; added to Monday feature list. Still needs status update from Dror. Report back to Casey.
+          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Jun 23 Zoom &middot; <strong style="color:var(--warn)">Ping Dror for status, report to Casey</strong></div></div>
         </div>
         <div class="alert-row warn cc-item" data-item-id="zoom-pad-permissions">
           <input type="checkbox" class="cc-chk" onchange="toggleCompletion('zoom-pad-permissions',this.checked)">
-          <div style="flex:1"><strong>Collect 5&ndash;8 additional PAD permissions</strong> &mdash; For future phases. Start initial list.
-          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Zoom Jun 23 &middot; <strong style="color:var(--warn)">Create placeholder item on Monday.com</strong></div></div>
+          <div style="flex:1"><strong>Start collecting PAD permissions list</strong> &#8212; targeting 5&#8211;8 useful permissions for future phases.
+          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Jun 23 Zoom &middot; <strong style="color:var(--warn)">Create running doc</strong></div></div>
         </div>
         <div class="alert-row warn cc-item" data-item-id="zoom-pappas-bbq">
           <input type="checkbox" class="cc-chk" onchange="toggleCompletion('zoom-pappas-bbq',this.checked)">
-          <div style="flex:1"><strong>Add Pappas Barbecue to list for print events / timed queues</strong> &mdash; Requirements coming from the barbecue/kitchen flow group.
-          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Zoom Jun 23 &middot; <strong style="color:var(--warn)">Add placeholder to Monday.com US Product Request list</strong></div></div>
+          <div style="flex:1"><strong>Add Pappas BBQ to list for print events / timed queues</strong> &#8212; track requirements from barbecue/kitchen flows.
+          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Jun 23 Zoom &middot; <strong style="color:var(--warn)">Add to Monday list</strong></div></div>
         </div>
       </div>
 
       <!-- COMMITMENTS DUE -->
       <div class="panel" style="margin-bottom:16px">
         <div class="panel-header"><span class="panel-title">Commitments Due</span><span class="panel-badge warn">3 items</span></div>
+        <div class="alert-row cc-item" data-item-id="action-dave-pricing-escalation">
+          <input type="checkbox" class="cc-chk" onchange="toggleCompletion('action-dave-pricing-escalation',this.checked)">
+          <div style="flex:1"><strong>Dave pricing escalation &#8212; Guest Display bundle</strong> &#8212; Dave (high importance, Jun 26) flagged that Guest Display bundle price was changed in Salesforce without notifying partners in advance. Brian, Michael Salazar, Grant Ewing copied. Needs response.
+          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Outlook Inbox &middot; Jun 26 &middot; High importance &middot; <strong style="color:var(--danger)">Unread &#8212; respond or confirm Michael/Grant are handling</strong></div></div>
+        </div>
         <table class="p-table" style="width:100%">
           <thead><tr><th>Commitment</th><th>To</th><th>Source</th><th>Flag</th></tr></thead>
           <tbody>
-            <tr><td>DynaFlex II Go release schedule (# batches + approx qty for 4,000 units)</td><td>Tri Nguyen / MagTek</td><td>Outlook Jun 24 (2nd ask)</td><td style="color:var(--danger)">OVERDUE</td></tr>
-            <tr><td>Device override documentation during MagTek conversions / iPad swaps</td><td>Casey (internal)</td><td>Zoom Jun 23 (Casey&rsquo;s AI)</td><td style="color:var(--warn)">AT RISK &mdash; verify Casey acted</td></tr>
-            <tr><td>Valencia integration items &rarr; kick to Jor and Liz, copy Brian</td><td>Casey (internal)</td><td>Zoom Jun 23 (Casey&rsquo;s AI)</td><td style="color:var(--warn)">AT RISK &mdash; verify Casey acted</td></tr>
+            <tr><td>MagTek PO-US-000177 &#8212; device release timeline<div class="reason-text">Dynaflex II GO (1000x), Dynaflex Stand USB C (1000x), plus 3rd release</div></td><td>Tri Nguyen (MagTek)</td><td>Outlook Sent &middot; Jun 25</td><td><strong style="color:var(--warn)">Awaiting reply &#8212; follow up Jun 30</strong></td></tr>
+            <tr><td>Z Order / SEA beta confirmation<div class="reason-text">Brian said week of Jul 6&#8211;7; Casey confirming resources next week</div></td><td>Casey Grant, Liz Benavides</td><td>Slack &middot; Jun 25</td><td><strong style="color:var(--warn)">Check with Casey next week</strong></td></tr>
           </tbody>
         </table>
       </div>
@@ -427,45 +359,48 @@ body.show-completed tr.cc-item.completed{display:table-row;opacity:.38}
       <!-- WAITING ON OTHERS -->
       <div class="panel" style="margin-bottom:16px">
         <div class="panel-header"><span class="panel-title">Waiting On Others</span></div>
-        <div class="alert-row info"><div style="flex:1"><strong style="color:var(--accent2)">Engineering</strong></div></div>
-        <div class="alert-row info"><div style="flex:1">SUP-10130 / Error Code 17 resolution &mdash; Nicole + Ofer investigating Epson config params post-spooler-redirect. No ETA.<div class="reason-text">Next: Confirm fix path on Pappas call today</div></div></div>
-        <div class="alert-row info"><div style="flex:1">SUP-10188 / KDS WebSocket &mdash; Brian&rsquo;s Wireshark test blocked (laptop hotspot restriction by IT).<div class="reason-text">Next: Follow up with Grant Ewing on restriction removal</div></div></div>
-        <div class="alert-row info"><div style="flex:1">TAB-37118 / Tip Settlement fix &mdash; Chloe Gloger, Design phase. No ETA. Active SUP: SUP-10154 (Saints Pub).<div class="reason-text">Next: Check if design moved since June 21 update</div></div></div>
-        <div class="alert-row info"><div style="flex:1"><strong style="color:var(--accent2)">MTech</strong></div></div>
-        <div class="alert-row info"><div style="flex:1">Melted / Bad Smartboxes investigation &mdash; Mitch (MTech) promised full report by EOB today June 25. Shawn Dwyer confirmed.<div class="reason-text">Next: Follow up with Robert Tucker if not received by 4pm MDT</div></div></div>
-        <div class="alert-row info"><div style="flex:1"><strong style="color:var(--accent2)">Pappas</strong></div></div>
-        <div class="alert-row info"><div style="flex:1">iOS 26.4 Round 4 completion &mdash; Pappadeaux + Partners + Direct. Sitos/YYM pushed to Monday per April.<div class="reason-text">Next: John to confirm round 4 done; check all spoolers before open</div></div></div>
-        <div class="alert-row info"><div style="flex:1">Network firewall check &mdash; Need logs confirming whether port 443 WebSocket to calm-racoon.rmq.cloudamqp.com is blocked.<div class="reason-text">Next: Ask Pappas on call today; give them the exact URL to check</div></div></div>
-        <div class="alert-row info"><div style="flex:1"><strong style="color:var(--accent2)">External / Vendors</strong></div></div>
-        <div class="alert-row info"><div style="flex:1">Worldline ticket #965120 &mdash; Status unknown since June 19. Participants: Brian, Tyler, Dror, Kathleen.<div class="reason-text">Next: Check for reply or ask Tyler for current status</div></div></div>
+        <div class="alert-row info"><div style="flex:1"><strong style="color:var(--accent)">Engineering</strong></div></div>
+        <div class="alert-row info"><div style="flex:1"><a href="https://tabitros.atlassian.net/browse/TAB-45803" target="_blank" class="key-link">TAB-45803</a> MediaExchange redesign &#8212; <strong style="color:var(--accent2)">IN DEVELOPMENT</strong> as of Jun 25 (Binyamin Trachtman). Upgraded from Todo. Covers Pappadeaux MediaExchange SUPs long-term.
+        <div class="reason-text">Short-term SUP resolution still unclear while redesign is in progress</div></div></div>
+        <div class="alert-row info"><div style="flex:1"><a href="https://tabitros.atlassian.net/browse/TAB-37118" target="_blank" class="key-link">TAB-37118</a> Tip Settlement &#8212; Design phase (Chloe Gloger). No ETA. Active: SUP-10154 Saints Pub.</div></div>
+        <div class="alert-row info"><div style="flex:1"><a href="https://tabitros.atlassian.net/browse/TAB-39920" target="_blank" class="key-link">TAB-39920</a> ROS Credit Tip Settlement Screen &#8212; Todo, no owner, updated Jun 24.</div></div>
+        <div class="alert-row info"><div style="flex:1"><strong style="color:var(--accent)">Vendors</strong></div></div>
+        <div class="alert-row info"><div style="flex:1"><strong>MagTek (Tri Nguyen)</strong> &#8212; PO-US-000177 sent Jun 25. Awaiting device release timelines.
+        <div class="reason-text">Follow up if no reply by Jun 30</div></div></div>
+        <div class="alert-row info"><div style="flex:1"><strong>Magensa / Fiserv</strong> &#8212; Scheduled maintenance: Jun 28 (this weekend), Jul 12 (x3 notices), Jul 19 (x2 notices).
+        <div class="reason-text">Flag Jun 28 window to team before the weekend</div></div></div>
+        <div class="alert-row info"><div style="flex:1"><strong style="color:var(--accent)">Customers / Partners</strong></div></div>
+        <div class="alert-row info"><div style="flex:1"><strong>Boatyard / Hannah Lindsey</strong> &#8212; Brian sent DSRs (Jul&#8211;Sept 2025) Jun 25. Awaiting acknowledgment + next steps on SUP-10196.</div></div>
+        <div class="alert-row info"><div style="flex:1"><strong>PSBHQ (Ann Adlawan)</strong> &#8212; VAULT Stability Flip Stand check-in scheduled Jul 1. Brian accepted.</div></div>
+        <div class="alert-row info"><div style="flex:1"><strong style="color:var(--accent)">Internal</strong></div></div>
+        <div class="alert-row info"><div style="flex:1"><strong>Casey Grant</strong> &#8212; Confirming Z Order / SEA resources for week of Jul 20. Jacksonville construction may affect availability. Expected next week.
+        </div></div>
+        <div class="alert-row info"><div style="flex:1"><strong>Product team (Dror / Tyler / Jessica / Dave)</strong> &#8212; &ldquo;Removing fees from back office&rdquo; email thread. Etai raised concern about incidents where fees were removed undetected for months. Deferred to product team. No resolution yet.</div></div>
       </div>
 
       <!-- UPCOMING COMMITMENTS -->
       <div class="panel" style="margin-bottom:16px">
         <div class="panel-header"><span class="panel-title">Upcoming Commitments</span></div>
-        <div class="alert-row"><div style="flex:1"><strong style="color:var(--warn)">Today</strong></div></div>
-        <div class="alert-row"><div style="flex:1"><strong>6:30am MDT</strong> &mdash; Pappas Internal Review (Vincente, John, Tyler, Casey, Brian). Bring: SUP-10130, SUP-10188 status, KDS WebSocket root cause.<div class="reason-text">Be ready with spooler + KDS + printing status for all four active tickets</div></div></div>
-        <div class="alert-row"><div style="flex:1"><strong>7:00am MDT</strong> &mdash; Pappas/Tabit Support Calls (April, Cameron, Rod + full Pappas team). All active tickets in scope.<div class="reason-text">Bring: SUP-10130, SUP-10163, SUP-10174, SUP-10188 status + iOS update %, firewall ask</div></div></div>
-        <div class="alert-row"><div style="flex:1"><strong>8:00am MDT</strong> &mdash; MTech Daily Standup (tentative). Ask if Mitch&rsquo;s Smartbox report was sent.<div class="reason-text">If not received, flag with Robert Tucker directly</div></div></div>
-        <div class="alert-row"><div style="flex:1"><strong>8:30am MDT</strong> &mdash; Brian/Jess 1:1. Good window to share Claude strategy file (zoom-share-claude-jessica).<div class="reason-text">Also: discuss Dabush Feature Requests follow-up from June 24 meeting</div></div></div>
-        <div class="alert-row"><div style="flex:1"><strong>9:30am MDT</strong> &mdash; Tyler|Brian Sync (1 hr). Priority: Pappas items list, audit reports, SUP-8745 status, penny rounding.<div class="reason-text">Prep: zoom-add-pappas-items, zoom-audit-reports-list, SUP-8745 with Liz</div></div></div>
-        <div class="alert-row"><div style="flex:1"><strong>All day</strong> &mdash; Site Deactivation: Capas. Confirm who executes and steps.<div class="reason-text">Next: Verify process is underway</div></div></div>
-        <div class="alert-row"><div style="flex:1"><strong style="color:var(--warn)">This Week</strong></div></div>
-        <div class="alert-row"><div style="flex:1">Cash Discount Refactor beta outcome &mdash; status unknown after week of June 22. Brian committed to send status update.<div class="reason-text">Ask Jessica or Dave today</div></div></div>
-        <div class="alert-row"><div style="flex:1">MTech Smartbox report follow-up if not received by EOB today.<div class="reason-text">Ask Robert Tucker directly if no report by 4pm MDT</div></div></div>
-        <div class="alert-row"><div style="flex:1"><strong style="color:var(--warn)">Next Week</strong></div></div>
-        <div class="alert-row"><div style="flex:1">Pre Q3 Version Training Alignment &mdash; Canceled today (Rotem: &ldquo;sorry for late notice&rdquo;). No new invite yet.<div class="reason-text">Watch for reschedule invite from Rotem/Fiana/Roi</div></div></div>
-        <div class="alert-row"><div style="flex:1">Pappas Sitos + YYM iOS update &mdash; April requested Monday. John to schedule window.<div class="reason-text">John to confirm timing with Pappas team</div></div></div>
-        <div class="alert-row"><div style="flex:1"><strong>Jul 6</strong> &mdash; Brian traveling to Charleston (CHS). Flight BOI-CHS confirmed (JLHVND). Rental: L62911587B7. Hotel: Moxy Charleston Downtown.<div class="reason-text">Irina checking on dinner with Mike Vitale</div></div></div>
+        <div class="alert-row warn"><div style="flex:1"><strong>Today &#8212; Brian OOO (Jun 26)</strong> &nbsp; MTech / Tabit Daily Standup 2pm MT (tentative). Brian OOO &#8212; team should cover or cancel.</div></div>
+        <div class="alert-row warn"><div style="flex:1"><strong>This Weekend (Jun 28)</strong> &nbsp; Magensa / Fiserv network maintenance window. Flag to team proactively.</div></div>
+        <div class="alert-row"><div style="flex:1"><strong>Jul 1</strong> &nbsp; VAULT &amp; Tabit Check-In with Ann Adlawan (PSBHQ) &#8212; STB-FLIP-G3-B stand evaluation.</div></div>
+        <div class="alert-row"><div style="flex:1"><strong>Week of Jul 6&#8211;7</strong> &nbsp; Z Order beta start (Brian&#8217;s stated target per Slack Jun 25).</div></div>
+        <div class="alert-row"><div style="flex:1"><strong>Week of Jul 20</strong> &nbsp; SEA / Z Order full deployment (pending Casey resource confirmation next week).</div></div>
       </div>
 
       <!-- THINGS LIKELY TO FALL THROUGH THE CRACKS -->
       <div class="panel" style="margin-bottom:16px">
-        <div class="panel-header"><span class="panel-title">Things Likely To Fall Through The Cracks</span><span class="panel-badge warn">4 items</span></div>
-        <div class="alert-row warn"><div style="flex:1">1. <strong>Cash Discount Refactor beta outcome</strong> &mdash; Beta week was June 22. No written record of outcome anywhere. Brian committed to send team a status update that week.<div class="reason-text">Ask Jessica or Dave today; if complete, capture result before it&rsquo;s lost</div></div></div>
-        <div class="alert-row warn"><div style="flex:1">2. <strong>SUP-8745 / Pappadeaux 27 API Missing Order Data</strong> &mdash; High priority, Liz Benavides, last updated April 16 (70 days ago). Pappas anchor customer. Zero visible activity.<div class="reason-text">Raise in Tyler|Brian Sync today or ping Liz for status</div></div></div>
-        <div class="alert-row warn"><div style="flex:1">3. <strong>Three June 24 meetings with no Zoom transcripts</strong> &mdash; US Dev Support Sync, Offline KDS Setup (Hannah + Champion Payments / Patrick), Dabush Feature Requests. No AI Companion emails. Any commitments from these calls have no system record.<div class="reason-text">Ask Hannah if any commitments were made on the Champion Payments call</div></div></div>
-        <div class="alert-row warn"><div style="flex:1">4. <strong>George / sub-TO URLs</strong> &mdash; Brian committed to following up and reporting to Casey. George not visible in any recent Slack or email. No contact or outcome recorded.<div class="reason-text">Identify George&rsquo;s full name/role and message today before Tyler|Brian sync</div></div></div>
+        <div class="panel-header"><span class="panel-title">Things Likely To Fall Through The Cracks</span><span class="panel-badge warn">5 items</span></div>
+        <div class="alert-row warn"><div style="flex:1"><strong>1. Tyler|Brian Sync (Jun 25, 3:30pm MT)</strong> &#8212; 60-min Zoom meeting confirmed (Tyler joined). No AI summary captured yet. Action items from this session are completely unknown.
+        <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Next action: Ask Tyler for any follow-up items from the sync</div></div></div>
+        <div class="alert-row warn"><div style="flex:1"><strong>2. Pappas Internal Review + Pappas/Tabit Support Call (Jun 25)</strong> &#8212; Two consecutive Pappas meetings (12:30pm + 1pm MT). Vincente, John, Tyler, Casey, full Pappas team. No AI summaries for either. Anything discussed is unrecorded.
+        <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Next action: Check with Tyler or Vincente for action items</div></div></div>
+        <div class="alert-row warn"><div style="flex:1"><strong>3. Dabush Feature Requests (Jun 24, noon MT)</strong> &#8212; Jessica + Andrea Bolivar + Tal Dadon. No AI summary. Feature commitments made with this customer are unrecorded.
+        <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Next action: Ask Jessica for any commitments made</div></div></div>
+        <div class="alert-row warn"><div style="flex:1"><strong>4. Dave pricing escalation (Jun 26, high importance)</strong> &#8212; Guest Display bundle price changed in Salesforce without partner notification. Brian OOO. Will sit unless Michael/Grant respond unprompted.
+        <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Next action: Respond or confirm Michael/Grant are handling on return</div></div></div>
+        <div class="alert-row warn"><div style="flex:1"><strong>5. Big Dave&#8217;s MagTek failures (Jun 25)</strong> &#8212; Andrew Glenn swapped in 2 replacement devices from Charleston office; both fail identically. This is beyond a single bad unit &#8212; device model may have a systemic issue. No engineering owner assigned.
+        <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Next action: Escalate to engineering &#8212; pattern of device failure needs investigation</div></div></div>
       </div>
 
       <!-- KNOWLEDGE OPPORTUNITIES -->
@@ -474,9 +409,9 @@ body.show-completed tr.cc-item.completed{display:table-row;opacity:.38}
         <table class="p-table" style="width:100%">
           <thead><tr><th>Topic</th><th>Occurrences</th><th>Source</th><th>Recommendation</th></tr></thead>
           <tbody>
-            <tr><td>Pappas network / IP schema (spooler IPs, WebSocket ports, subnet layout)</td><td>4+</td><td>Slack DMs, #prj-pappas, Jun 22&ndash;24</td><td>Internal runbook: &ldquo;Pappas Network for Support&rdquo; (Brian to draft)</td></tr>
-            <tr><td>iOS update spooler behavior (why manual touch needed post-update, reboot doesn&rsquo;t help)</td><td>3</td><td>#prj-pappas, Pappas email thread, Jun 23&ndash;24</td><td>Email template or FAQ &mdash; John can own and send to Pappas</td></tr>
-            <tr><td>MagTek conversion / device override documentation</td><td>3+</td><td>Zoom Jun 23, Slack, MTech emails</td><td>Runbook: MagTek Conversion Checklist (Casey committed to this June 23)</td></tr>
+            <tr><td>Bulk load utility for GC starting balances<div class="reason-text">Cameron Levingston AND Casey Grant both asked Brian on Jun 25</div></td><td>2 in 1 day</td><td>Slack DMs</td><td>1-page how-to doc or short Loom walkthrough</td></tr>
+            <tr><td>MagTek device troubleshooting / replacement flow<div class="reason-text">Big Dave&#8217;s (Jun 25), SUP-10203 Pappasito&#8217;s, multiple field conversions</div></td><td>3+ this week</td><td>Email, SUPs, Slack</td><td>Runbook &#8212; Casey committed Jun 10, still not created</td></tr>
+            <tr><td>PAD permissions catalog<div class="reason-text">Surfaces in every Feature Requests meeting without a home</div></td><td>2+ meetings</td><td>Zoom AI Companion</td><td>Running list doc &#8212; start with 5&#8211;8 items per Zoom commitment</td></tr>
           </tbody>
         </table>
       </div>
@@ -484,19 +419,19 @@ body.show-completed tr.cc-item.completed{display:table-row;opacity:.38}
       <!-- BRIAN LEVERAGE REPORT -->
       <div class="panel" style="margin-bottom:16px">
         <div class="panel-header"><span class="panel-title">Brian Leverage Report</span></div>
-        <div style="padding:12px 18px;font-size:12px;color:var(--muted);border-bottom:1px solid var(--border)">Estimated time spent this week on repeated explanations: ~2&ndash;3 hours</div>
+        <div style="padding:12px 18px;font-size:12px;color:var(--muted);border-bottom:1px solid var(--border)">Estimated time spent this week on repeated explanations: ~1.5 hours</div>
         <table class="p-table" style="width:100%">
           <thead><tr><th>Topic</th><th>Est. Time</th><th>Recommended Asset</th></tr></thead>
           <tbody>
-            <tr><td>Pappas IP schema / network architecture</td><td>~1.5h</td><td>2-page internal runbook &mdash; Pappas Network for Support</td></tr>
-            <tr><td>iOS update behavior on spoolers post-update</td><td>~45min</td><td>Email template John can own and send directly to Pappas</td></tr>
-            <tr><td>MagTek conversion / device override docs</td><td>~45min</td><td>Checklist (Casey owns per June 23 commitment &mdash; verify it happened)</td></tr>
+            <tr><td>Bulk load utility (GC starting balances)</td><td>~30 min</td><td>Short how-to doc with screenshots</td></tr>
+            <tr><td>MagTek device troubleshooting steps</td><td>~45 min</td><td>Runbook &#8212; overdue from Jun 10 commitment</td></tr>
+            <tr><td>PAD permissions discussion</td><td>~15 min</td><td>Running list doc</td></tr>
           </tbody>
         </table>
-        <div class="alert-row info" style="margin-top:0"><div style="flex:1"><strong>Highest-leverage first action:</strong> Write a one-page Pappas Network Architecture doc covering IP schema, WebSocket ports, and spooler IP ranges. Support team asked Brian to explain this 4+ times this week. One doc eliminates all future asks.</div></div>
+        <div class="alert-row info" style="margin-top:0"><div style="flex:1"><strong>Highest-leverage first action:</strong> Create the MagTek troubleshooting runbook. Casey committed to this Jun 10. Field team is hitting the same failures repeatedly (Big Dave&#8217;s, conversions, iPad swaps) with zero documentation. Every new install surfaces this cost again.</div></div>
       </div>
 
-<!-- CC-DATA-END -->
+      <!-- CC-DATA-END -->
     </div><!-- /page-command-center -->
 
     <div class="page" id="page-org-memory">
