@@ -821,12 +821,12 @@ body.show-completed tr.cc-item.completed{display:table-row;opacity:.38}
         <div class="stat-card danger">
           <div class="stat-label">Health Score</div>
           <div class="stat-value danger">CRITICAL</div>
-          <div class="stat-sub">6 active clusters today</div>
+          <div class="stat-sub">3 active clusters today</div>
         </div>
-        <div class="stat-card danger">
+        <div class="stat-card warn">
           <div class="stat-label">Open SUP Tickets</div>
-          <div class="stat-value danger">11</div>
-          <div class="stat-sub">3 Highest · 2 High · 6 Med/Low</div>
+          <div class="stat-value warn">10</div>
+          <div class="stat-sub">3 Highest · 2 High · 5 Med/Low</div>
         </div>
         <div class="stat-card warn">
           <div class="stat-label">Open Commitments</div>
@@ -836,7 +836,7 @@ body.show-completed tr.cc-item.completed{display:table-row;opacity:.38}
         <div class="stat-card blue">
           <div class="stat-label">Last Contact</div>
           <div class="stat-value blue" style="font-size:20px">Today</div>
-          <div class="stat-sub">SUP-10188 updated Jun 25 · Printing + Tip Pool + Offline clusters active</div>
+          <div class="stat-sub">PRI board active Jun 26 · Offline + Printing + Payment Assist clusters</div>
         </div>
       </div>
 
@@ -856,19 +856,19 @@ body.show-completed tr.cc-item.completed{display:table-row;opacity:.38}
           <div class="panel" style="margin-bottom:14px">
             <div class="panel-header"><span class="panel-title">Open Escalations</span><span class="panel-badge danger" id="pappas-esc-badge">12</span></div>
             <div id="pappas-escalations" style="padding:0">
-              <div class="alert-row danger"><div><strong>SUP-10188</strong> — Pappas HQ - Multiple Sites | ToGo KDS Stuck on White Screen. Highest. Accepted. Updated Jun 25. Multi-site KDS failure — WebSocket stomp_error to RMQ blocked. TAB-45803 MediaExchange Redesign in Development.</div></div>
-              <div class="alert-row danger"><div><strong>SUP-10174</strong> — Pappasito's 03 (016) | Kitchen Printer Delays. Highest. In Progress. Updated Jun 23. Ofer identified Epson config param missing causing 60s timeout backlog at peak volume. Actively reproducing to confirm fix.</div></div>
-              <div class="alert-row danger"><div><strong>SUP-10163</strong> — Pappas Restaurants | Printers Dropping Offline. Highest. Pending. Updated Jun 24. PAD dev investigating half-open socket issue from Base PAD connection. Fix expected early next week.</div></div>
-              <div class="alert-row warn"><div><strong>SUP-10202</strong> — Pappadeaux 04 (025) | Large Spacing Print Jobs. High. Accepted. Updated Jun 24.</div></div>
-              <div class="alert-row warn"><div><strong>SUP-8745</strong> — Pappadeaux 27 (078) | API Call Missing Order Data. High. Accepted. <span style="color:var(--danger);font-weight:600">Opened Sep 2025 — 271 days old. Zero recent activity.</span></div></div>
-              <div class="alert-row warn"><div><strong>Tip Pool — 4 items active (Jun 18)</strong> — PDX 27 + Sitos 02 tip pool discrepancies, tip out missing on order team checks, tip out/Payment Assist discrepancy. Job code changes corrupting calculations. <span style="color:var(--danger);font-weight:600">Wage/labor liability if unresolved.</span></div></div>
-              <div class="alert-row warn"><div><strong>Printing — 4 items active (Jun 24–25)</strong> — PDX 7 Print Spooler Issue, PDX 39 Server Reports not printing, Sitos 03 Spooler Offline — Site Profile (2 entries). Related to active printer investigation (SUP-10174, SUP-10163).</div></div>
-              <div class="alert-row warn"><div><strong>Offline Payments — 2 items active (Jun 19–25)</strong> — Pappas Restaurants offline open checks (Jun 19), PDX 04 offline payment ghost check (Jun 25).</div></div>
-              <div class="alert-row warn"><div><strong>MediaExchange — 2 items active (Jun 19)</strong> — Sitos 12 open MediaExchange order, PDX 09 MediaExchange funding issue.</div></div>
-              <div class="alert-row warn"><div><strong>Payment Assist — 1 item active (Jun 25)</strong> — Sitos 11 Payment Assist Not Unlocking.</div></div>
-              <div class="alert-row warn"><div><strong>Ingenico/Device — 1 item active (Jun 19)</strong> — PDX 08 unpaired Ingenicos.</div></div>
-              <div class="alert-row info"><div><strong>SUP-10197</strong> — Pappasito's 03 (016) | Spooler Offline - Site Profile. Medium. New. Updated Jun 24.</div></div>
-              <div style="padding:10px 18px;font-family:var(--mono);font-size:10px;color:var(--muted);border-top:1px solid var(--border)">5 additional items tracked in Jira: SUP-10203 (Magtek ARQC, Med), SUP-10198 (MediaExchange Freezing, Med), SUP-10166 (Ingenico 2012 Code, Med), SUP-10068 (Cash Drawer, Med), SUP-9967 (CC Cancel, Low)</div>
+              <div class="alert-row danger"><div><strong>SUP-10188</strong> — Pappas HQ - Multiple Sites | ToGo KDS Stuck on White Screen. Highest. Accepted. Age: 4 days.</div></div>
+              <div class="alert-row danger"><div><strong>SUP-10174</strong> — Pappasito's 03 (016) | Kitchen Printer Delays. Highest. In Progress. Age: 7 days.</div></div>
+              <div class="alert-row danger"><div><strong>SUP-10163</strong> — Pappas Restaurants | Printers Dropping Offline. Highest. Pending. Age: 10 days.</div></div>
+              <div class="alert-row warn"><div><strong>SUP-8745</strong> — Pappadeaux 27 (078) | API Call Missing Order Data. High. Accepted. <span style="color:var(--danger);font-weight:600">Age: 273 days — stale open ticket.</span></div></div>
+              <div class="alert-row warn"><div><strong>SUP-10202</strong> — Pappadeaux 04 (025) | Large Spacing Print Jobs. High. Accepted. Age: 3 days.</div></div>
+              <div class="alert-row warn"><div><strong>Offline Payments — 3 items active (Jun 25–26)</strong> — Pappas Restaurants offline open checks, Sitos 03 Spooler Offline, PDX 04 offline payment ghost check.</div></div>
+              <div class="alert-row warn"><div><strong>Printing — 1 item active (Jun 25)</strong> — PDX 39 Server Reports not printing.</div></div>
+              <div class="alert-row warn"><div><strong>Payment Assist — 1 item active (Jun 26)</strong> — Sitos 11 Payment Assist Not Unlocking.</div></div>
+              <div class="alert-row info"><div><strong>SUP-10203</strong> — Pappasito's 02 (012) | Magtek - ARQC Failed: Transaction Failed. Medium. New. Age: 3 days.</div></div>
+              <div class="alert-row info"><div><strong>SUP-10197</strong> — Pappasito's 03 (016) | Spooler Offline - Site Profile. Medium. New. Age: 3 days.</div></div>
+              <div class="alert-row info"><div><strong>SUP-10198</strong> — Yiayia's Greek Kitchen (084) | MediaExchange Order Freezing. Medium. New. Age: 3 days.</div></div>
+              <div class="alert-row info"><div><strong>SUP-10068</strong> — Pappasito's 07 (032) | Cash Drawer Assignment Error. Medium. New. Age: 29 days.</div></div>
+              <div style="padding:10px 18px;font-family:var(--mono);font-size:10px;color:var(--muted);border-top:1px solid var(--border)">1 additional item tracked: SUP-10166 (Ingenico 2012 Code during Payment, Med)</div>
             </div>
           </div>
           <!-- COMMITMENTS: US -->
@@ -1062,7 +1062,7 @@ body.show-completed tr.cc-item.completed{display:table-row;opacity:.38}
         <div class="stat-card green">
           <div class="stat-label">Health Score</div>
           <div class="stat-value green">STABLE</div>
-          <div class="stat-sub">No open Jira tickets · verified Jun 25</div>
+          <div class="stat-sub">No open Jira tickets · verified Jun 26</div>
         </div>
         <div class="stat-card blue">
           <div class="stat-label">Open SUP Tickets</div>
@@ -1077,7 +1077,7 @@ body.show-completed tr.cc-item.completed{display:table-row;opacity:.38}
         <div class="stat-card warn">
           <div class="stat-label">Last Contact</div>
           <div class="stat-value warn" style="font-size:20px">Feb 2026</div>
-          <div class="stat-sub">No new activity · verified Jun 25</div>
+          <div class="stat-sub">No new activity · verified Jun 26</div>
         </div>
       </div>
 
