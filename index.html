@@ -796,7 +796,7 @@ body.show-completed tr.cc-item.completed{display:table-row;opacity:.38}
         <div class="stat-card warn">
           <div class="stat-label">Open SUP Tickets</div>
           <div class="stat-value warn">9</div>
-          <div class="stat-sub">1 Highest · 3 High · 5 Med/Low</div>
+          <div class="stat-sub">0 Highest · 3 High · 6 Med/Low</div>
         </div>
         <div class="stat-card warn">
           <div class="stat-label">Open Commitments</div>
@@ -806,7 +806,7 @@ body.show-completed tr.cc-item.completed{display:table-row;opacity:.38}
         <div class="stat-card blue">
           <div class="stat-label">Last Contact</div>
           <div class="stat-value blue" style="font-size:20px">Today</div>
-          <div class="stat-sub">Email: John → April re: iOS rollout (96.8%)</div>
+          <div class="stat-sub">Jira: SUP-10229 filed · Slack: SVS card error thread</div>
         </div>
       </div>
 
@@ -824,25 +824,23 @@ body.show-completed tr.cc-item.completed{display:table-row;opacity:.38}
         <div>
           <!-- OPEN ESCALATIONS -->
           <div class="panel" style="margin-bottom:14px">
-            <div class="panel-header"><span class="panel-title">Open Escalations</span><span class="panel-badge danger" id="pappas-esc-badge">13</span></div>
+            <div class="panel-header"><span class="panel-title">Open Escalations</span><span class="panel-badge danger" id="pappas-esc-badge">14</span></div>
             <div id="pappas-escalations" style="padding:0">
-              <div class="alert-row info"><div><strong>[Account]</strong> — iOS deployment in motion as of Jun 29 2026. ~67% of sites complete per Daniel Hasse (Yia Yia's + Sitos pushed this morning per John Y). Not a blocking issue — monitoring only.</div></div>
-              <div class="alert-row danger"><div><strong>SUP-10174</strong> — Pappasito's 03 (016) | Kitchen Printer Delays. Highest. In Progress. Age: 11 days. Updated Jun 28.</div></div>
-              <div class="alert-row warn"><div><strong>SUP-10188</strong> — Pappas HQ - Multiple Sites | ToGo KDS Stuck on White Screen. High. Accepted. Age: 8 days. Updated Jun 29.</div></div>
+              <div class="alert-row info"><div><strong>[Account]</strong> — iOS deployment in motion as of Jun 29 2026. ~67% of sites complete per Daniel Hasse. Not a blocking issue — monitoring only.</div></div>
+              <div class="alert-row warn"><div><strong>SUP-10188</strong> — Pappas HQ - Multiple Sites | ToGo KDS Stuck on White Screen. High. Accepted. Age: 9 days. Updated Jun 30.</div></div>
               <div class="alert-row warn"><div><strong>SUP-10202</strong> — Pappadeaux 04 (025) | Large Spacing Print Jobs. High. Accepted. Age: 7 days. Updated Jun 24.</div></div>
-              <div class="alert-row warn"><div><strong>SUP-8745</strong> — Pappadeaux 27 (078) | API Call Missing Order Data. High. Accepted. Waiting on new occurrence before investigation resumes. Staleness is intentional — do not flag as overdue.</div></div>
-              <div class="alert-row warn"><div><strong>MediaExchange — 2 items active (Jun 30)</strong> — Yiayia's Greek Kitchen (084) MediaExchange audit · Pappasito's 02 (012) Reward card abort.</div></div>
+              <div class="alert-row warn"><div><strong>SUP-8745</strong> — Pappadeaux 27 (078) | API Call Missing Order Data. High. Accepted. Age: 278 days. Waiting on new occurrence before investigation resumes. Staleness is intentional — do not flag as overdue.</div></div>
+              <div class="alert-row warn"><div><strong>Ingenico/Device — 1 item active (Jul 1)</strong> — Pappadeaux 12 Ingenicos unpaired from devices.</div></div>
+              <div class="alert-row warn"><div><strong>Printing — 5 items active (Jun 25–Jul 1)</strong> — Pappadeaux 10 Bar 1 printer queue · Pappadeaux 9 ToGo printer queue · Pappadeaux 7 print spooler issue · Pappadeaux 39 server reports not printing · Pappasito's 03 spooler offline (site profile).</div></div>
               <div class="alert-row warn"><div><strong>Offline Payments — 1 item active (Jun 25)</strong> — Pappadeaux 04 (025) offline payment ghost check.</div></div>
               <div class="alert-row warn"><div><strong>EOD/Tax — 1 item active (Jun 28)</strong> — Pappadeaux 20 Taxes on DoorDash Orders (follow-up thread).</div></div>
-              <div class="alert-row warn"><div><strong>Printing — 5 items active (Jun 24–25)</strong> — Pappadeaux 04 Print Formatting · Pappasito's 03 Spooler Offline · PDX 39 Server Reports not printing · PDX 7 Print Spooler Issue · Pappasito's 03 Kitchen Printer Delays follow-up.</div></div>
-              <div class="alert-row info"><div><strong>[Commitment]</strong> — Tyler replied to Cameron Richards (Jun 29): OFC 9.6.5 tracking to DEMO by Wednesday, covering dev items #336, #374, #380.</div></div>
-              <div class="alert-row info"><div><strong>[Email update]</strong> — John Ygartua to April Lozano (today): iOS 26.4.1 rollout at 96.8% success rate after latest push; repush continuing for remaining devices.</div></div>
-              <div class="alert-row info"><div><strong>[Email update]</strong> — Cameron Richards (Jun 29): "Pappas + Tabit Comp Voucher Review" — new topic, has attachment. Needs review.</div></div>
+              <div class="alert-row warn"><div><strong>[Slack]</strong> — SVS reward card activation failing with Error code 16 across multiple PAPPR test cards. Tyler Dillon and Vincente Zavala troubleshooting live (Jul 1); no TAB identified yet.</div></div>
+              <div class="alert-row info"><div><strong>SUP-10229</strong> — Pappadeaux 09 (037)/Pappadeaux 10 (040) | Printers Not Printing. Medium. New. Age: 0 days.</div></div>
               <div class="alert-row info"><div><strong>SUP-10203</strong> — Pappasito's 02 (012) | Magtek - ARQC Failed: Transaction Failed. Medium. New. Age: 7 days.</div></div>
-              <div class="alert-row info"><div><strong>SUP-10198</strong> — Yiayia's Greek Kitchen (084) | MediaExchange Order Freezing. Medium. New. Age: 7 days.</div></div>
-              <div class="alert-row info"><div><strong>SUP-10197</strong> — Pappasito's 03 (016) | Spooler Offline - Site Profile. Medium. New. Age: 7 days.</div></div>
-              <div class="alert-row info"><div><strong>SUP-10166</strong> — Pappasito's 03 (016) | Ingenico 2012 Code during Payment. Medium. Accepted. Age: 13 days.</div></div>
-              <div class="alert-row info"><div><strong>SUP-10068</strong> — Pappasito's 07 (032) | Cash Drawer Assignment Error. Medium. New. Age: 33 days.</div></div>
+              <div class="alert-row info"><div><strong>SUP-10198</strong> — Yiayia's Greek Kitchen (084) | MediaExchange Order Freezing. Medium. New. Age: 8 days.</div></div>
+              <div class="alert-row info"><div><strong>SUP-10197</strong> — Pappasito's 03 (016) | Spooler Offline - Site Profile. Medium. New. Age: 8 days. Updated Jul 1.</div></div>
+              <div class="alert-row info"><div><strong>SUP-10166</strong> — Pappasito's 03 (016) | Ingenico 2012 Code during Payment. Medium. Accepted. Age: 14 days.</div></div>
+              <div style="padding:8px 14px;font-size:11px;color:var(--muted);border-top:1px solid var(--border)">1 additional item tracked (SUP-10068, Medium)</div>
             </div>
           </div>
           <!-- COMMITMENTS: US -->
@@ -1014,7 +1012,7 @@ body.show-completed tr.cc-item.completed{display:table-row;opacity:.38}
           </div>
         </div>
         <div style="padding:10px 16px;border-top:1px solid var(--border);font-family:var(--mono);font-size:10px;color:var(--muted)">
-          Slack: <span style="color:var(--accent)">#prj-pappas-ops-n-support</span> &nbsp;·&nbsp; Jira refs: <span style="color:var(--accent)">PRI</span> or <span style="color:var(--accent)">Pappas</span> &nbsp;·&nbsp; Monday: <span style="color:var(--accent)">PRI Support</span> (9079142933) &nbsp;·&nbsp; <span style="color:var(--accent)">Pappas TABs</span> (18410953571) &nbsp;·&nbsp; <span style="color:var(--accent)">Pappas | Roll Out</span> (8752028456) &nbsp;·&nbsp; Last refreshed: <span id="pappas-last-refreshed" style="color:var(--accent2)">Jun 30 2026</span>
+          Slack: <span style="color:var(--accent)">#prj-pappas-ops-n-support</span> &nbsp;·&nbsp; Jira refs: <span style="color:var(--accent)">PRI</span> or <span style="color:var(--accent)">Pappas</span> &nbsp;·&nbsp; Monday: <span style="color:var(--accent)">PRI Support</span> (9079142933) &nbsp;·&nbsp; <span style="color:var(--accent)">Pappas TABs</span> (18410953571) &nbsp;·&nbsp; <span style="color:var(--accent)">Pappas | Roll Out</span> (8752028456) &nbsp;·&nbsp; Last refreshed: <span id="pappas-last-refreshed" style="color:var(--accent2)">Jul 1 2026</span>
         </div>
       </div>
     </div><!-- /page-kam-pappas -->
@@ -1034,7 +1032,7 @@ body.show-completed tr.cc-item.completed{display:table-row;opacity:.38}
         <div class="stat-card green">
           <div class="stat-label">Health Score</div>
           <div class="stat-value green">STABLE</div>
-          <div class="stat-sub">No open Jira tickets · verified Jun 30 2026</div>
+          <div class="stat-sub">No open Jira tickets · verified Jul 1 2026</div>
         </div>
         <div class="stat-card blue">
           <div class="stat-label">Open SUP Tickets</div>
@@ -1049,7 +1047,7 @@ body.show-completed tr.cc-item.completed{display:table-row;opacity:.38}
         <div class="stat-card warn">
           <div class="stat-label">Last Contact</div>
           <div class="stat-value warn" style="font-size:20px">Feb 2026</div>
-          <div class="stat-sub">No Jira or email activity · verified Jun 30 2026</div>
+          <div class="stat-sub">No Jira or email activity · verified Jul 1 2026</div>
         </div>
       </div>
 
