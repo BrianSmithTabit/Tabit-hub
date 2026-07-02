@@ -203,22 +203,22 @@ body.show-completed tr.cc-item.completed{display:table-row;opacity:.38}
       <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px">
         <div>
           <div style="font-size:18px;font-weight:700;letter-spacing:-.02em">Command Center</div>
-          <div style="font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:3px">Thursday, July 02 2026 (afternoon refresh) &nbsp;&middot;&nbsp; Sources: Slack &middot; Jira &middot; Monday.com &middot; Zoom &middot; Outlook (down)</div>
+          <div style="font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:3px">Thursday, July 02 2026 (Outlook reconnected) &nbsp;&middot;&nbsp; Sources: Slack &middot; Jira &middot; Monday.com &middot; Zoom &middot; Outlook (back online)</div>
         </div>
         <div style="display:flex;align-items:center;gap:8px">
           <a id="cc-dl-btn" href='data:application/json,{"version":1,"items":[]}' download="completions.json" style="font-family:var(--mono);font-size:10px;color:var(--muted);text-decoration:none;padding:4px 8px;border:1px solid var(--border);border-radius:3px;display:none">Download blank</a>
           <button class="cc-conn-btn" id="cc-conn-btn" onclick="connectCompletionsFile()">Connect completions.json</button>
           <button class="cc-show-btn" id="cc-show-btn" onclick="toggleShowCompleted()">Show completed</button>
-          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);text-align:right">Last run: today, afternoon refresh<br><span id="cc-file-status"></span></div>
+          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);text-align:right">Last run: today, Outlook refresh<br><span id="cc-file-status"></span></div>
         </div>
       </div>
 
       <!-- STAT CARDS -->
       <div class="grid-4" style="margin-bottom:20px">
-        <div class="stat-card danger"><div class="stat-label">Questions Overdue</div><div class="stat-value danger">7</div><div class="stat-sub">Unanswered &gt;48h or today</div></div>
-        <div class="stat-card danger"><div class="stat-label">Escalations Flagged</div><div class="stat-value danger">9</div><div class="stat-sub">Stale / unassigned / vendor</div></div>
+        <div class="stat-card danger"><div class="stat-label">Questions Overdue</div><div class="stat-value danger">8</div><div class="stat-sub">Unanswered &gt;48h or today</div></div>
+        <div class="stat-card danger"><div class="stat-label">Escalations Flagged</div><div class="stat-value danger">11</div><div class="stat-sub">Stale / unassigned / vendor</div></div>
         <div class="stat-card warn"><div class="stat-label">Uncaptured Commits</div><div class="stat-value warn">9</div><div class="stat-sub">From Zoom &mdash; no system record</div></div>
-        <div class="stat-card warn"><div class="stat-label">At Risk Items</div><div class="stat-value warn">6</div><div class="stat-sub">Likely to fall through cracks</div></div>
+        <div class="stat-card warn"><div class="stat-label">At Risk Items</div><div class="stat-value warn">7</div><div class="stat-sub">Likely to fall through cracks</div></div>
       </div>
 
       <div style="font-family:var(--mono);font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:.12em;margin-bottom:8px">We Have Seen This Before</div>
@@ -330,7 +330,17 @@ body.show-completed tr.cc-item.completed{display:table-row;opacity:.38}
 
       <!-- IMMEDIATE ATTENTION — QUESTIONS OWED BY BRIAN -->
       <div class="panel" style="margin-bottom:16px">
-        <div class="panel-header"><span class="panel-title">Immediate Attention &mdash; Questions Owed By Brian</span><span class="panel-badge danger">7 items</span></div>
+        <div class="panel-header"><span class="panel-title">Immediate Attention &mdash; Questions Owed By Brian</span><span class="panel-badge danger">8 items</span></div>
+        <div class="alert-row cc-item" data-item-id="q-mscashdrawer-invoice">
+          <input type="checkbox" class="cc-chk" onchange="toggleCompletion('q-mscashdrawer-invoice',this.checked)">
+          <div style="flex:1"><strong>MS Cash Drawer (jbrewer)</strong> &mdash; asking about a $1,074 evaluation invoice open on the Tabit account; cc'd us-accounting
+          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Email &middot; Jul 2, 16:28 &middot; <strong style="color:var(--danger)">Unanswered &mdash; Brian's replies today covered a separate unit-return question, not this</strong></div></div>
+        </div>
+        <div class="alert-row cc-item" data-item-id="q-cameron-comp-voucher-invite">
+          <input type="checkbox" class="cc-chk" onchange="toggleCompletion('q-cameron-comp-voucher-invite',this.checked)">
+          <div style="flex:1"><strong>Cameron Richards</strong> &mdash; sent a "Pappas + Tabit Comp Voucher Review" meeting invite (this is the #308 answer) &mdash; still unread
+          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Email invite &middot; Jul 1, 16:58 &middot; <strong style="color:var(--danger)">Accept and prep &mdash; don't let this look like a dropped #308 again</strong></div></div>
+        </div>
         <div class="alert-row cc-item" data-item-id="q-tony-sup10237-bp-review">
           <input type="checkbox" class="cc-chk" onchange="toggleCompletion('q-tony-sup10237-bp-review',this.checked)">
           <div style="flex:1"><strong>Tony Medlin</strong> &mdash; <a href="https://tabitros.atlassian.net/browse/SUP-10237" target="_blank" class="key-link">SUP-10237</a> Nathan's Famous: payment failed on an order, site wants to run EOD, asking Brian to review and likely delete the stuck business process
@@ -344,7 +354,7 @@ body.show-completed tr.cc-item.completed{display:table-row;opacity:.38}
         <div class="alert-row cc-item" data-item-id="q-april-pci-audit">
           <input type="checkbox" class="cc-chk" onchange="toggleCompletion('q-april-pci-audit',this.checked)">
           <div style="flex:1"><strong>April / Casey / Tyler</strong> &mdash; can Magensa support a PCI serial-number audit for payment devices?
-          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Email (carried, unverified &mdash; Outlook down) &middot; Jun 30 &middot; <strong style="color:var(--danger)">OVERDUE</strong></div></div>
+          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Email (carried, unrelated to the #308 thread &mdash; no Outlook evidence either way this pass) &middot; Jun 30 &middot; <strong style="color:var(--danger)">OVERDUE</strong></div></div>
         </div>
         <div class="alert-row cc-item" data-item-id="q-casey-hotel-settings-access">
           <input type="checkbox" class="cc-chk" onchange="toggleCompletion('q-casey-hotel-settings-access',this.checked)">
@@ -361,12 +371,8 @@ body.show-completed tr.cc-item.completed{display:table-row;opacity:.38}
           <div style="flex:1"><strong>Jessica Dickinson</strong> &mdash; "what was the urgent issue at the crabhouses?"
           <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Slack DM &middot; Jul 1, 13:26 MDT &middot; <strong style="color:var(--danger)">Reply today</strong></div></div>
         </div>
-        <div class="alert-row cc-item" data-item-id="q-cameron-pappas-wants-needs">
-          <input type="checkbox" class="cc-chk" onchange="toggleCompletion('q-cameron-pappas-wants-needs',this.checked)">
-          <div style="flex:1"><strong>Cameron Richards</strong> &mdash; month-end check-in on #336/#374/#380/#308. #336 and #374 now validated in DEMO per Tyler; #380 awaits Liz Benavides; #308 still unknown.
-          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Email (carried, unverified &mdash; Outlook down) &middot; Jun 26 &middot; <strong style="color:var(--danger)">Close the loop once #308/#380 confirm</strong></div></div>
-        </div>
       </div>
+      <div style="font-family:var(--mono);font-size:10px;color:var(--accent2);padding:0 4px 12px">RESOLVED &mdash; Cameron Richards month-end check-in (#308/#336/#374/#380) is no longer an open question. See the resolution block in Support Escalations below; Outlook had the answers once reconnected.</div>
 
       <!-- SUPPORT ESCALATIONS — HIGHEST PRIORITY -->
       <div class="panel" style="margin-bottom:16px">
@@ -377,6 +383,14 @@ body.show-completed tr.cc-item.completed{display:table-row;opacity:.38}
           <a href="https://tabitros.atlassian.net/browse/SUP-10214" target="_blank" class="key-link">SUP-10214</a> (Little Rey Vandy, Chad Shankman) &middot;
           <a href="https://tabitros.atlassian.net/browse/SUP-10237" target="_blank" class="key-link">SUP-10237</a> (Nathan's Famous, Brian-assigned)
           <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">All touched today &middot; <strong style="color:var(--danger)">Same symptom, 3 unrelated brands &mdash; check shared root cause before treating as isolated</strong></div></div>
+        </div>
+        <div class="alert-row warn">
+          <div style="flex:1"><strong>Pappas #308/#336/#380 &mdash; resolved via Outlook (Jul 1 thread)</strong>: #374 done (Cameron tested, "looks great"); #380 waiting on Ken Wood; <strong style="color:var(--danger)">#336 NOT actually done</strong> &mdash; logo removed from text receipt but still shows on the email digital receipt; #308 was never dropped &mdash; Tyler proposed a Comp Vouchers module review and Cameron sent a meeting invite (still unread).
+          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Email &middot; Jul 1 &middot; <strong style="color:var(--warn)">Fix #336's email receipt, accept the Comp Voucher meeting</strong></div></div>
+        </div>
+        <div class="alert-row warn">
+          <div style="flex:1"><strong>New bug &mdash; Magensa partial refunds can exceed order total</strong> (Kathleen Rubin/Tyler test results). Dror requesting 2 more tests before escalating to Magensa.
+          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Email &middot; Jul 2 &middot; <strong style="color:var(--warn)">Same Magensa integration as the Caravan Court root cause &mdash; watch</strong></div></div>
         </div>
         <div class="alert-row">
           <div style="flex:1"><a href="https://tabitros.atlassian.net/browse/SUP-10202" target="_blank" class="key-link">SUP-10202</a> &nbsp; <strong>Pappadeaux 04</strong> &mdash; Large Spacing Print Jobs
@@ -456,15 +470,17 @@ body.show-completed tr.cc-item.completed{display:table-row;opacity:.38}
 
       <!-- COMMITMENTS DUE -->
       <div class="panel" style="margin-bottom:16px">
-        <div class="panel-header"><span class="panel-title">Commitments Due</span><span class="panel-badge warn">3 items</span></div>
+        <div class="panel-header"><span class="panel-title">Commitments Due</span><span class="panel-badge warn">4 items</span></div>
         <table class="p-table" style="width:100%">
           <thead><tr><th>Commitment</th><th>To</th><th>Source</th><th>Flag</th></tr></thead>
           <tbody>
             <tr><td>Review/delete stuck BP on SUP-10237 so Nathan's Famous can run EOD</td><td>Tony Medlin</td><td>Slack, Jul 2 09:49</td><td><strong style="color:var(--danger)">DUE TODAY</strong></td></tr>
-            <tr><td>Finalize new iPad pricing across the price book after Apple's cost increase</td><td>Grant Ewing / Casey Grant / Michael Salazar</td><td>Slack, Jul 1</td><td><strong style="color:var(--danger)">DUE TODAY</strong></td></tr>
+            <tr><td>Fix #336 &mdash; logo still on email digital receipt (text receipt already fixed)</td><td>Cameron Richards / Pappas</td><td>Email, Jul 1 16:31</td><td><strong style="color:var(--danger)">NEW</strong></td></tr>
+            <tr><td>Answer MS Cash Drawer's $1,074 evaluation invoice question</td><td>jbrewer@mscashdrawer.com</td><td>Email, Jul 2 16:28</td><td><strong style="color:var(--danger)">NEW, unanswered</strong></td></tr>
             <tr><td>Reconnect with Spencer Lubin re: Loyalty Manager intro</td><td>Spencer Lubin</td><td>Carried, Jun 30</td><td><span class="reason-text">Unverified &mdash; check if it happened</span></td></tr>
           </tbody>
         </table>
+        <div class="alert-row info" style="margin-top:0"><div style="flex:1"><strong>Done, not owed anymore:</strong> iPad pricing &mdash; Brian sent the pricing email 14:53 today, Etai approved 14:56. Price books still need updating by the team.</div></div>
       </div>
 
       <!-- WAITING ON OTHERS -->
@@ -477,11 +493,13 @@ body.show-completed tr.cc-item.completed{display:table-row;opacity:.38}
         <div style="padding:10px 18px 4px;font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;font-family:var(--mono)">Customers</div>
         <div class="alert-row info"><div style="flex:1">Cameron Richards (Pappas) &mdash; owed confirmation on #308 and final #380 delivery; can't verify without Outlook</div></div>
         <div style="padding:10px 18px 4px;font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;font-family:var(--mono)">Vendors</div>
-        <div class="alert-row info"><div style="flex:1">MTech &mdash; smartbox root-cause report, originally due Jun 25 EOB, can't reverify without Outlook</div></div>
-        <div class="alert-row info"><div style="flex:1">MagTek &mdash; PO-US-000177 (1000+ devices) still outstanding</div></div>
+        <div class="alert-row info"><div style="flex:1">MTech &mdash; Bob Tucker committed to an EOD update today (Jul 2) on smartbox/test-unit timeline after meeting with MTech engineering this morning</div></div>
+        <div class="alert-row info"><div style="flex:1">MagTek &mdash; RMA 6017697 (31 units) confirmed processed Jul 1; PO-US-000177 (1000+ devices) still outstanding</div></div>
+        <div class="alert-row info"><div style="flex:1">MS Cash Drawer &mdash; unanswered $1,074 evaluation invoice question (see Commitments Due)</div></div>
         <div style="padding:10px 18px 4px;font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;font-family:var(--mono)">Internal</div>
         <div class="alert-row info"><div style="flex:1">Carolina Giangreco &mdash; owes Brian a photo/details for the Zips &amp; Goldies labor % chit request</div></div>
         <div class="alert-row info"><div style="flex:1">Casey Grant &mdash; April's 25-unit MagTek Hub shipment confirmation, unconfirmed 15+ days</div></div>
+        <div class="alert-row info"><div style="flex:1">Dror/Kathleen/Tyler &mdash; running 2 more Magensa partial-refund tests before escalating the over-refund bug to Magensa</div></div>
       </div>
 
       <!-- UPCOMING COMMITMENTS -->
@@ -503,13 +521,15 @@ body.show-completed tr.cc-item.completed{display:table-row;opacity:.38}
 
       <!-- THINGS LIKELY TO FALL THROUGH THE CRACKS -->
       <div class="panel" style="margin-bottom:16px">
-        <div class="panel-header"><span class="panel-title">Things Likely To Fall Through The Cracks</span><span class="panel-badge warn">6 items</span></div>
+        <div class="panel-header"><span class="panel-title">Things Likely To Fall Through The Cracks</span><span class="panel-badge warn">7 items</span></div>
         <div class="alert-row warn"><div style="flex:1">1. New OTC-close-failure cluster (SUP-10213/10214/10237) &mdash; three separate assignees/sites, no shared investigation opened</div></div>
-        <div class="alert-row warn"><div style="flex:1">2. Three new Zoom commitments from today's Product Enhancement Review &mdash; captured now, easy to lose without a tracking ticket</div></div>
-        <div class="alert-row warn"><div style="flex:1">3. SUP-10197 (Pappasito's 03 spooler) has an active engineering escalation but no TAB ticket</div></div>
-        <div class="alert-row warn"><div style="flex:1">4. Casey Grant's hotel-settings permissions question &mdash; small, blocks a real access decision</div></div>
-        <div class="alert-row warn"><div style="flex:1">5. Chimichurri churn decision (Dave/Carolina, asked Jun 25) &mdash; still no reply after a week</div></div>
-        <div class="alert-row warn"><div style="flex:1">6. Six legacy Zoom-sourced commitments have no verifiable content while Outlook stays down &mdash; risk of going permanently stale</div></div>
+        <div class="alert-row warn"><div style="flex:1">2. #336's email-receipt logo is still broken &mdash; easy to assume it's done since the text-receipt fix shipped and DEMO validated it</div></div>
+        <div class="alert-row warn"><div style="flex:1">3. "Pappas + Tabit Comp Voucher Review" invite is unread &mdash; if it slips today it'll look like #308 got dropped again, when it's actually already scheduled</div></div>
+        <div class="alert-row warn"><div style="flex:1">4. Three new Zoom commitments from today's Product Enhancement Review &mdash; captured now, easy to lose without a tracking ticket</div></div>
+        <div class="alert-row warn"><div style="flex:1">5. SUP-10197 (Pappasito's 03 spooler) has an active engineering escalation but no TAB ticket</div></div>
+        <div class="alert-row warn"><div style="flex:1">6. Casey Grant's hotel-settings permissions question &mdash; small, blocks a real access decision</div></div>
+        <div class="alert-row warn"><div style="flex:1">7. Five legacy Zoom-sourced commitments still have no verifiable content &mdash; Outlook is back but zero Zoom AI Companion emails were found in the last 7 days, so this gap doesn't close on its own</div></div>
+        <div style="font-family:var(--mono);font-size:10px;color:var(--accent2);padding:8px 18px 4px">Corrected: Chimichurri churn decision was NOT still open &mdash; Brian deactivated Chimichurri Kitchen Carl Place (+4 other sites) on Jun 30. The earlier "no reply after a week" note was stale, carried forward without Outlook to check against.</div>
       </div>
 
       <!-- KNOWLEDGE OPPORTUNITIES -->
