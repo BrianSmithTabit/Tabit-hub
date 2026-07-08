@@ -164,6 +164,7 @@ body.show-completed tr.cc-item.completed{display:table-row;opacity:.38}
     <div class="nav-item" onclick="navigate('tabreport',this)"><span class="nav-icon">📋</span>TAB Report</div>
     <div class="sb-section">Reporting</div>
     <div class="nav-item" onclick="navigate('leadership',this)"><span class="nav-icon">📊</span>Leadership View</div>
+    <div class="nav-item" onclick="navigate('reporting-issues',this)"><span class="nav-icon">⚠️</span>Reporting Issues<span class="nav-badge" style="background:rgba(255,77,109,.15);color:#ff7a90;border-color:rgba(255,77,109,.3)">4 open</span></div>
     <div class="sb-section">Brian OS</div>
     <div class="nav-item" onclick="navigate('command-center',this)"><span class="nav-icon">🧠</span>Command Center<span class="nav-badge" id="cc-badge" style="background:rgba(255,77,109,.15);color:#ff7a90;border-color:rgba(255,77,109,.3)">7</span></div>
     <div class="nav-item" onclick="navigate('org-memory',this)"><span class="nav-icon">🗂️</span>Org Memory</div>
@@ -746,6 +747,127 @@ body.show-completed tr.cc-item.completed{display:table-row;opacity:.38}
 
     </div><!-- /page-org-memory -->
 
+    <!-- ── REPORTING ISSUES ─────────────────────────────────────── -->
+    <div class="page" id="page-reporting-issues">
+
+      <!-- HEADER -->
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px">
+        <div>
+          <div style="font-size:18px;font-weight:700;letter-spacing:-.02em">Reporting Issues &mdash; BI &amp; Chef</div>
+          <div style="font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:3px">Systemic pattern &nbsp;&middot;&nbsp; 2026 YTD analysis &nbsp;&middot;&nbsp; Escalation sent Jun 25, 2026 &nbsp;&middot;&nbsp; Audience: Hadar, Nadav, Gabby, Dror, Tyler</div>
+        </div>
+        <div style="font-family:var(--mono);font-size:10px;color:var(--muted);text-align:right">Last updated: Jul 8, 2026</div>
+      </div>
+
+      <!-- STAT BAR -->
+      <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--border);border-radius:6px;overflow:hidden;margin-bottom:20px">
+        <div class="stat-card danger" style="border-radius:0;margin:0"><div class="stat-label">2026 YTD Tickets</div><div class="stat-value danger">20</div><div class="stat-sub">BI &amp; Chef work type</div></div>
+        <div class="stat-card warn" style="border-radius:0;margin:0"><div class="stat-label">Still Open</div><div class="stat-value warn">4</div><div class="stat-sub">As of Jun 25</div></div>
+        <div class="stat-card danger" style="border-radius:0;margin:0"><div class="stat-label">Prior Linked SUPs</div><div class="stat-value danger">13+</div><div class="stat-sub">Pre-2026 on order-missing alone</div></div>
+        <div class="stat-card warn" style="border-radius:0;margin:0"><div class="stat-label">Total Incidents</div><div class="stat-value warn">17+</div><div class="stat-sub">Order-missing pattern only</div></div>
+        <div class="stat-card" style="border-radius:0;margin:0"><div class="stat-label">Fix Method</div><div class="stat-value" style="font-size:14px;color:var(--warn)">Manual Reprocess</div><div class="stat-sub">Every single closed ticket</div></div>
+      </div>
+
+      <!-- KEY FINDING -->
+      <div style="padding:14px 18px;background:rgba(255,77,109,.06);border:1px solid rgba(255,77,109,.25);border-radius:6px;margin-bottom:20px">
+        <div style="font-family:var(--mono);font-size:9px;color:var(--danger);text-transform:uppercase;letter-spacing:.12em;margin-bottom:6px">The Core Problem</div>
+        <div style="font-size:13px;line-height:1.6">Every ticket in this pattern has been closed the same way — <strong>Hadar manually reprocesses the transaction or data cube, the data corrects, the ticket closes, no code changes</strong>. The next site hits the same thing weeks later and we start over. On the most recent case (SUP-9924, Jun 25), Hadar&rsquo;s own assessment: <em style="color:var(--danger)">&ldquo;I do not know why it happened.&rdquo;</em></div>
+      </div>
+
+      <!-- TWO COLUMN LAYOUT -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px">
+
+        <!-- SUB-PATTERN BREAKDOWN -->
+        <div class="panel" style="margin-bottom:0">
+          <div class="panel-header"><span class="panel-title">2026 YTD — 20 Tickets by Sub-Pattern</span></div>
+          <table class="p-table" style="width:100%">
+            <thead><tr><th>Sub-Pattern</th><th style="text-align:center">Count</th><th>Open?</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Orders missing from BI / DSR</strong></td><td style="text-align:center;font-weight:700;color:var(--danger)">4</td><td><a href="https://tabitros.atlassian.net/browse/SUP-9924" target="_blank" class="key-link">SUP-9924</a> open</td></tr>
+              <tr><td>Tip / tax amounts wrong in BI</td><td style="text-align:center">4</td><td style="color:var(--muted)">All closed by reprocess</td></tr>
+              <tr><td>Chef labor / scheduling data wrong</td><td style="text-align:center">4</td><td><a href="https://tabitros.atlassian.net/browse/SUP-10170" target="_blank" class="key-link">SUP-10170</a> open</td></tr>
+              <tr><td>EOD emails / daily summary not loading</td><td style="text-align:center">3</td><td style="color:var(--muted)">All closed</td></tr>
+              <tr><td>DSR vs Payments Report discrepancy</td><td style="text-align:center">2</td><td><a href="https://tabitros.atlassian.net/browse/SUP-9861" target="_blank" class="key-link">SUP-9861</a> &middot; <a href="https://tabitros.atlassian.net/browse/SUP-10146" target="_blank" class="key-link">SUP-10146</a></td></tr>
+              <tr><td>Undefined items in reporting</td><td style="text-align:center">2</td><td><a href="https://tabitros.atlassian.net/browse/SUP-9800" target="_blank" class="key-link">SUP-9800</a> open</td></tr>
+              <tr><td>Chef / BI data integrity (past years, tax rate)</td><td style="text-align:center">2</td><td style="color:var(--muted)">Closed (1 was Highest)</td></tr>
+              <tr style="border-top:2px solid var(--border);font-weight:700"><td>Total</td><td style="text-align:center">21</td><td style="color:var(--warn)">4 open</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- SECOND ISSUE: PERFORMANCE -->
+        <div class="panel" style="margin-bottom:0">
+          <div class="panel-header"><span class="panel-title">Related Issue — Report Performance (Large Data Pulls)</span><span class="panel-badge warn">Ongoing</span></div>
+          <div style="padding:10px 18px;font-size:12px;color:var(--muted);border-bottom:1px solid var(--border)">Separate but related — customers cannot pull large date ranges without timeouts or failures.</div>
+          <div class="alert-row warn"><div style="flex:1"><strong>Boatyard &amp; Yolo</strong> — Both unable to pull a single month of data at once<div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:2px">Most recent known cases &middot; No active SUPs filed as of Jul 8</div></div></div>
+          <div class="alert-row warn"><div style="flex:1"><strong>DSR Full Year</strong> — Running a DSR for a full year is rarely achievable for any customer<div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:2px">Affects any customer trying to do annual trend analysis or year-end reporting</div></div></div>
+          <div style="padding:10px 18px;font-size:12px;border-top:1px solid var(--border)"><strong style="color:var(--warn)">Impact:</strong> Customers manually break reports into smaller chunks, undermining BI&rsquo;s value for trend analysis and annual reviews entirely.</div>
+        </div>
+      </div>
+
+      <!-- OPEN TICKETS -->
+      <div class="panel" style="margin-bottom:16px">
+        <div class="panel-header"><span class="panel-title">Active Open Tickets</span><span class="panel-badge danger">4 open</span></div>
+
+        <div class="alert-row warn">
+          <div style="flex:1"><a href="https://tabitros.atlassian.net/browse/SUP-9924" target="_blank" class="key-link">SUP-9924</a> &nbsp;<strong>Cattle Baron 7 &mdash; El Paso</strong> &mdash; Order Missing from DSR / BI [Low]
+          <div style="font-size:11px;color:var(--muted);margin-top:2px">The anchor case. Linked to 13 prior SUPs going back to SUP-5665. Each closed by reprocess. Hadar Jun 25: <em>&ldquo;I do not know why it happened.&rdquo;</em></div>
+          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Status: Support &middot; Assigned: Brian &middot; Updated: Jun 25 &middot; <strong style="color:var(--danger)">17+ TOTAL INCIDENTS — no root cause ever identified</strong></div></div>
+        </div>
+
+        <div class="alert-row">
+          <div style="flex:1"><a href="https://tabitros.atlassian.net/browse/SUP-9800" target="_blank" class="key-link">SUP-9800</a> &nbsp;<strong>Dog and Duck Park West</strong> &mdash; Undefined Item in Reporting [High]
+          <div style="font-size:11px;color:var(--muted);margin-top:2px">~$9 undefined items appear in reports then self-correct after 1&ndash;2 days. Also hit Gianni&rsquo;s Versace (SUP-10104, Jun 5). No reproduction path.</div>
+          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Status: Accepted &middot; Assignee: Hadar &middot; <strong style="color:var(--warn)">Oldest active — opened Apr 6, 2026</strong></div></div>
+        </div>
+
+        <div class="alert-row">
+          <div style="flex:1"><a href="https://tabitros.atlassian.net/browse/SUP-9861" target="_blank" class="key-link">SUP-9861</a> &nbsp;<strong>Peppercrust Steakhouse</strong> &mdash; House Account Refund DSR Discrepancy [Medium]
+          <div style="font-size:11px;color:var(--muted);margin-top:2px">$1,250 gap between DSR and Payments Report. DSR shows double-negative on House Account refund. Reproducible in PROD and Sandbox. Partner workaround only.</div>
+          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Status: Accepted &middot; Assignee: Hadar &middot; <strong style="color:var(--danger)">STALE 67 DAYS — reproducible, no fix path</strong></div></div>
+        </div>
+
+        <div class="alert-row">
+          <div style="flex:1"><a href="https://tabitros.atlassian.net/browse/SUP-10146" target="_blank" class="key-link">SUP-10146</a> &nbsp;<strong>Roast Coffee House ATL Airport B</strong> &mdash; 15 Orders Missing, $255 Gap [Low]
+          <div style="font-size:11px;color:var(--muted);margin-top:2px">DSR $8,176.73 vs BI $7,921.43. Hadar reprocessed. Tony asked for root cause Jun 18 — no answer as of Jun 25. Same failure mode as SUP-9924 cluster.</div>
+          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Status: Support &middot; Assigned: Brian &middot; Updated: Jun 23 &middot; <strong style="color:var(--warn)">Root cause unanswered</strong></div></div>
+        </div>
+
+        <div class="alert-row">
+          <div style="flex:1"><a href="https://tabitros.atlassian.net/browse/SUP-10170" target="_blank" class="key-link">SUP-10170</a> &nbsp;<strong>Billy&rsquo;s Stone Crab</strong> &mdash; Chef Daily Labor Cost Missing on First Weekday [Medium]
+          <div style="font-size:11px;color:var(--muted);margin-top:2px">Fixed Wage employees missing from Day view on first weekday. Previously filed as SUP-6373. TAB-39509 in dev backlog — zero movement since Oct 2024.</div>
+          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Status: Accepted &middot; Assignee: Hadar &middot; <strong style="color:var(--warn)">TAB-39509 stalled 8+ months — needs dev escalation</strong></div></div>
+        </div>
+      </div>
+
+      <!-- RECENTLY CLOSED — PATTERN CONTEXT -->
+      <div class="panel" style="margin-bottom:16px">
+        <div class="panel-header"><span class="panel-title">Recently Closed &mdash; Pattern Context</span><span class="panel-badge" style="color:var(--muted)">All closed by reprocess</span></div>
+        <table class="p-table" style="width:100%">
+          <thead><tr><th>SUP</th><th>Site</th><th>Issue</th><th>Priority</th><th>Closed By</th></tr></thead>
+          <tbody>
+            <tr><td><a href="https://tabitros.atlassian.net/browse/SUP-10200" target="_blank" class="key-link">SUP-10200</a></td><td>Pappadeaux 39 (081)</td><td>BI Tax Discrepancy — tax duplicated in DB</td><td>Medium</td><td style="color:var(--muted)">Reprocess Jun 25 — root cause unknown</td></tr>
+            <tr><td><a href="https://tabitros.atlassian.net/browse/SUP-9939" target="_blank" class="key-link">SUP-9939</a></td><td>Multiple Sites</td><td>Tax Rate Data Unavailable for May in BI</td><td style="color:var(--danger);font-weight:700">Highest</td><td style="color:var(--muted)">Reprocess May — root cause unknown</td></tr>
+            <tr><td><a href="https://tabitros.atlassian.net/browse/SUP-9936" target="_blank" class="key-link">SUP-9936</a></td><td>Multiple Sites</td><td>Tabit Chef Past Years Data Wrong</td><td style="color:var(--danger);font-weight:700">Highest</td><td style="color:var(--muted)">Closed May — method unknown</td></tr>
+            <tr><td><a href="https://tabitros.atlassian.net/browse/SUP-10104" target="_blank" class="key-link">SUP-10104</a></td><td>Gianni&rsquo;s Versace Restaurant</td><td>Undefined Items in Reporting</td><td>High</td><td style="color:var(--muted)">Closed Jun 5 — self-corrected</td></tr>
+            <tr><td><a href="https://tabitros.atlassian.net/browse/SUP-9892" target="_blank" class="key-link">SUP-9892</a></td><td>Tabit US</td><td>Refunded Tips on Reporting</td><td>Medium</td><td style="color:var(--muted)">Closed Apr — method unknown</td></tr>
+            <tr><td><a href="https://tabitros.atlassian.net/browse/SUP-9488" target="_blank" class="key-link">SUP-9488</a></td><td>Stones Thrown</td><td>Tip Amount Missing in BI / DSR</td><td>High</td><td style="color:var(--muted)">Closed Feb — method unknown</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- THE ASK -->
+      <div class="panel" style="margin-bottom:16px">
+        <div class="panel-header"><span class="panel-title">The Ask — What We Need from Dev &amp; Product</span></div>
+        <div class="alert-row danger"><div style="flex:1"><strong>1. Open a dedicated investigation TAB ticket</strong> — Not another site-specific SUP. Scope: <em>Why do orders and transactions fail to write correctly to BI / the data cube, and under what conditions does it happen?</em></div></div>
+        <div class="alert-row warn"><div style="flex:1"><strong>2. Hadar documents reprocess steps</strong> on every future occurrence — build a pattern around trigger conditions: version, order source, payment method, PAD behavior, time of day.</div></div>
+        <div class="alert-row warn"><div style="flex:1"><strong>3. No more closing tickets without a documented hypothesis</strong> — if root cause is unknown, ticket stays open or links to the investigation bug.</div></div>
+        <div class="alert-row warn"><div style="flex:1"><strong>4. Commit to a fix path</strong> — pipeline reliability improvement, data validation layer, retry mechanism, or something else. <strong style="color:var(--danger)">Manual reprocess is not a product.</strong></div></div>
+        <div class="alert-row"><div style="flex:1"><strong>5. Address report performance separately</strong> — Customers unable to pull a single month of data (Boatyard, Yolo). Running a full-year DSR is rarely achievable for anyone. This needs a scoped performance investigation alongside the data integrity work.</div></div>
+      </div>
+
+    </div><!-- /page-reporting-issues -->
+
     <!-- ── KAM: PAPPAS ──────────────────────────────────────────── -->
     <div class="page" id="page-kam-pappas">
       <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px">
@@ -1189,8 +1311,8 @@ const TICKETS = [{key:"SUP-10188",summary:"Pappas HQ - Multiple Sites | ToGo KDS
 
 // ── NAV ───────────────────────────────────────────────────────────
 function navigate(key, el) {
-  const map = {'sup-queue':'page-sup-queue','features':'page-features','leadership':'page-leadership','tabreport':'page-tabreport','command-center':'page-command-center','org-memory':'page-org-memory','kam-pappas':'page-kam-pappas','kam-concessions':'page-kam-concessions'};
-  const titles = {'sup-queue':'SUP Queue Analysis','features':'TAB Priority','leadership':'Leadership View','tabreport':'TAB Report','command-center':'Command Center','org-memory':'Org Memory','kam-pappas':'Pappas — Key Account Intelligence','kam-concessions':'Concessions INTL — Key Account Intelligence'};
+  const map = {'sup-queue':'page-sup-queue','features':'page-features','leadership':'page-leadership','tabreport':'page-tabreport','command-center':'page-command-center','org-memory':'page-org-memory','kam-pappas':'page-kam-pappas','kam-concessions':'page-kam-concessions','reporting-issues':'page-reporting-issues'};
+  const titles = {'sup-queue':'SUP Queue Analysis','features':'TAB Priority','leadership':'Leadership View','tabreport':'TAB Report','command-center':'Command Center','org-memory':'Org Memory','kam-pappas':'Pappas — Key Account Intelligence','kam-concessions':'Concessions INTL — Key Account Intelligence','reporting-issues':'Reporting Issues — BI & Chef'};
   document.getElementById('topbar-title').textContent = titles[key] || key;
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
