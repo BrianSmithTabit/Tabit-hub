@@ -200,175 +200,108 @@ body.show-completed tr.cc-item.completed{display:table-row;opacity:.38}
 
     <div class="page" id="page-command-center">
 <!-- CC-DATA-START -->
+
       <!-- HEADER BAR -->
       <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px">
         <div>
           <div style="font-size:18px;font-weight:700;letter-spacing:-.02em">Command Center</div>
-          <div style="font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:3px">Monday, July 06 2026 &nbsp;&middot;&nbsp; Sources: Slack &middot; Outlook &middot; Jira &middot; Monday.com &middot; Zoom &middot; Calendar</div>
+          <div style="font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:3px">Wednesday, July 08 2026 &nbsp;&middot;&nbsp; Sources: Slack &middot; Outlook &middot; Jira &middot; Monday.com &middot; Zoom &middot; Calendar</div>
         </div>
         <div style="display:flex;align-items:center;gap:8px">
           <a id="cc-dl-btn" href='data:application/json,{"version":1,"items":[]}' download="completions.json" style="font-family:var(--mono);font-size:10px;color:var(--muted);text-decoration:none;padding:4px 8px;border:1px solid var(--border);border-radius:3px;display:none">Download blank</a>
           <button class="cc-conn-btn" id="cc-conn-btn" onclick="connectCompletionsFile()">Connect completions.json</button>
           <button class="cc-show-btn" id="cc-show-btn" onclick="toggleShowCompleted()">Show completed</button>
-          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);text-align:right">Last run: today 6:15am<br><span id="cc-file-status"></span></div>
+          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);text-align:right">Last run: today 9:15am<br><span id="cc-file-status"></span></div>
         </div>
       </div>
 
       <!-- STAT CARDS -->
       <div class="grid-4" style="margin-bottom:20px">
-        <div class="stat-card danger"><div class="stat-label">Questions Overdue</div><div class="stat-value danger">6</div><div class="stat-sub">Unanswered &gt;48h or today</div></div>
-        <div class="stat-card danger"><div class="stat-label">Escalations Flagged</div><div class="stat-value danger">5</div><div class="stat-sub">Stale / unassigned / no owner</div></div>
-        <div class="stat-card warn"><div class="stat-label">Uncaptured Commits</div><div class="stat-value warn">9</div><div class="stat-sub">3 new + 6 legacy Zoom items</div></div>
+        <div class="stat-card danger"><div class="stat-label">Questions Overdue</div><div class="stat-value danger">2</div><div class="stat-sub">Unanswered &gt;48h or today</div></div>
+        <div class="stat-card danger"><div class="stat-label">Escalations Flagged</div><div class="stat-value danger">6</div><div class="stat-sub">Stale / unassigned / vendor</div></div>
+        <div class="stat-card warn"><div class="stat-label">Uncaptured Commits</div><div class="stat-value warn">6</div><div class="stat-sub">From Zoom — no system record</div></div>
         <div class="stat-card warn"><div class="stat-label">At Risk Items</div><div class="stat-value warn">5</div><div class="stat-sub">Likely to fall through cracks</div></div>
-      </div>
-
-      <div style="font-family:var(--mono);font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:.12em;margin-bottom:8px">We Have Seen This Before</div>
-      <div style="border:1px solid rgba(79,138,255,.35);border-radius:6px;background:rgba(79,138,255,.04);margin-bottom:16px;overflow:hidden">
-        <div style="padding:12px 18px;border-bottom:1px solid rgba(79,138,255,.2);background:rgba(79,138,255,.08);display:flex;align-items:center;justify-content:space-between">
-          <div>
-            <div style="font-size:13px;font-weight:600;color:var(--accent)">Match Found — Incoming: "SUP-9924, Cattle Baron order missing from DSR, Hadar can't find root cause"</div>
-            <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Matched against org memory</div>
-          </div>
-          <span style="font-family:var(--mono);font-size:11px;background:rgba(79,138,255,.15);color:var(--accent);border:1px solid rgba(79,138,255,.3);padding:3px 9px;border-radius:3px">92% match</span>
-        </div>
-        <div style="padding:16px 18px;display:grid;grid-template-columns:repeat(3,1fr);gap:10px">
-          <div style="background:var(--surface2);border:1px solid var(--border);border-radius:5px;padding:10px 13px">
-            <div style="font-family:var(--mono);font-size:9px;color:var(--muted);text-transform:uppercase;margin-bottom:4px">Related Feature</div>
-            <div style="font-size:12px;font-weight:600">BI &amp; Chef Reporting — Data Integrity (systemic)</div>
-          </div>
-          <div style="background:var(--surface2);border:1px solid var(--border);border-radius:5px;padding:10px 13px">
-            <div style="font-family:var(--mono);font-size:9px;color:var(--muted);text-transform:uppercase;margin-bottom:4px">Prior Discussions</div>
-            <div style="font-size:12px;font-weight:600">20 BI/Chef SUPs opened Jan&ndash;Jun 2026; escalation sent Jun 25</div>
-          </div>
-          <div style="background:var(--surface2);border:1px solid var(--border);border-radius:5px;padding:10px 13px">
-            <div style="font-family:var(--mono);font-size:9px;color:var(--muted);text-transform:uppercase;margin-bottom:4px">Decision</div>
-            <div style="font-size:12px;font-weight:600;color:var(--danger)">Ask sent, not yet implemented</div>
-          </div>
-          <div style="background:var(--surface2);border:1px solid var(--border);border-radius:5px;padding:10px 13px">
-            <div style="font-family:var(--mono);font-size:9px;color:var(--muted);text-transform:uppercase;margin-bottom:4px">Reason</div>
-            <div style="font-size:12px;font-weight:600">Every closed ticket resolved by manual reprocess, no code fix, root cause never identified</div>
-          </div>
-          <div style="background:var(--surface2);border:1px solid var(--border);border-radius:5px;padding:10px 13px">
-            <div style="font-family:var(--mono);font-size:9px;color:var(--muted);text-transform:uppercase;margin-bottom:4px">Related Customers</div>
-            <div style="font-size:12px;font-weight:600">Cattle Baron, Boatyard, Yolo, Dog and Duck (13+ prior SUPs)</div>
-          </div>
-          <div style="background:var(--surface2);border:1px solid var(--border);border-radius:5px;padding:10px 13px">
-            <div style="font-family:var(--mono);font-size:9px;color:var(--muted);text-transform:uppercase;margin-bottom:4px">Last Reviewed</div>
-            <div style="font-size:12px;font-weight:600;color:var(--warn)">2026-06-25</div>
-          </div>
-        </div>
       </div>
 
       <!-- IMMEDIATE ATTENTION — QUESTIONS OWED BY BRIAN -->
       <div class="panel" style="margin-bottom:16px">
-        <div class="panel-header"><span class="panel-title">Immediate Attention — Questions Owed By Brian</span><span class="panel-badge danger">6 items</span></div>
-        <div class="alert-row cc-item" data-item-id="q-mtech-practically-suggesting">
-          <input type="checkbox" class="cc-chk" onchange="toggleCompletion('q-mtech-practically-suggesting',this.checked)">
-          <div style="flex:1"><strong>Sagi — MTech standup thread</strong> — asked directly "What is he practically suggesting?" after Robert Tucker's circular smartbox/reader thread.
-          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Outlook/Slack &middot; Jul 4 20:31 UTC &middot; <strong style="color:var(--danger)">Give a straight answer or redirect/close the thread</strong></div></div>
+        <div class="panel-header"><span class="panel-title">Immediate Attention — Questions Owed By Brian</span><span class="panel-badge danger">2 items</span></div>
+        <div class="alert-row cc-item" data-item-id="q-bestbuy-quote-554432">
+          <input type="checkbox" class="cc-chk" onchange="toggleCompletion('q-bestbuy-quote-554432',this.checked)">
+          <div style="flex:1"><strong>Kristopher Dankers (Best Buy, quote #554432)</strong> — followed up again 7/6 asking for a decision; quote needs reapproval "early next week" per his 7/3 email. No reply since 7/1.
+          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Outlook &middot; 2 days since last follow-up &middot; <strong style="color:var(--danger)">Reply today before quote lapses</strong></div></div>
         </div>
-        <div class="alert-row cc-item" data-item-id="q-sup10242-decision">
-          <input type="checkbox" class="cc-chk" onchange="toggleCompletion('q-sup10242-decision',this.checked)">
-          <div style="flex:1"><strong>SUP-10242 — Alon Eyal</strong> — delivered root cause + fix for the card-testing/security issue, needs Brian's call on 59 suspended orders.
-          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">#dev-support-us (Slack) &middot; Fix delivered Jul 5 03:41 MDT &middot; <strong style="color:var(--danger)">Decide and reply</strong></div></div>
-        </div>
-        <div class="alert-row cc-item" data-item-id="q-bestbuy-quote-dankers">
-          <input type="checkbox" class="cc-chk" onchange="toggleCompletion('q-bestbuy-quote-dankers',this.checked)">
-          <div style="flex:1"><strong>Kristopher Dankers, Best Buy</strong> — quote #554432; Brian's Jul 1 question was answered Jul 3, ball is back in his court on go/no-go.
-          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Email &middot; Jul 3 20:28 UTC &middot; <strong style="color:var(--danger)">Reply today — reapproval needed next week if proceeding</strong></div></div>
-        </div>
-        <div class="alert-row cc-item" data-item-id="q-etai-device-tradein">
-          <input type="checkbox" class="cc-chk" onchange="toggleCompletion('q-etai-device-tradein',this.checked)">
-          <div style="flex:1"><strong>Etai Rosen</strong> — best way to trade in 9K field devices at scale for value.
-          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Slack DM (carried) &middot; Jul 2 09:23 MDT &middot; <strong style="color:var(--danger)">Give a position or explicitly defer</strong></div></div>
-        </div>
-        <div class="alert-row cc-item" data-item-id="q-tip-withholding-carolina">
-          <input type="checkbox" class="cc-chk" onchange="toggleCompletion('q-tip-withholding-carolina',this.checked)">
-          <div style="flex:1"><strong>Carolina — tip withholding</strong> — Brian gave a Jun 24 ETA (ROS/OFC 9.5, BETA target Jul 13). No new update this window.
-          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Slack (carried) &middot; <strong style="color:var(--danger)">Confirm still on track for Jul 13</strong></div></div>
-        </div>
-        <div class="alert-row cc-item" data-item-id="q-audit-reports-tyler">
-          <input type="checkbox" class="cc-chk" onchange="toggleCompletion('q-audit-reports-tyler',this.checked)">
-          <div style="flex:1"><strong>Tyler — audit reports</strong> — PAD version w/ Magtek Serial ETA, and Magensa Transactions Report ETA for partner users, both still open.
-          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Slack (carried) &middot; <strong style="color:var(--danger)">Give Tyler an ETA on both</strong></div></div>
+        <div class="alert-row cc-item" data-item-id="q-april-magtek-transition">
+          <input type="checkbox" class="cc-chk" onchange="toggleCompletion('q-april-magtek-transition',this.checked)">
+          <div style="flex:1"><strong>April Lozano (Pappas, Magtek Transition)</strong> — concrete questions on replacement equipment pace and whether Dallas POEs can ship to Tabit for stationary builds. Sent to you + Casey.
+          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Outlook &middot; received 7/7 18:10 &middot; <strong style="color:var(--danger)">Answer or confirm Casey owns it before it ages into overdue</strong></div></div>
         </div>
       </div>
 
       <!-- SUPPORT ESCALATIONS — HIGHEST PRIORITY -->
       <div class="panel" style="margin-bottom:16px">
-        <div class="panel-header"><span class="panel-title">Support Escalations — Highest Priority</span><span class="panel-badge danger">5 flagged</span></div>
+        <div class="panel-header"><span class="panel-title">Support Escalations — Highest Priority</span><span class="panel-badge danger">6 flagged</span></div>
         <div class="alert-row">
-          <div style="flex:1"><a href="https://tabitros.atlassian.net/browse/SUP-10188" target="_blank" class="key-link">SUP-10188</a> &nbsp; <strong>Pappas HQ (multi-site)</strong> — ToGo KDS stuck on white screen.
-          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Status: Accepted &middot; Assignee: Shiran Horesh &middot; Updated: Jun 30 &middot; <strong style="color:var(--danger)">STALE 6d — Brian already found the likely root cause (typo, Jun 25), fix sitting unclaimed</strong></div></div>
+          <div style="flex:1"><a href="https://tabitros.atlassian.net/browse/SUP-10259" target="_blank" class="key-link">SUP-10259</a> &nbsp; <strong>Pappadeaux 03 (024)</strong> — Unable to Edit Inactive Job Functions
+          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Status: Pending &middot; Assignee: Chad Shankman &middot; Updated: today &middot; <strong style="color:var(--danger)">NEW — Highest priority, needs triage</strong></div></div>
         </div>
         <div class="alert-row">
-          <div style="flex:1"><a href="https://tabitros.atlassian.net/browse/SUP-10202" target="_blank" class="key-link">SUP-10202</a> &nbsp; <strong>Pappadeaux 04</strong> — large spacing on print jobs.
-          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Status: Accepted &middot; Assignee: Nicole Kogan &middot; Updated: Jun 24 &middot; <strong style="color:var(--danger)">STALE 12d — logs attached, no response since</strong></div></div>
+          <div style="flex:1"><a href="https://tabitros.atlassian.net/browse/SUP-10237" target="_blank" class="key-link">SUP-10237</a> &nbsp; <strong>Nathan's Famous Hot Dogs</strong> — Unable to Close OTC Order
+          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Status: Support &middot; Assignee: Chad Shankman &middot; Updated: 7/7 &middot; <strong style="color:var(--danger)">WAITING ON VENDOR — Worldline/Ingenico confirmation since 7/6</strong></div></div>
         </div>
         <div class="alert-row">
-          <div style="flex:1"><a href="https://tabitros.atlassian.net/browse/SUP-10165" target="_blank" class="key-link">SUP-10165</a> &nbsp; <strong>Corner Cafe Riverside</strong> — CC slip formatting issue.
-          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Status: New &middot; Assignee: Unassigned &middot; Updated: Jul 6 (created Jun 17) &middot; <strong style="color:var(--danger)">UNASSIGNED — zero comments, needs an owner</strong></div></div>
+          <div style="flex:1"><a href="https://tabitros.atlassian.net/browse/SUP-10228" target="_blank" class="key-link">SUP-10228</a> &nbsp; <strong>Corner Cafe Liberty</strong> — Tip Settlement Remained After End-of-Day
+          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Status: In Progress &middot; Assignee: Chad Shankman &middot; Updated: today &middot; <strong style="color:var(--danger)">NEW — needs triage</strong></div></div>
         </div>
         <div class="alert-row">
-          <div style="flex:1"><a href="https://tabitros.atlassian.net/browse/SUP-9924" target="_blank" class="key-link">SUP-9924</a> &nbsp; <strong>Cattle Baron 7, El Paso</strong> — order missing from DSR/database.
-          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Status: Support &middot; Assignee: Brian (assigned) &middot; Updated: Jun 25 &middot; <strong style="color:var(--danger)">STALE 11d — dead-ended on Hadar, matches systemic pattern above</strong></div></div>
+          <div style="flex:1"><a href="https://tabitros.atlassian.net/browse/SUP-10202" target="_blank" class="key-link">SUP-10202</a> &nbsp; <strong>Pappadeaux 04 (025)</strong> — Large Spacing Print Jobs
+          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Status: Accepted &middot; Assignee: Nicole Kogan &middot; Updated: 6/24 &middot; <strong style="color:var(--danger)">STALE 14 days — no movement since logs uploaded</strong></div></div>
         </div>
         <div class="alert-row">
-          <div style="flex:1"><a href="https://tabitcloud.monday.com/boards/8549028387/pulses/" target="_blank" class="key-link">TAB-48625</a> &nbsp; <strong>Pappas — Payment Assist not unlocking checks</strong> — still Todo, unassigned. US Ops comment: "Pappas continues to have issues with payment assist not unlocking checks."
-          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Source: Monday.com TAB Priority &middot; No linked SUP ticket found &middot; <strong style="color:var(--danger)">UNASSIGNED — ONGOING PAPPAS PAIN POINT</strong></div></div>
+          <div style="flex:1"><a href="https://tabitros.atlassian.net/browse/SUP-10188" target="_blank" class="key-link">SUP-10188</a> &nbsp; <strong>Pappas HQ (multi-site)</strong> — ToGo KDS Stuck on White Screen
+          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Status: Accepted &middot; Assignee: Shiran Horesh &middot; Updated: 6/30 &middot; <strong style="color:var(--danger)">STALE 8 days — root cause ID'd 6/25, fix unclaimed</strong></div></div>
+        </div>
+        <div class="alert-row">
+          <div style="flex:1"><a href="https://tabitros.atlassian.net/browse/SUP-10165" target="_blank" class="key-link">SUP-10165</a> &nbsp; <strong>Corner Cafe Riverside</strong> — CC Slip Formatting Issue
+          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Status: New &middot; Assignee: Unassigned &middot; Updated: 7/6 &middot; <strong style="color:var(--danger)">STALE — no owner since created</strong></div></div>
         </div>
         <div class="alert-row info">
-          <div style="flex:1"><strong>Intentionally held, not overdue (org memory):</strong> SUP-8745 (Pappadeaux 27 — holding for recurrence), SUP-10005 (Khashoka — blocked on CC rep confirmation).</div>
+          <div style="flex:1"><strong>Resolved this window:</strong> <a href="https://tabitros.atlassian.net/browse/SUP-10242" target="_blank" class="key-link">SUP-10242</a> (Cask &amp; Ale card-testing) closed 7/6 — 59 suspended orders moved to deprecated collection, decision made without needing you. <a href="https://tabitros.atlassian.net/browse/SUP-10005" target="_blank" class="key-link">SUP-10005</a> (Khashoka) progressing — Hadar executing DB cleanup Chad specified today, no longer waiting on you.</div>
+        </div>
+        <div class="alert-row warn">
+          <div style="flex:1"><strong>Monday cross-reference:</strong> <a href="https://tabitros.atlassian.net/browse/TAB-48625" target="_blank" class="key-link">TAB-48625</a> (Payment Assist / Pappas checks not unlocking) still Todo, unassigned, Medium — comment confirms Pappas still hitting this. No linked SUP found.</div>
         </div>
       </div>
 
       <!-- UNCAPTURED ZOOM COMMITMENTS -->
       <div class="panel" style="margin-bottom:16px">
-        <div class="panel-header"><span class="panel-title">Uncaptured Commitments — Zoom</span><span class="panel-badge warn">9 items</span></div>
-        <div class="alert-row warn cc-item" data-item-id="zoom-tax-exemption-permission">
-          <input type="checkbox" class="cc-chk" onchange="toggleCompletion('zoom-tax-exemption-permission',this.checked)">
-          <div style="flex:1">Add tax exemption permission to the staff permissions list (Peter's Pub request).
-          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Zoom AI Companion &middot; Product Enhancement Review, Jul 1 &middot; No ticket found</div></div>
-        </div>
-        <div class="alert-row warn cc-item" data-item-id="zoom-discount-reason-restriction">
-          <input type="checkbox" class="cc-chk" onchange="toggleCompletion('zoom-discount-reason-restriction',this.checked)">
-          <div style="flex:1">Review the open discount-reason-restriction request, decide on implementation logic.
-          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Zoom AI Companion &middot; Product Enhancement Review, Jul 1 &middot; No ticket found</div></div>
-        </div>
-        <div class="alert-row warn cc-item" data-item-id="zoom-sort-reports-lastname">
-          <input type="checkbox" class="cc-chk" onchange="toggleCompletion('zoom-sort-reports-lastname',this.checked)">
-          <div style="flex:1">Check whether sorting attendance/sales reports by last/first name was already addressed.
-          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Zoom AI Companion &middot; Product Enhancement Review, Jul 1 &middot; No ticket found</div></div>
+        <div class="panel-header"><span class="panel-title">Uncaptured Commitments — Zoom</span><span class="panel-badge warn">6 items</span></div>
+        <div class="alert-row warn" style="margin-bottom:0">
+          <div style="flex:1">Zoom AI Companion pipeline still broken — zero emails found again this window (most recent on file: 2025-06-18, over a year old). The 6 items below remain unverifiable and carried unchanged.</div>
         </div>
         <div class="alert-row warn cc-item" data-item-id="zoom-add-pappas-items">
           <input type="checkbox" class="cc-chk" onchange="toggleCompletion('zoom-add-pappas-items',this.checked)">
-          <div style="flex:1">Add all Pappas items to the main TAB Priority list.
-          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Zoom AI Companion (legacy) &middot; Still unverified</div></div>
+          <div style="flex:1">Add Pappas items (source meeting unverifiable)</div>
         </div>
         <div class="alert-row warn cc-item" data-item-id="zoom-audit-reports-list">
           <input type="checkbox" class="cc-chk" onchange="toggleCompletion('zoom-audit-reports-list',this.checked)">
-          <div style="flex:1">Start collecting/defining the audit reports list for dev.
-          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Zoom AI Companion (legacy) &middot; Still unverified</div></div>
+          <div style="flex:1">Audit reports list (source meeting unverifiable)</div>
         </div>
         <div class="alert-row warn cc-item" data-item-id="zoom-penny-rounding">
           <input type="checkbox" class="cc-chk" onchange="toggleCompletion('zoom-penny-rounding',this.checked)">
-          <div style="flex:1">Move penny rounding up in priority after cash discount beta.
-          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Zoom AI Companion (legacy) &middot; Blocked on beta outcome</div></div>
+          <div style="flex:1">Penny rounding follow-up (source meeting unverifiable)</div>
         </div>
         <div class="alert-row warn cc-item" data-item-id="zoom-george-sub-to-urls">
           <input type="checkbox" class="cc-chk" onchange="toggleCompletion('zoom-george-sub-to-urls',this.checked)">
-          <div style="flex:1">Follow up with George on Sub-TO URLs; update Dror.
-          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Zoom AI Companion (legacy) &middot; Still needs an update from Dror</div></div>
+          <div style="flex:1">George sub to URLs, awaiting Dror (source meeting unverifiable)</div>
         </div>
         <div class="alert-row warn cc-item" data-item-id="zoom-pad-permissions">
           <input type="checkbox" class="cc-chk" onchange="toggleCompletion('zoom-pad-permissions',this.checked)">
-          <div style="flex:1">Start PAD permissions inventory (5&ndash;8 candidates).
-          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Zoom AI Companion (legacy) &middot; Still unverified</div></div>
+          <div style="flex:1">PAD permissions follow-up (source meeting unverifiable)</div>
         </div>
         <div class="alert-row warn cc-item" data-item-id="zoom-pappas-bbq">
           <input type="checkbox" class="cc-chk" onchange="toggleCompletion('zoom-pappas-bbq',this.checked)">
-          <div style="flex:1">Add Pappas Barbecue placeholder to feature request list.
-          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Zoom AI Companion (legacy) &middot; Still unverified</div></div>
+          <div style="flex:1">Pappas BBQ follow-up (source meeting unverifiable)</div>
         </div>
       </div>
 
@@ -378,8 +311,8 @@ body.show-completed tr.cc-item.completed{display:table-row;opacity:.38}
         <table class="p-table" style="width:100%">
           <thead><tr><th>Commitment</th><th>To</th><th>Source</th><th>Flag</th></tr></thead>
           <tbody>
-            <tr><td>"I'll share the site server task"</td><td>John Ygartua</td><td>Slack DM, Jun 29</td><td><span class="reason-text" style="color:var(--warn)">AT RISK — 7 days, no visible delivery</span></td></tr>
-            <tr><td>"I'll reach out to mTech for hubs" (liquid-damaged returns)</td><td>Casey Grant</td><td>Slack DM, Jun 30</td><td><span class="reason-text" style="color:var(--warn)">AT RISK — 6 days, no visible follow-up</span></td></tr>
+            <tr><td>Push TAB-35002 priority bump (Medium&rarr;High) with Alon "in the morning"</td><td>Jessica Dickinson</td><td>Slack 7/7 14:34</td><td><span class="reason-text" style="color:var(--danger)">Due today</span></td></tr>
+            <tr><td>Share the "site server" task re: offline order sync</td><td>John Ygartua</td><td>Slack 6/29</td><td><span class="reason-text" style="color:var(--warn)">At risk — 9 days</span></td></tr>
           </tbody>
         </table>
       </div>
@@ -387,44 +320,28 @@ body.show-completed tr.cc-item.completed{display:table-row;opacity:.38}
       <!-- WAITING ON OTHERS -->
       <div class="panel" style="margin-bottom:16px">
         <div class="panel-header"><span class="panel-title">Waiting On Others</span></div>
-        <div style="padding:10px 18px 4px;font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em">Engineering</div>
-        <div class="alert-row info"><div style="flex:1">SUP-9924 / BI reporting — blocked on Hadar, dead-ended. Needs redirect to the already-requested investigation ticket, not another wait.</div></div>
-        <div class="alert-row info"><div style="flex:1">TAB-48750 (Spooler TCP/heartbeat rework) — Todo, unassigned, High, updated Jul 5.</div></div>
-        <div class="alert-row info"><div style="flex:1">TAB-47679 (Duplicated hotel transactions investigation) — Todo, unassigned, High, updated Jul 2.</div></div>
-        <div class="alert-row info"><div style="flex:1">TAB-48625 (Payment Assist / Pappas) — Todo, unassigned, open Pappas pain point.</div></div>
-        <div style="padding:10px 18px 4px;font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em">Customers</div>
-        <div class="alert-row info"><div style="flex:1">Aaron Williams (Pappas) — Brian asked Jul 2 for site/order # on Reward Card test 12.03; no reply yet. Brian is blocked here.</div></div>
-        <div class="alert-row info"><div style="flex:1">Cameron Richards (Pappas) — listed as primary contact but not found in Slack. Confirm he's email/Jira-only.</div></div>
-        <div style="padding:10px 18px 4px;font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em">Vendors</div>
-        <div class="alert-row info"><div style="flex:1">Robert Tucker / MTech — circular smartbox/reader thread since Jun 29; Sagi flagged "no clear ask" Jul 4. Brian's own words Jun 30: "we are in a bad spot... with mTech" re: hub/case shipment.</div></div>
-        <div style="padding:10px 18px 4px;font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em">Internal Teams</div>
-        <div class="alert-row info"><div style="flex:1">Dror — "Sub TO URLs" Monday feature request still awaiting status/timeline (carried from Jun 25).</div></div>
+        <div class="alert-row info"><div style="flex:1"><strong>Engineering:</strong> SUP-10005 (Khashoka) waiting on Hadar to execute DB deletion Chad specified today. SUP-10202 waiting on Nicole Kogan, silent 14 days. SUP-10188 waiting on Shiran Horesh / dev to push the URL-typo fix identified 6/25.</div></div>
+        <div class="alert-row info"><div style="flex:1"><strong>Customers:</strong> Nathan's Famous (SUP-10237) waiting on their end to get processor confirmation from Worldline/Ingenico before Tabit can close the stuck order.</div></div>
+        <div class="alert-row info"><div style="flex:1"><strong>Vendors:</strong> Worldline/Ingenico transaction confirmation for SUP-10237, requested 7/6. MTech (Bob Tucker) quoting lead time on 100x Smartbox + 200x USB-C cables + foam pads.</div></div>
+        <div class="alert-row info" style="margin-bottom:0"><div style="flex:1"><strong>Internal Teams:</strong> Tyler Dillon in Dallas next week to run side-by-side Magtek firmware charging tests — awareness only, no action needed yet.</div></div>
       </div>
 
       <!-- UPCOMING COMMITMENTS -->
       <div class="panel" style="margin-bottom:16px">
         <div class="panel-header"><span class="panel-title">Upcoming Commitments</span></div>
-        <div style="padding:10px 18px 4px;font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em">Today</div>
-        <div class="alert-row"><div style="flex:1">14:00&ndash;14:30 UTC &mdash; US Releases (Brian organizing)</div></div>
-        <div class="alert-row"><div style="flex:1">15:15&ndash;16:00 UTC &mdash; Weekly Ops Mgmt Meeting</div></div>
-        <div class="alert-row"><div style="flex:1">16:00&ndash;16:45 UTC &mdash; Weekly Ops Meeting</div></div>
-        <div class="alert-row warn"><div style="flex:1">20:00&ndash;20:30 UTC &mdash; MTech Daily Standup &mdash; <strong style="color:var(--warn)">double-booked with next item</strong></div></div>
-        <div class="alert-row warn"><div style="flex:1">20:00&ndash;21:00 UTC &mdash; Monthly US Dev Prioritization Review &mdash; <strong style="color:var(--warn)">double-booked with MTech standup</strong></div></div>
-        <div class="alert-row"><div style="flex:1">21:00&ndash;21:30 UTC &mdash; Pappas + Tabit Comp Voucher Review</div></div>
-        <div style="padding:10px 18px 4px;font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em">This Week</div>
-        <div class="alert-row"><div style="flex:1">Brian traveling to Charleston Jul 6&ndash;10 (Moxy Charleston Downtown) &mdash; expect slower turnaround on stale tickets unless delegated.</div></div>
-        <div style="padding:10px 18px 4px;font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em">Next Week</div>
-        <div class="alert-row"><div style="flex:1">Tip withholding (ROS/OFC 9.5) targeted for BETA Jul 13 &mdash; watch for slippage.</div></div>
+        <div class="alert-row"><div style="flex:1"><strong>Today:</strong> MTech/Tabit Daily Standup (20:00 UTC). Push TAB-35002 priority with Alon. Traveling — Charleston Crabhouse site visits, all-day.</div></div>
+        <div class="alert-row"><div style="flex:1"><strong>This Week:</strong> Tyler Dillon on PTO 7/8&ndash;7/10 — factor into dev-support coverage. Best Buy quote #554432 needs a decision before it lapses.</div></div>
+        <div class="alert-row" style="margin-bottom:0"><div style="flex:1"><strong>Next Week:</strong> Tyler in Dallas for Magtek firmware A/B testing (old vs. new charging performance).</div></div>
       </div>
 
       <!-- THINGS LIKELY TO FALL THROUGH THE CRACKS -->
       <div class="panel" style="margin-bottom:16px">
         <div class="panel-header"><span class="panel-title">Things Likely To Fall Through The Cracks</span><span class="panel-badge warn">5 items</span></div>
-        <div class="alert-row warn"><div style="flex:1">1. Double-booked 20:00 UTC today &mdash; MTech Daily Standup vs. Monthly US Dev Prioritization Review. Pick one, delegate the other now.</div></div>
-        <div class="alert-row warn"><div style="flex:1">2. Zoom capture pipeline still dropping transcripts &mdash; 3 of the last 5 meetings unrecoverable. Same failure mode that already cost 3 commitments this quarter.</div></div>
-        <div class="alert-row warn"><div style="flex:1">3. SUP-10165 &mdash; unassigned, zero comments, High priority. No one is proactively triaging new unassigned tickets.</div></div>
-        <div class="alert-row warn"><div style="flex:1">4. Travel window risk &mdash; SUP-10188, SUP-10202, and the SUP-9924 chain could go untouched for the full Charleston trip unless explicitly delegated before departure.</div></div>
-        <div class="alert-row warn"><div style="flex:1">5. Cameron Richards contact gap &mdash; not on Slack; if Brian's mental model assumes Slack reachability for Pappas, messages could be silently missed.</div></div>
+        <div class="alert-row warn"><div style="flex:1">1. TAB-35002 priority bump — promised for "the morning," easy to lose while traveling today.</div></div>
+        <div class="alert-row warn"><div style="flex:1">2. Best Buy quote #554432 — two unanswered follow-ups from Kristopher; pricing may reset if it lapses.</div></div>
+        <div class="alert-row warn"><div style="flex:1">3. Site server task share to John Ygartua — 9 days outstanding, no reminder trail.</div></div>
+        <div class="alert-row warn"><div style="flex:1">4. SUP-10165 (Corner Cafe Riverside) — unassigned with zero comments, will sit indefinitely.</div></div>
+        <div class="alert-row warn" style="margin-bottom:0"><div style="flex:1">5. SUP-10188 fix — root cause solved over a week ago, still unclaimed for code deployment.</div></div>
       </div>
 
       <!-- KNOWLEDGE OPPORTUNITIES -->
@@ -433,9 +350,9 @@ body.show-completed tr.cc-item.completed{display:table-row;opacity:.38}
         <table class="p-table" style="width:100%">
           <thead><tr><th>Topic</th><th>Occurrences</th><th>Source</th><th>Recommendation</th></tr></thead>
           <tbody>
-            <tr><td>Standup threads with no clear ask/decision</td><td>2+ this week (MTech, Jul 3&ndash;4)</td><td>Slack/Outlook</td><td>SOP: facilitator must name an explicit ask + owner before closing the thread.</td></tr>
-            <tr><td>BI/Chef reporting reprocess with no root cause</td><td>3rd distinct ticket cluster this month</td><td>Jira</td><td>Reinforce standing ask: no ticket closes without a documented hypothesis.</td></tr>
-            <tr><td>Zoom transcript capture failures</td><td>3 of 5 emails this week</td><td>Zoom AI Companion</td><td>This is a pipeline/IT fix now, not a doc &mdash; needs direct technical investigation.</td></tr>
+            <tr><td>Tip withholding calculation ("eligible amount" vs. total sales vs. tips-only)</td><td>5 threads since Jan</td><td>Slack</td><td>One-page KB article defining eligible amount and payment-account inclusion/exclusion logic.</td></tr>
+            <tr><td>Magensa/TSYS transaction lookup by Processor ID, not last-4</td><td>2+ threads</td><td>Slack, Outlook</td><td>Support quick-reference card.</td></tr>
+            <tr><td>Zoom AI Companion capture pipeline broken</td><td>14+ consecutive days, zero emails</td><td>Outlook</td><td>Not a doc gap — check Zoom AI Companion settings directly.</td></tr>
           </tbody>
         </table>
       </div>
@@ -443,15 +360,15 @@ body.show-completed tr.cc-item.completed{display:table-row;opacity:.38}
       <!-- BRIAN LEVERAGE REPORT -->
       <div class="panel" style="margin-bottom:16px">
         <div class="panel-header"><span class="panel-title">Brian Leverage Report</span></div>
-        <div style="padding:12px 18px;font-size:12px;color:var(--muted);border-bottom:1px solid var(--border)">Estimated time spent this week on repeated explanations: ~2 hours (MTech circular standup threads, BI reporting root-cause chasing).</div>
+        <div style="padding:12px 18px;font-size:12px;color:var(--muted);border-bottom:1px solid var(--border)">Estimated time spent this week on repeated explanations: 1.5&ndash;2 hours</div>
         <table class="p-table" style="width:100%">
           <thead><tr><th>Topic</th><th>Est. Time</th><th>Recommended Asset</th></tr></thead>
           <tbody>
-            <tr><td>BI/Chef reporting reprocess explanations</td><td>~1 hr</td><td>One-page "BI/Chef Reporting Reprocess Protocol" doc</td></tr>
-            <tr><td>MTech standup thread redirects</td><td>~1 hr</td><td>Standup facilitation SOP</td></tr>
+            <tr><td>Tip withholding eligible-amount logic</td><td>~1 hr</td><td>KB article / FAQ, linked from BI and DSR reports</td></tr>
+            <tr><td>Magensa/TSYS transaction lookup</td><td>~30 min</td><td>Support quick-reference card</td></tr>
           </tbody>
         </table>
-        <div class="alert-row info" style="margin-top:0"><div style="flex:1"><strong>Highest-leverage first action:</strong> Write a one-page "BI/Chef Reporting Reprocess Protocol" that Hadar's team must follow before closing any future reprocess ticket &mdash; this pattern has consumed dev and Brian attention across at least 3 tickets this month with zero root cause ever identified.</div></div>
+        <div class="alert-row info" style="margin-top:0"><div style="flex:1"><strong>Highest-leverage first action:</strong> Write the tip-withholding KB article — re-explained five times across four Slack channels in six months, touches both support agents and site managers.</div></div>
       </div>
 
 <!-- CC-DATA-END -->
