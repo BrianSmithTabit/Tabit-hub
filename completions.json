@@ -6,5 +6,8 @@
   {"id":"zoom-penny-rounding","method":"manual","source":"zoom-ai-companion"},
   {"id":"zoom-george-sub-to-urls","method":"manual","source":"zoom-ai-companion"},
   {"id":"zoom-pad-permissions","method":"manual","source":"zoom-ai-companion"},
-  {"id":"zoom-pappas-bbq","method":"manual","source":"zoom-ai-companion"}
+  {"id":"zoom-pappas-bbq","method":"manual","source":"zoom-ai-companion"},
+  {"id":"q-liz-hanasis-pc","method":"manual","source":"slack-dm"},
+  {"id":"q-april-magtek-transition","method":"manual","source":"outlook-email"},
+  {"id":"zoom-jessica-andrea-departure","method":"manual","source":"zoom-ai-companion"}
 ]}
