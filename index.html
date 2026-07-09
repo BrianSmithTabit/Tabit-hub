@@ -164,7 +164,7 @@ body.show-completed tr.cc-item.completed{display:table-row;opacity:.38}
     <div class="nav-item" onclick="navigate('tabreport',this)"><span class="nav-icon">📋</span>TAB Report</div>
     <div class="sb-section">Reporting</div>
     <div class="nav-item" onclick="navigate('leadership',this)"><span class="nav-icon">📊</span>Leadership View</div>
-    <div class="nav-item" onclick="navigate('reporting-issues',this)"><span class="nav-icon">⚠️</span>Reporting Issues<span class="nav-badge" style="background:rgba(255,77,109,.15);color:#ff7a90;border-color:rgba(255,77,109,.3)">4 open</span></div>
+    <div class="nav-item" onclick="navigate('reporting-issues',this)"><span class="nav-icon">⚠️</span>Reporting Issues<span class="nav-badge" style="background:rgba(255,77,109,.15);color:#ff7a90;border-color:rgba(255,77,109,.3)">2 open</span></div>
     <div class="sb-section">Brian OS</div>
     <div class="nav-item" onclick="navigate('command-center',this)"><span class="nav-icon">🧠</span>Command Center<span class="nav-badge" id="cc-badge" style="background:rgba(255,77,109,.15);color:#ff7a90;border-color:rgba(255,77,109,.3)">7</span></div>
     <div class="nav-item" onclick="navigate('org-memory',this)"><span class="nav-icon">🗂️</span>Org Memory</div>
@@ -762,7 +762,7 @@ body.show-completed tr.cc-item.completed{display:table-row;opacity:.38}
       <!-- STAT BAR -->
       <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--border);border-radius:6px;overflow:hidden;margin-bottom:20px">
         <div class="stat-card danger" style="border-radius:0;margin:0"><div class="stat-label">2026 YTD Tickets</div><div class="stat-value danger">20</div><div class="stat-sub">BI &amp; Chef work type</div></div>
-        <div class="stat-card warn" style="border-radius:0;margin:0"><div class="stat-label">Still Open</div><div class="stat-value warn">4</div><div class="stat-sub">As of Jun 25</div></div>
+        <div class="stat-card warn" style="border-radius:0;margin:0"><div class="stat-label">Still Open</div><div class="stat-value warn">2</div><div class="stat-sub">As of Jul 8</div></div>
         <div class="stat-card danger" style="border-radius:0;margin:0"><div class="stat-label">Prior Linked SUPs</div><div class="stat-value danger">13+</div><div class="stat-sub">Pre-2026 on order-missing alone</div></div>
         <div class="stat-card warn" style="border-radius:0;margin:0"><div class="stat-label">Total Incidents</div><div class="stat-value warn">17+</div><div class="stat-sub">Order-missing pattern only</div></div>
         <div class="stat-card" style="border-radius:0;margin:0"><div class="stat-label">Fix Method</div><div class="stat-value" style="font-size:14px;color:var(--warn)">Manual Reprocess</div><div class="stat-sub">Every single closed ticket</div></div>
@@ -785,12 +785,12 @@ body.show-completed tr.cc-item.completed{display:table-row;opacity:.38}
             <tbody>
               <tr><td><strong>Orders missing from BI / DSR</strong></td><td style="text-align:center;font-weight:700;color:var(--danger)">4</td><td><a href="https://tabitros.atlassian.net/browse/SUP-9924" target="_blank" class="key-link">SUP-9924</a> open</td></tr>
               <tr><td>Tip / tax amounts wrong in BI</td><td style="text-align:center">4</td><td style="color:var(--muted)">All closed by reprocess</td></tr>
-              <tr><td>Chef labor / scheduling data wrong</td><td style="text-align:center">4</td><td><a href="https://tabitros.atlassian.net/browse/SUP-10170" target="_blank" class="key-link">SUP-10170</a> open</td></tr>
+              <tr><td>Chef labor / scheduling data wrong</td><td style="text-align:center">4</td><td style="color:var(--muted)">All closed</td></tr>
               <tr><td>EOD emails / daily summary not loading</td><td style="text-align:center">3</td><td style="color:var(--muted)">All closed</td></tr>
               <tr><td>DSR vs Payments Report discrepancy</td><td style="text-align:center">2</td><td><a href="https://tabitros.atlassian.net/browse/SUP-9861" target="_blank" class="key-link">SUP-9861</a> &middot; <a href="https://tabitros.atlassian.net/browse/SUP-10146" target="_blank" class="key-link">SUP-10146</a></td></tr>
-              <tr><td>Undefined items in reporting</td><td style="text-align:center">2</td><td><a href="https://tabitros.atlassian.net/browse/SUP-9800" target="_blank" class="key-link">SUP-9800</a> open</td></tr>
+              <tr><td>Undefined items in reporting</td><td style="text-align:center">2</td><td style="color:var(--muted)">All closed</td></tr>
               <tr><td>Chef / BI data integrity (past years, tax rate)</td><td style="text-align:center">2</td><td style="color:var(--muted)">Closed (1 was Highest)</td></tr>
-              <tr style="border-top:2px solid var(--border);font-weight:700"><td>Total</td><td style="text-align:center">21</td><td style="color:var(--warn)">4 open</td></tr>
+              <tr style="border-top:2px solid var(--border);font-weight:700"><td>Total</td><td style="text-align:center">21</td><td style="color:var(--warn)">2 open</td></tr>
             </tbody>
           </table>
         </div>
@@ -807,7 +807,7 @@ body.show-completed tr.cc-item.completed{display:table-row;opacity:.38}
 
       <!-- OPEN TICKETS -->
       <div class="panel" style="margin-bottom:16px">
-        <div class="panel-header"><span class="panel-title">Active Open Tickets</span><span class="panel-badge danger">4 open</span></div>
+        <div class="panel-header"><span class="panel-title">Active Open Tickets</span><span class="panel-badge danger">2 open</span></div>
 
         <div class="alert-row warn">
           <div style="flex:1"><a href="https://tabitros.atlassian.net/browse/SUP-9924" target="_blank" class="key-link">SUP-9924</a> &nbsp;<strong>Cattle Baron 7 &mdash; El Paso</strong> &mdash; Order Missing from DSR / BI [Low]
@@ -816,27 +816,9 @@ body.show-completed tr.cc-item.completed{display:table-row;opacity:.38}
         </div>
 
         <div class="alert-row">
-          <div style="flex:1"><a href="https://tabitros.atlassian.net/browse/SUP-9800" target="_blank" class="key-link">SUP-9800</a> &nbsp;<strong>Dog and Duck Park West</strong> &mdash; Undefined Item in Reporting [High]
-          <div style="font-size:11px;color:var(--muted);margin-top:2px">~$9 undefined items appear in reports then self-correct after 1&ndash;2 days. Also hit Gianni&rsquo;s Versace (SUP-10104, Jun 5). No reproduction path.</div>
-          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Status: Accepted &middot; Assignee: Hadar &middot; <strong style="color:var(--warn)">Oldest active — opened Apr 6, 2026</strong></div></div>
-        </div>
-
-        <div class="alert-row">
           <div style="flex:1"><a href="https://tabitros.atlassian.net/browse/SUP-9861" target="_blank" class="key-link">SUP-9861</a> &nbsp;<strong>Peppercrust Steakhouse</strong> &mdash; House Account Refund DSR Discrepancy [Medium]
           <div style="font-size:11px;color:var(--muted);margin-top:2px">$1,250 gap between DSR and Payments Report. DSR shows double-negative on House Account refund. Reproducible in PROD and Sandbox. Partner workaround only.</div>
-          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Status: Accepted &middot; Assignee: Hadar &middot; <strong style="color:var(--danger)">STALE 67 DAYS — reproducible, no fix path</strong></div></div>
-        </div>
-
-        <div class="alert-row">
-          <div style="flex:1"><a href="https://tabitros.atlassian.net/browse/SUP-10146" target="_blank" class="key-link">SUP-10146</a> &nbsp;<strong>Roast Coffee House ATL Airport B</strong> &mdash; 15 Orders Missing, $255 Gap [Low]
-          <div style="font-size:11px;color:var(--muted);margin-top:2px">DSR $8,176.73 vs BI $7,921.43. Hadar reprocessed. Tony asked for root cause Jun 18 — no answer as of Jun 25. Same failure mode as SUP-9924 cluster.</div>
-          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Status: Support &middot; Assigned: Brian &middot; Updated: Jun 23 &middot; <strong style="color:var(--warn)">Root cause unanswered</strong></div></div>
-        </div>
-
-        <div class="alert-row">
-          <div style="flex:1"><a href="https://tabitros.atlassian.net/browse/SUP-10170" target="_blank" class="key-link">SUP-10170</a> &nbsp;<strong>Billy&rsquo;s Stone Crab</strong> &mdash; Chef Daily Labor Cost Missing on First Weekday [Medium]
-          <div style="font-size:11px;color:var(--muted);margin-top:2px">Fixed Wage employees missing from Day view on first weekday. Previously filed as SUP-6373. TAB-39509 in dev backlog — zero movement since Oct 2024.</div>
-          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Status: Accepted &middot; Assignee: Hadar &middot; <strong style="color:var(--warn)">TAB-39509 stalled 8+ months — needs dev escalation</strong></div></div>
+          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Status: Accepted &middot; Assignee: Hadar &middot; <strong style="color:var(--danger)">STALE — reproducible, no fix path</strong></div></div>
         </div>
       </div>
 
@@ -846,6 +828,8 @@ body.show-completed tr.cc-item.completed{display:table-row;opacity:.38}
         <table class="p-table" style="width:100%">
           <thead><tr><th>SUP</th><th>Site</th><th>Issue</th><th>Priority</th><th>Closed By</th></tr></thead>
           <tbody>
+            <tr><td><a href="https://tabitros.atlassian.net/browse/SUP-9800" target="_blank" class="key-link">SUP-9800</a></td><td>Dog and Duck Park West</td><td>Undefined Items in Reporting — ~$9 self-correcting after 1–2 days</td><td>High</td><td style="color:var(--muted)">Closed Jun 30 — Hadar built 2-hr background job to force item name updates; root cause (menu publish event fails to trigger update) still not fixed</td></tr>
+            <tr><td><a href="https://tabitros.atlassian.net/browse/SUP-10170" target="_blank" class="key-link">SUP-10170</a></td><td>Billy's Stone Crab</td><td>Chef Daily Labor Cost Missing on First Weekday (Fixed Wage)</td><td>Medium</td><td style="color:var(--muted)">Closed Jun 30 by Brian — pending confirmation in Bizz once labor data flows; TAB-39509 still stalled since Oct 2024</td></tr>
             <tr><td><a href="https://tabitros.atlassian.net/browse/SUP-10200" target="_blank" class="key-link">SUP-10200</a></td><td>Pappadeaux 39 (081)</td><td>BI Tax Discrepancy — tax duplicated in DB</td><td>Medium</td><td style="color:var(--muted)">Reprocess Jun 25 — root cause unknown</td></tr>
             <tr><td><a href="https://tabitros.atlassian.net/browse/SUP-9939" target="_blank" class="key-link">SUP-9939</a></td><td>Multiple Sites</td><td>Tax Rate Data Unavailable for May in BI</td><td style="color:var(--danger);font-weight:700">Highest</td><td style="color:var(--muted)">Reprocess May — root cause unknown</td></tr>
             <tr><td><a href="https://tabitros.atlassian.net/browse/SUP-9936" target="_blank" class="key-link">SUP-9936</a></td><td>Multiple Sites</td><td>Tabit Chef Past Years Data Wrong</td><td style="color:var(--danger);font-weight:700">Highest</td><td style="color:var(--muted)">Closed May — method unknown</td></tr>
