@@ -942,8 +942,8 @@ body.show-completed tr.cc-item.completed{display:table-row;opacity:.38}
         </div>
         <div class="stat-card warn">
           <div class="stat-label">Open SUP Tickets</div>
-          <div class="stat-value warn">9</div>
-          <div class="stat-sub">1 Highest · 3 High · 5 Med/Low</div>
+          <div class="stat-value warn">8</div>
+          <div class="stat-sub">0 Highest · 2 High · 6 Med/Low</div>
         </div>
         <div class="stat-card warn">
           <div class="stat-label">Open Commitments</div>
@@ -953,7 +953,7 @@ body.show-completed tr.cc-item.completed{display:table-row;opacity:.38}
         <div class="stat-card blue">
           <div class="stat-label">Last Contact</div>
           <div class="stat-value blue" style="font-size:20px">Today</div>
-          <div class="stat-sub">Jira: SUP-10259 & SUP-10260 updated today</div>
+          <div class="stat-sub">Jira: SUP-10259 (JF Code 264020) closed today</div>
         </div>
       </div>
 
@@ -971,24 +971,22 @@ body.show-completed tr.cc-item.completed{display:table-row;opacity:.38}
         <div>
           <!-- OPEN ESCALATIONS -->
           <div class="panel" style="margin-bottom:14px">
-            <div class="panel-header"><span class="panel-title">Open Escalations</span><span class="panel-badge danger" id="pappas-esc-badge">16</span></div>
+            <div class="panel-header"><span class="panel-title">Open Escalations</span><span class="panel-badge danger" id="pappas-esc-badge">13</span></div>
             <div id="pappas-escalations" style="padding:0">
               <div class="alert-row info"><div><strong>[Account]</strong> — iOS deployment in motion as of Jun 29 2026. ~67% of sites complete per Daniel Hasse. Not a blocking issue — monitoring only.</div></div>
-              <div class="alert-row danger"><div><strong>SUP-10259</strong> — Pappadeaux 03 (024): Unable to Edit Inactive Job Functions. Highest. Pending. Job Function Code 264020 stuck inactive, blocking reassignment; updated today.</div></div>
               <div class="alert-row warn"><div><strong>SUP-10202</strong> — Pappadeaux 04 (025): Large Spacing Print Jobs across all printers. High. Accepted. Spooler network drop triggered it; restart resolved, ticket open for RCA.</div></div>
               <div class="alert-row warn"><div><strong>SUP-10188</strong> — Pappas HQ, 5 sites: ToGo KDS Stuck on White Screen. High. Accepted. stomp_websocket_error spiking since 6/20; restart is the workaround.</div></div>
-              <div class="alert-row warn"><div><strong>SUP-8745</strong> — Pappadeaux 27 (078): API Call Missing Order Data. High. Accepted. Oldest open Pappas ticket (filed 9/26/25). Waiting on new occurrence before investigation resumes — staleness is intentional, do not flag as overdue.</div></div>
-              <div class="alert-row warn"><div><strong>Printing/Spooler cluster</strong> — 6 sites active this week: PDX 39, PDX 7, PDX 9, PDX 10, Little Pappasito's Spooler, Pappasito's 03 (016) Spooler Offline.</div></div>
+              <div class="alert-row warn"><div><strong>Printing/Spooler cluster</strong> — 3 sites active this week: PDX 39 Server Reports not printing, PDX 9 ToGo Printer Que, PDX 10 Bar1 A Printer que.</div></div>
               <div class="alert-row warn"><div><strong>Ingenico/Device cluster</strong> — 2 items active this week: PDX 12 Ingenicos unpaired from devices, Magtek Optimization follow-up.</div></div>
-              <div class="alert-row warn"><div><strong>Gift Card cluster</strong> — Pappadeaux 23 (071) SVS Test Gift Card Error active this week (ties to SUP-10260).</div></div>
               <div class="alert-row warn"><div><strong>Payment Assist cluster</strong> — Pappasito's 11 (035) Payment Assist Not Unlocking, active this week.</div></div>
               <div class="alert-row warn"><div><strong>Offline Payments cluster</strong> — Pappadeaux 04 (025) offline payment ghost check, active this week.</div></div>
-              <div class="alert-row warn"><div><strong>[Email]</strong> — April Lozano asked about Ingenico-to-Magtek replacement pace for ~10 remaining stores incl. Dallas locations (Jul 7); not yet in Jira/Monday.</div></div>
-              <div class="alert-row info"><div><strong>[Commitment]</strong> — Tyler Dillon told Cameron Richards/April Lozano (Email, Jul 2) Tabit is "not yet ready" on Magtek Optimization; will update once more information is available.</div></div>
-              <div class="alert-row green"><div><strong>[Resolved]</strong> — Open API OrderSource field enhancement (#380) delivered to Sales Endpoint; Ken Wood (Pappas ITG) called it "BIG" (Email, Jul 1).</div></div>
-              <div class="alert-row info"><div><strong>SUP-10260</strong> — Pappadeaux 23 (071): SVS Test Gift Card Error. Medium. Accepted. "Sequence contains no elements" intermittent, multiple sites, spike Jul 3.</div></div>
+              <div class="alert-row green"><div><strong>[Resolved]</strong> — SUP-10259, Pappadeaux 03 (024) Job Function Code 264020 (Bar Service Bar), closed today. Slack thread (Jul 6-7) shows Tyler/Vincente/Tony coordinating a workaround and looping in vendor Shift before the fix landed.</div></div>
+              <div class="alert-row info"><div><strong>SUP-10260</strong> — Pappadeaux 23 (071): SVS Test Gift Card Error. Medium. Accepted. "Sequence contains no elements" intermittent, multiple sites, spike Jul 3. Dev still reproducing test-account failures per Slack (Jul 7).</div></div>
               <div class="alert-row info"><div><strong>SUP-10203</strong> — Pappasito's 02 (012): Magtek ARQC Failed on rapid reward-card swipe. Medium. New. Reproducible, no fix yet.</div></div>
-              <div style="padding:8px 14px;font-size:11px;color:var(--muted);border-top:1px solid var(--border)">3 additional items tracked (SUP-10198, SUP-10197, SUP-10068 — all Medium)</div>
+              <div class="alert-row info"><div><strong>SUP-10198</strong> — Yiayia's Greek Kitchen (084): MediaExchange order froze ~4 min during ClientTip process. Medium. New. No crash logged; order closed.</div></div>
+              <div class="alert-row info"><div><strong>SUP-10197</strong> — Pappasito's 03 (016): Spooler shows offline in Site Profile UI despite printing successfully in logs. Medium. New. UI-only issue; restart recommended.</div></div>
+              <div class="alert-row info"><div><strong>SUP-10068</strong> — Pappasito's 07 (032): Cash Drawer Assignment Error when reassigning an unclocked-out user. Medium. New. Reproducible; 2 reports on record.</div></div>
+              <div class="alert-row info"><div><strong>SUP-8745</strong> — Pappadeaux 27 (078): API Call Missing Order Data. Low. Accepted. Oldest open Pappas ticket (filed 9/26/25). Waiting on new occurrence before investigation resumes — staleness is intentional, do not flag as overdue.</div></div>
             </div>
           </div>
           <!-- COMMITMENTS: US -->
@@ -1180,7 +1178,7 @@ body.show-completed tr.cc-item.completed{display:table-row;opacity:.38}
         <div class="stat-card green">
           <div class="stat-label">Health Score</div>
           <div class="stat-value green">STABLE</div>
-          <div class="stat-sub">No open Jira tickets · verified Jul 8 2026</div>
+          <div class="stat-sub">No open Jira tickets · verified Jul 9 2026</div>
         </div>
         <div class="stat-card blue">
           <div class="stat-label">Open SUP Tickets</div>
@@ -1195,7 +1193,7 @@ body.show-completed tr.cc-item.completed{display:table-row;opacity:.38}
         <div class="stat-card warn">
           <div class="stat-label">Last Contact</div>
           <div class="stat-value warn" style="font-size:20px">Feb 2026</div>
-          <div class="stat-sub">No Jira or email activity · verified Jul 8 2026</div>
+          <div class="stat-sub">No Jira activity · email unreachable this run (Jul 9)</div>
         </div>
       </div>
 
