@@ -205,186 +205,163 @@ body.show-completed tr.cc-item.completed{display:table-row;opacity:.38}
       <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px">
         <div>
           <div style="font-size:18px;font-weight:700;letter-spacing:-.02em">Command Center</div>
-          <div style="font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:3px">Wednesday, July 09 2026 &nbsp;·&nbsp; Sources: Slack · Outlook · Jira (DOWN) · Monday.com · Zoom · Calendar</div>
+          <div style="font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:3px">Monday, July 13 2026 &nbsp;·&nbsp; Sources: Slack · Outlook (DOWN) · Jira · Monday.com · Zoom (blocked by Outlook) · Calendar (DOWN)</div>
         </div>
         <div style="display:flex;align-items:center;gap:8px">
           <a id="cc-dl-btn" href='data:application/json,{"version":1,"items":[]}' download="completions.json" style="font-family:var(--mono);font-size:10px;color:var(--muted);text-decoration:none;padding:4px 8px;border:1px solid var(--border);border-radius:3px;display:none">Download blank</a>
           <button class="cc-conn-btn" id="cc-conn-btn" onclick="connectCompletionsFile()">Connect completions.json</button>
           <button class="cc-show-btn" id="cc-show-btn" onclick="toggleShowCompleted()">Show completed</button>
-          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);text-align:right">Last run: today<br><span id="cc-file-status"></span></div>
+          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);text-align:right">Last run: today 9:14am<br><span id="cc-file-status"></span></div>
         </div>
       </div>
 
       <!-- STAT CARDS -->
       <div class="grid-4" style="margin-bottom:20px">
-        <div class="stat-card danger"><div class="stat-label">Questions Overdue</div><div class="stat-value danger">2</div><div class="stat-sub">Unanswered &gt;48h or today</div></div>
-        <div class="stat-card danger"><div class="stat-label">Escalations Flagged</div><div class="stat-value danger">6</div><div class="stat-sub">Stale / vendor / customer-facing</div></div>
-        <div class="stat-card warn"><div class="stat-label">Uncaptured Commits</div><div class="stat-value warn">7</div><div class="stat-sub">From Zoom — no system record</div></div>
-        <div class="stat-card warn"><div class="stat-label">At Risk Items</div><div class="stat-value warn">5</div><div class="stat-sub">Likely to fall through cracks</div></div>
+        <div class="stat-card danger"><div class="stat-label">Questions Overdue</div><div class="stat-value danger">3</div><div class="stat-sub">Unanswered &gt;48h or today</div></div>
+        <div class="stat-card danger"><div class="stat-label">Escalations Flagged</div><div class="stat-value danger">5</div><div class="stat-sub">Stale / unassigned / active-risk</div></div>
+        <div class="stat-card warn"><div class="stat-label">Uncaptured Commits</div><div class="stat-value warn">7</div><div class="stat-sub">Zoom — carried, unverified (Outlook down)</div></div>
+        <div class="stat-card warn"><div class="stat-label">At Risk Items</div><div class="stat-value warn">4</div><div class="stat-sub">Likely to fall through cracks</div></div>
+      </div>
+
+      <div style="border:1px solid rgba(255,77,109,.35);border-radius:6px;background:rgba(255,77,109,.05);margin-bottom:16px;padding:12px 18px">
+        <div style="font-size:13px;font-weight:600;color:var(--danger)">Outlook/M365 connector is down — inbox, Sent Items, Zoom AI Companion, and calendar are all unverifiable this run</div>
+        <div style="font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:4px">Every scope failed with "connection invalidated" on first attempt. Confirmed down since 2026-07-09, still down 2026-07-13. Needs Brian to reconnect via claude.ai connector settings.</div>
       </div>
 
       <div style="font-family:var(--mono);font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:.12em;margin-bottom:8px">We Have Seen This Before</div>
       <div style="border:1px solid rgba(79,138,255,.35);border-radius:6px;background:rgba(79,138,255,.04);margin-bottom:16px;overflow:hidden">
         <div style="padding:12px 18px;border-bottom:1px solid rgba(79,138,255,.2);background:rgba(79,138,255,.08);display:flex;align-items:center;justify-content:space-between">
           <div>
-            <div style="font-size:13px;font-weight:600;color:var(--accent)">Match Found — Incoming: "April Lozano asking pace of MagTek replacement shipments"</div>
-            <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Matched against org memory — April MagTek Hub Shipment (25 Units)</div>
+            <div style="font-size:13px;font-weight:600;color:var(--accent)">Match Found — Incoming: "SUP-9924 &amp; SUP-10146, both Brian-assigned, both dead-ended on Hadar's reprocess"</div>
+            <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Matched against org memory</div>
           </div>
-          <span style="font-family:var(--mono);font-size:11px;background:rgba(79,138,255,.15);color:var(--accent);border:1px solid rgba(79,138,255,.3);padding:3px 9px;border-radius:3px">90% match</span>
+          <span style="font-family:var(--mono);font-size:11px;background:rgba(79,138,255,.15);color:var(--accent);border:1px solid rgba(79,138,255,.3);padding:3px 9px;border-radius:3px">92% match</span>
         </div>
         <div style="padding:16px 18px;display:grid;grid-template-columns:repeat(3,1fr);gap:10px">
           <div style="background:var(--surface2);border:1px solid var(--border);border-radius:5px;padding:10px 13px">
             <div style="font-family:var(--mono);font-size:9px;color:var(--muted);text-transform:uppercase;margin-bottom:4px">Related Feature</div>
-            <div style="font-size:12px;font-weight:600">MagTek hardware transition / hub shipment</div>
+            <div style="font-size:12px;font-weight:600">BI &amp; Chef Reporting Data Integrity</div>
           </div>
           <div style="background:var(--surface2);border:1px solid var(--border);border-radius:5px;padding:10px 13px">
             <div style="font-family:var(--mono);font-size:9px;color:var(--muted);text-transform:uppercase;margin-bottom:4px">Prior Discussions</div>
-            <div style="font-size:12px;font-weight:600">Commitment made ~Jun 15, Casey responsible</div>
+            <div style="font-size:12px;font-weight:600">20 BI/Chef SUPs Jan–Jun 2026</div>
           </div>
           <div style="background:var(--surface2);border:1px solid var(--border);border-radius:5px;padding:10px 13px">
             <div style="font-family:var(--mono);font-size:9px;color:var(--muted);text-transform:uppercase;margin-bottom:4px">Decision</div>
-            <div style="font-size:12px;font-weight:600;color:var(--warn)">None — shipment status still unconfirmed</div>
+            <div style="font-size:12px;font-weight:600;color:var(--warn)">Escalation sent 6/25, no action confirmed</div>
           </div>
           <div style="background:var(--surface2);border:1px solid var(--border);border-radius:5px;padding:10px 13px">
             <div style="font-family:var(--mono);font-size:9px;color:var(--muted);text-transform:uppercase;margin-bottom:4px">Reason</div>
-            <div style="font-size:12px;font-weight:600">No visible confirmation since commitment; customer now asking directly</div>
+            <div style="font-size:12px;font-weight:600">Every closed ticket = manual reprocess, no root cause ever found</div>
           </div>
           <div style="background:var(--surface2);border:1px solid var(--border);border-radius:5px;padding:10px 13px">
             <div style="font-family:var(--mono);font-size:9px;color:var(--muted);text-transform:uppercase;margin-bottom:4px">Related Customers</div>
-            <div style="font-size:12px;font-weight:600">Pappas / April Lozano</div>
+            <div style="font-size:12px;font-weight:600">Cattle Baron 7, Roast Coffee House</div>
           </div>
           <div style="background:var(--surface2);border:1px solid var(--border);border-radius:5px;padding:10px 13px">
             <div style="font-family:var(--mono);font-size:9px;color:var(--muted);text-transform:uppercase;margin-bottom:4px">Last Reviewed</div>
-            <div style="font-size:12px;font-weight:600;color:var(--warn)">2026-06-19</div>
-          </div>
-        </div>
-      </div>
-
-      <div style="border:1px solid rgba(79,138,255,.35);border-radius:6px;background:rgba(79,138,255,.04);margin-bottom:16px;overflow:hidden">
-        <div style="padding:12px 18px;border-bottom:1px solid rgba(79,138,255,.2);background:rgba(79,138,255,.08);display:flex;align-items:center;justify-content:space-between">
-          <div>
-            <div style="font-size:13px;font-weight:600;color:var(--accent)">Match Found — Incoming: "Fleet Landing MagTek cable-pinching disconnect"</div>
-            <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Matched against org memory — MagTek Hardware Issues (batch/cable pattern)</div>
-          </div>
-          <span style="font-family:var(--mono);font-size:11px;background:rgba(79,138,255,.15);color:var(--accent);border:1px solid rgba(79,138,255,.3);padding:3px 9px;border-radius:3px">78% match</span>
-        </div>
-        <div style="padding:16px 18px;display:grid;grid-template-columns:repeat(3,1fr);gap:10px">
-          <div style="background:var(--surface2);border:1px solid var(--border);border-radius:5px;padding:10px 13px">
-            <div style="font-family:var(--mono);font-size:9px;color:var(--muted);text-transform:uppercase;margin-bottom:4px">Related Feature</div>
-            <div style="font-size:12px;font-weight:600">MagTek hardware / cable install quality</div>
-          </div>
-          <div style="background:var(--surface2);border:1px solid var(--border);border-radius:5px;padding:10px 13px">
-            <div style="font-family:var(--mono);font-size:9px;color:var(--muted);text-transform:uppercase;margin-bottom:4px">Prior Discussions</div>
-            <div style="font-size:12px;font-weight:600">Jun 26 — Neil Shrestha confirmed batch-level out-of-box failures</div>
-          </div>
-          <div style="background:var(--surface2);border:1px solid var(--border);border-radius:5px;padding:10px 13px">
-            <div style="font-family:var(--mono);font-size:9px;color:var(--muted);text-transform:uppercase;margin-bottom:4px">Decision</div>
-            <div style="font-size:12px;font-weight:600">Confirm serial/batch range with Neil before swap vs RMA</div>
-          </div>
-          <div style="background:var(--surface2);border:1px solid var(--border);border-radius:5px;padding:10px 13px">
-            <div style="font-family:var(--mono);font-size:9px;color:var(--muted);text-transform:uppercase;margin-bottom:4px">Reason</div>
-            <div style="font-size:12px;font-weight:600">Troubleshooting flowchart (committed Jun 10) never completed</div>
-          </div>
-          <div style="background:var(--surface2);border:1px solid var(--border);border-radius:5px;padding:10px 13px">
-            <div style="font-family:var(--mono);font-size:9px;color:var(--muted);text-transform:uppercase;margin-bottom:4px">Related Customers</div>
-            <div style="font-size:12px;font-weight:600">Dog and Duck Moncks Corner, Fleet Landing</div>
-          </div>
-          <div style="background:var(--surface2);border:1px solid var(--border);border-radius:5px;padding:10px 13px">
-            <div style="font-family:var(--mono);font-size:9px;color:var(--muted);text-transform:uppercase;margin-bottom:4px">Last Reviewed</div>
-            <div style="font-size:12px;font-weight:600;color:var(--warn)">2026-06-26</div>
+            <div style="font-size:12px;font-weight:600;color:var(--warn)">2026-06-25</div>
           </div>
         </div>
       </div>
 
       <!-- IMMEDIATE ATTENTION — QUESTIONS OWED BY BRIAN -->
       <div class="panel" style="margin-bottom:16px">
-        <div class="panel-header"><span class="panel-title">Immediate Attention — Questions Owed By Brian</span><span class="panel-badge danger">2 items</span></div>
+        <div class="panel-header"><span class="panel-title">Immediate Attention — Questions Owed By Brian</span><span class="panel-badge danger">3 items</span></div>
+        <div class="alert-row cc-item" data-item-id="q-rotem-version-training-notes">
+          <input type="checkbox" class="cc-chk" onchange="toggleCompletion('q-rotem-version-training-notes',this.checked)">
+          <div style="flex:1"><strong>Rotem Ifrah (Tabit IL)</strong> — review/annotate PAD 12.0.0–12.1.0 and OFC+ROS 9.4.0–9.5.0 training task list before next version training (includes several MagTek/Magensa TAB items)
+          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Slack group DM · 2026-07-12 10:26 (~23h old) · <strong style="color:var(--danger)">Send notes back today</strong></div></div>
+        </div>
         <div class="alert-row cc-item" data-item-id="q-liz-hanasis-pc">
           <input type="checkbox" class="cc-chk" onchange="toggleCompletion('q-liz-hanasis-pc',this.checked)">
-          <div style="flex:1"><strong>Liz Benavides</strong> — sent photos showing the Hanasis PC still at her desk, contradicting Brian's earlier answer that it had been picked up
-          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Slack DM · Jul 7, 2:17pm · <strong style="color:var(--danger)">Correct/respond today</strong></div></div>
+          <div style="flex:1"><strong>Liz Hanasis PC location</strong> — Liz Benavides sent photos contradicting Brian's earlier answer; no new activity found this run
+          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Slack DM · carried from 7/7, not reverified · <strong style="color:var(--danger)">Confirm resolved or re-answer</strong></div></div>
         </div>
         <div class="alert-row cc-item" data-item-id="q-april-magtek-transition">
           <input type="checkbox" class="cc-chk" onchange="toggleCompletion('q-april-magtek-transition',this.checked)">
-          <div style="flex:1"><strong>April Lozano (Pappas)</strong> — MagTek Transition: pace of remaining replacement shipments (10 stores left) and Dallas-location specifics
-          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Outlook · Jul 7, 6:10pm · <strong style="color:var(--danger)">Get Casey's shipment confirmation, then answer</strong></div></div>
+          <div style="flex:1"><strong>April — MagTek/Smarthub transition questions</strong> — customer-facing, escalating pressure as of 7/9; cannot verify if answered
+          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Outlook email · blocked by connector outage · <strong style="color:var(--danger)">Verify once Outlook reconnected</strong></div></div>
         </div>
       </div>
 
       <!-- SUPPORT ESCALATIONS — HIGHEST PRIORITY -->
       <div class="panel" style="margin-bottom:16px">
-        <div class="panel-header"><span class="panel-title">Support Escalations — Highest Priority</span><span class="panel-badge danger">6 flagged</span></div>
+        <div class="panel-header"><span class="panel-title">Support Escalations — Highest Priority</span><span class="panel-badge danger">5 flagged</span></div>
         <div class="alert-row">
-          <div style="flex:1"><strong>April MagTek Hub Shipment (25 units)</strong> — Pappas — unconfirmed since ~Jun 15, now customer-escalated directly
-          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Owner: Casey Grant · No update since Jun 19 · <strong style="color:var(--danger)">CUSTOMER-ESCALATED</strong></div></div>
+          <div style="flex:1"><a href="https://tabitros.atlassian.net/browse/SUP-10202" target="_blank" class="key-link">SUP-10202</a> &nbsp; <strong>Pappadeaux 04 (025)</strong> — Large spacing print jobs
+          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Status: Accepted · Assignee: Nicole Kogan · Updated: 2026-06-24 · <strong style="color:var(--danger)">STALE 19.6 days</strong></div></div>
         </div>
         <div class="alert-row">
-          <div style="flex:1"><strong>Worldline Ticket #965120</strong> — vendor escalation, still open
-          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Owner: Tony Medlin (Brian cc'd) · Open ~3 weeks · <strong style="color:var(--danger)">VENDOR SLA BREACH</strong></div></div>
+          <div style="flex:1"><a href="https://tabitros.atlassian.net/browse/SUP-10188" target="_blank" class="key-link">SUP-10188</a> &nbsp; <strong>Pappas HQ — Multiple Sites</strong> — ToGo KDS stuck on white screen
+          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Status: Accepted · Assignee: Shiran Horesh · Updated: 2026-06-30 · <strong style="color:var(--danger)">STALE 14 days — root cause (URL typo) ID'd by Brian 6/25, fix unclaimed</strong></div></div>
         </div>
         <div class="alert-row">
-          <div style="flex:1"><strong>Fleet Landing</strong> — MagTek disconnect from cable-pinching in case install
-          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Owner: Sean Paff / Jessica Dickinson · Raised Jul 7–8 · <strong style="color:var(--danger)">CHECK OTHER RECENT INSTALLS</strong></div></div>
+          <div style="flex:1"><a href="https://tabitros.atlassian.net/browse/SUP-10165" target="_blank" class="key-link">SUP-10165</a> &nbsp; <strong>Corner Cafe Riverside</strong> — CC slip formatting issue
+          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Status: New · Assignee: Unassigned · Updated: 2026-07-06 · <strong style="color:var(--danger)">STALE 7.8 days, zero comments since created</strong></div></div>
         </div>
         <div class="alert-row">
-          <a href="https://tabitros.atlassian.net/browse/SUP-10188" target="_blank" class="key-link">SUP-10188</a> &nbsp; <div style="flex:1;display:inline"><strong>Pappas HQ</strong> — ToGo KDS white screen
-          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Status: High (carried, Jira down) · Owner: Shiran Horesh · Root cause ID'd Jun 25 (typo, "raccoon") · <strong style="color:var(--danger)">STALE ~14 DAYS, FIX UNCLAIMED</strong></div></div>
+          <div style="flex:1"><a href="https://tabitros.atlassian.net/browse/SUP-10237" target="_blank" class="key-link">SUP-10237</a> &nbsp; <strong>Nathan's Famous Hot Dogs</strong> — Unable to close OTC order
+          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Status: Support · Assignee: Chad Shankman · Updated: 2026-07-07 · <strong style="color:var(--danger)">STALE 6.5 days — waiting on Ingenico/ROAM/Worldline, not Tabit-side</strong></div></div>
         </div>
         <div class="alert-row">
-          <a href="https://tabitros.atlassian.net/browse/SUP-10259" target="_blank" class="key-link">SUP-10259</a> &nbsp; <div style="flex:1;display:inline"><strong>Pappadeaux 03</strong> — cannot edit inactive job functions
-          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Status: Highest (carried, Jira down) · Owner: Chad Shankman · <strong style="color:var(--danger)">NO COMMENTS — NEEDS TRIAGE</strong></div></div>
-        </div>
-        <div class="alert-row">
-          <div style="flex:1"><strong>Jira connector down</strong> — day 4, all Jira-sourced statuses above are carried, not live
-          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Since Jul 5 · <strong style="color:var(--danger)">REAUTHORIZE VIA CLAUDE.AI CONNECTOR SETTINGS</strong></div></div>
+          <div style="flex:1"><a href="https://tabitros.atlassian.net/browse/SUP-10252" target="_blank" class="key-link">SUP-10252</a> &nbsp; <strong>The Setai Hotel — Minibar</strong> — Room charge order double-charged $37.52 vs $18.76 via Opera
+          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Status: Support · Assignee: Alon Eyal · Updated: 2026-07-12 · <strong style="color:var(--warn)">Active — dev fix TAB-42619 Ready for Verification; cancellation blocked on Opera "Invalid account"</strong></div></div>
         </div>
       </div>
 
       <!-- UNCAPTURED ZOOM COMMITMENTS -->
       <div class="panel" style="margin-bottom:16px">
         <div class="panel-header"><span class="panel-title">Uncaptured Commitments — Zoom</span><span class="panel-badge warn">7 items</span></div>
-        <div class="alert-row warn cc-item" data-item-id="zoom-jessica-andrea-departure">
-          <input type="checkbox" class="cc-chk" onchange="toggleCompletion('zoom-jessica-andrea-departure',this.checked)">
-          <div style="flex:1"><strong>Jessica → Andrea</strong> — talk to Andrea about her departure decision
-          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Feature Requests Priorities mtg, Jul 7 (Brian absent) · <strong style="color:var(--warn)">CONFIRM FOLLOW-UP HAPPENED</strong></div></div>
-        </div>
         <div class="alert-row warn cc-item" data-item-id="zoom-add-pappas-items">
           <input type="checkbox" class="cc-chk" onchange="toggleCompletion('zoom-add-pappas-items',this.checked)">
-          <div style="flex:1">Add Pappas items (legacy, carried) <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Unverifiable — no matching recent Zoom email</div></div>
+          <div style="flex:1"><strong>Add Pappas items</strong> — carried, unverified this run
+          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Zoom AI Companion · <strong style="color:var(--warn)">Outlook down — cannot re-verify</strong></div></div>
         </div>
         <div class="alert-row warn cc-item" data-item-id="zoom-audit-reports-list">
           <input type="checkbox" class="cc-chk" onchange="toggleCompletion('zoom-audit-reports-list',this.checked)">
-          <div style="flex:1">Audit reports list (legacy, carried) <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Unverifiable — no matching recent Zoom email</div></div>
+          <div style="flex:1"><strong>Audit reports list</strong> — carried, unverified this run
+          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Zoom AI Companion · <strong style="color:var(--warn)">Outlook down — cannot re-verify</strong></div></div>
         </div>
         <div class="alert-row warn cc-item" data-item-id="zoom-penny-rounding">
           <input type="checkbox" class="cc-chk" onchange="toggleCompletion('zoom-penny-rounding',this.checked)">
-          <div style="flex:1">Penny rounding (legacy, carried) <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Unverifiable — no matching recent Zoom email</div></div>
+          <div style="flex:1"><strong>Penny rounding</strong> — carried, unverified this run
+          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Zoom AI Companion · <strong style="color:var(--warn)">Outlook down — cannot re-verify</strong></div></div>
         </div>
         <div class="alert-row warn cc-item" data-item-id="zoom-george-sub-to-urls">
           <input type="checkbox" class="cc-chk" onchange="toggleCompletion('zoom-george-sub-to-urls',this.checked)">
-          <div style="flex:1">George — sub TO URLs (legacy, carried) <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Unverifiable — no matching recent Zoom email</div></div>
+          <div style="flex:1"><strong>George — sub-to-URLs</strong> — matches org memory "Sub TO URLs" feature request, still waiting on Dror for status
+          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Zoom AI Companion · <strong style="color:var(--warn)">Outlook down — cannot re-verify; follow up with Dror separately</strong></div></div>
         </div>
         <div class="alert-row warn cc-item" data-item-id="zoom-pad-permissions">
           <input type="checkbox" class="cc-chk" onchange="toggleCompletion('zoom-pad-permissions',this.checked)">
-          <div style="flex:1">PAD permissions (legacy, carried) <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Unverifiable — no matching recent Zoom email</div></div>
+          <div style="flex:1"><strong>PAD permissions</strong> — carried, unverified this run
+          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Zoom AI Companion · <strong style="color:var(--warn)">Outlook down — cannot re-verify</strong></div></div>
         </div>
         <div class="alert-row warn cc-item" data-item-id="zoom-pappas-bbq">
           <input type="checkbox" class="cc-chk" onchange="toggleCompletion('zoom-pappas-bbq',this.checked)">
-          <div style="flex:1">Pappas BBQ item (legacy, carried) <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Unverifiable — no matching recent Zoom email</div></div>
+          <div style="flex:1"><strong>Pappas BBQ</strong> — carried, unverified this run
+          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Zoom AI Companion · <strong style="color:var(--warn)">Outlook down — cannot re-verify</strong></div></div>
+        </div>
+        <div class="alert-row warn cc-item" data-item-id="zoom-jessica-andrea-departure">
+          <input type="checkbox" class="cc-chk" onchange="toggleCompletion('zoom-jessica-andrea-departure',this.checked)">
+          <div style="flex:1"><strong>Jessica / Andrea departure decision</strong> — carried, unverified this run
+          <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px">Zoom AI Companion · <strong style="color:var(--warn)">Outlook down — cannot re-verify</strong></div></div>
         </div>
       </div>
 
       <!-- COMMITMENTS DUE -->
       <div class="panel" style="margin-bottom:16px">
-        <div class="panel-header"><span class="panel-title">Commitments Due</span><span class="panel-badge warn">5 items</span></div>
+        <div class="panel-header"><span class="panel-title">Commitments Due</span><span class="panel-badge warn">6 items</span></div>
         <table class="p-table" style="width:100%">
           <thead><tr><th>Commitment</th><th>To</th><th>Source</th><th>Flag</th></tr></thead>
           <tbody>
-            <tr><td>Full MagTek/MTech lead-time details "in the morning"</td><td>Casey Grant</td><td>Slack DM, Jul 8 7:27pm</td><td class="reason-text">OVERDUE — no follow-up posted</td></tr>
-            <tr><td>"I'll take that with Magtek" (cable batch)</td><td>Jaylen Bradley / Michael Salazar / Neil Shrestha</td><td>Slack group DM, Jul 8 2:13pm</td><td class="reason-text">No follow-up visible</td></tr>
-            <tr><td>"I speak with Alon tomorrow" (payroll/shift gap)</td><td>#us-l2-sme</td><td>Slack, Jul 8 9:35am</td><td class="reason-text">Due today, unconfirmed</td></tr>
-            <tr><td>Push TAB-35002 priority bump with Alon</td><td>Jessica Dickinson</td><td>Slack DM, Jul 7 2:34pm</td><td class="reason-text">Day 2 open, no evidence</td></tr>
-            <tr><td>Find and share site-server task (offline order sync)</td><td>John Ygartua</td><td>Carried, Jun 29</td><td class="reason-text">10 days outstanding</td></tr>
+            <tr><td>"I told him [Gabby] I would get back to him about pushing priority" (Corner Cafe dev fix)</td><td>Tony Medlin / Gabby</td><td>Slack DM 7/13 08:28</td><td class="reason-text">New today, no follow-up yet</td></tr>
+            <tr><td>MagTek/MTech lead-time details "in the morning"</td><td>Casey Grant</td><td>Slack DM 7/8</td><td class="reason-text">Carried, not reverified — likely overdue</td></tr>
+            <tr><td>"I'll take that with Magtek" (A&gt;C vs C&gt;C cable batch)</td><td>Jaylen Bradley / Michael Salazar / Neil Shrestha</td><td>Slack group DM 7/8</td><td class="reason-text">Carried, not reverified</td></tr>
+            <tr><td>"I speak with Alon tomorrow" (payroll/shift-report gap)</td><td>#us-l2-sme</td><td>Slack 7/8</td><td class="reason-text">Carried, likely overdue</td></tr>
+            <tr><td>Push TAB-35002 priority bump (Medium→High) with Alon</td><td>Jessica Dickinson</td><td>Slack 7/7</td><td class="reason-text">Carried — 5+ days overdue if still open</td></tr>
+            <tr><td>Find and share site-server task (offline order sync)</td><td>John Ygartua</td><td>Slack 6/29</td><td class="reason-text">Carried — 14+ days overdue if still open</td></tr>
           </tbody>
         </table>
       </div>
@@ -392,28 +369,27 @@ body.show-completed tr.cc-item.completed{display:table-row;opacity:.38}
       <!-- WAITING ON OTHERS -->
       <div class="panel" style="margin-bottom:16px">
         <div class="panel-header"><span class="panel-title">Waiting On Others</span></div>
-        <div class="alert-row info"><div style="flex:1"><strong>Engineering:</strong> MediaExchange redesign (TAB-45803) — In Development, no ETA. Tip settlement fix (TAB-37118) — Design phase, no ETA. BI/Chef reporting systemic fix — status unconfirmed, Jira down.</div></div>
-        <div class="alert-row info"><div style="flex:1"><strong>Customers:</strong> April Lozano (Pappas) — needs MagTek pace/Dallas answer. Cameron Richards (Pappas) — month-end check-in items #336/#374/#380/#308, no confirmed response this cycle yet.</div></div>
-        <div class="alert-row info"><div style="flex:1"><strong>Vendors:</strong> Robert Tucker (M-Tech) — Smarthub PO pending his Jul 9 lead-time info. Worldline — ticket #965120, no update 48h+, ~3 weeks open.</div></div>
-        <div class="alert-row info"><div style="flex:1"><strong>Internal Teams:</strong> Alon Eyal — payroll/shift-report gap conversation and TAB-35002 priority bump both pending from Brian's side.</div></div>
+        <div class="alert-row info"><div style="flex:1"><strong>Engineering:</strong> TAB-42619 (SUP-10252 fix) — Ready for Verification, Alon Eyal · TAB-37118 (Tip Settlement) — Design, Chloe Gloger, no ETA · TAB-45803 (MediaExchange redesign) — In Development, Binyamin Trachtman</div></div>
+        <div class="alert-row info"><div style="flex:1"><strong>Customers:</strong> April Lozano — MagTek/Smarthub answer owed (blocked on Outlook) · Rotem Ifrah / Tabit IL — awaiting Brian's training-list notes</div></div>
+        <div class="alert-row info"><div style="flex:1"><strong>Vendors:</strong> Worldline #965120 — still open ~3 weeks, last update addressed to Tony not Brian · Ingenico/ROAM — confirmation needed on SUP-10237 and SUP-10252 · MagTek/Neil Shrestha — batch-failure troubleshooting flowchart from Casey still not delivered (since 6/10)</div></div>
+        <div class="alert-row info"><div style="flex:1"><strong>Internal Teams:</strong> Dror — Sub-to-URLs feature request status (outstanding since 6/25)</div></div>
       </div>
 
       <!-- UPCOMING COMMITMENTS -->
       <div class="panel" style="margin-bottom:16px">
         <div class="panel-header"><span class="panel-title">Upcoming Commitments</span></div>
-        <div class="alert-row"><div style="flex:1"><strong>Today:</strong> Follow up with Casey on MagTek/MTech lead times (overdue). Confirm Alon conversation on payroll/shift gap. Push TAB-35002 with Alon (day 2). Reply to Liz Benavides and April Lozano.</div></div>
-        <div class="alert-row info"><div style="flex:1"><strong>This Week:</strong> Send PO to Robert Tucker once his Jul 9 info lands. Confirm Fleet Landing case-install fix.</div></div>
-        <div class="alert-row info"><div style="flex:1"><strong>Next Week:</strong> None flagged.</div></div>
+        <div class="alert-row"><div style="flex:1"><strong>Today:</strong> Respond to Rotem Ifrah's training list</div></div>
+        <div class="alert-row"><div style="flex:1"><strong>This Week:</strong> No calendar visibility this run — Outlook connector down</div></div>
+        <div class="alert-row"><div style="flex:1"><strong>Next Week:</strong> Nothing surfaced this run</div></div>
       </div>
 
       <!-- THINGS LIKELY TO FALL THROUGH THE CRACKS -->
       <div class="panel" style="margin-bottom:16px">
-        <div class="panel-header"><span class="panel-title">Things Likely To Fall Through The Cracks</span><span class="panel-badge warn">5 items</span></div>
-        <div class="alert-row warn"><div style="flex:1">1. TAB-44868 / TAB-44869 marked Done on Monday, but US Ops comments say Pappas needs these hotfixed into 11.6/11.7 before their November rewards-card deadline — Done doesn't confirm it shipped to Pappas. Verify.</div></div>
-        <div class="alert-row warn"><div style="flex:1">2. Jira connector outage — day 4. Every Jira-sourced item in this report is carried, not live. Risk of missing a new Highest-priority ticket entirely.</div></div>
-        <div class="alert-row warn"><div style="flex:1">3. commit-share-siteserver-john — 10 days outstanding, no delivery.</div></div>
-        <div class="alert-row warn"><div style="flex:1">4. Feature Requests Priorities meeting (Jul 7) — Brian absent, only one action item captured via Zoom AI Companion. Risk other decisions from that meeting went unrecorded.</div></div>
-        <div class="alert-row warn"><div style="flex:1">5. q-mtech-practically-suggesting (Sagi, Jul 4) — still un-relocatable via search, carried unconfirmed.</div></div>
+        <div class="panel-header"><span class="panel-title">Things Likely To Fall Through The Cracks</span><span class="panel-badge warn">4 items</span></div>
+        <div class="alert-row warn"><div style="flex:1">1. SUP-9924 and SUP-10146 (both Brian-assigned, stale 18–21 days, both dead-ended on Hadar's "I do not know why it happened") — matches the systemic BI &amp; Chef Reporting pattern above.</div></div>
+        <div class="alert-row warn"><div style="flex:1">2. Corner Cafe / Gabby priority-push commitment made verbally today — references a third party not in the DM thread, easy to lose.</div></div>
+        <div class="alert-row warn"><div style="flex:1">3. Six legacy Zoom-sourced commitments unverifiable for the 3rd+ consecutive run — risk compounds the longer the Outlook/Zoom pipeline stays down.</div></div>
+        <div class="alert-row warn"><div style="flex:1">4. The 4-day gap in Command Center runs (7/10–7/12) — several carried commitments (payroll gap, MTech lead times, MagTek cable, TAB-35002 priority) haven't been re-verified since 7/9 and may already be overdue unnoticed.</div></div>
       </div>
 
       <!-- KNOWLEDGE OPPORTUNITIES -->
@@ -422,9 +398,9 @@ body.show-completed tr.cc-item.completed{display:table-row;opacity:.38}
         <table class="p-table" style="width:100%">
           <thead><tr><th>Topic</th><th>Occurrences</th><th>Source</th><th>Recommendation</th></tr></thead>
           <tbody>
-            <tr><td>MagTek/Smarthub replacement lead times</td><td>3x in 72h</td><td>Slack + Outlook (Casey, April, Robert Tucker)</td><td class="reason-text">Single MagTek Transition Status one-pager — kills 3x repeat explanation</td></tr>
-            <tr><td>Zoom AI Companion reliability</td><td>Confirmed intermittent this run</td><td>Outlook</td><td class="reason-text">Have Brian check per-meeting AI Companion settings rather than assuming pipeline is dead</td></tr>
-            <tr><td>Tip withholding "eligible amount" logic</td><td>5 threads since January (carried)</td><td>Slack, 3 channels</td><td class="reason-text">Still no doc — highest-leverage capture outstanding</td></tr>
+            <tr><td>Tip withholding "eligible amount" logic</td><td>5+ threads since January</td><td>Slack, multiple channels</td><td>KB article — crossed capture threshold weeks ago, still not written</td></tr>
+            <tr><td>MagTek/Smarthub lead times</td><td>3 channels in 72h (as of 7/9)</td><td>Slack DM, email, order thread</td><td>FAQ/SOP for Casey/April-style lead-time questions</td></tr>
+            <tr><td>Ingenico/ROAM payment timeout-retry failures</td><td>3 tickets this run (SUP-10237, SUP-10252, SUP-10267)</td><td>Jira</td><td>Single root-cause writeup instead of three parallel investigations</td></tr>
           </tbody>
         </table>
       </div>
@@ -432,17 +408,16 @@ body.show-completed tr.cc-item.completed{display:table-row;opacity:.38}
       <!-- BRIAN LEVERAGE REPORT -->
       <div class="panel" style="margin-bottom:16px">
         <div class="panel-header"><span class="panel-title">Brian Leverage Report</span></div>
-        <div style="padding:12px 18px;font-size:12px;color:var(--muted);border-bottom:1px solid var(--border)">Estimated time spent this week on repeated explanations: ~2.5 hours</div>
+        <div style="padding:12px 18px;font-size:12px;color:var(--muted);border-bottom:1px solid var(--border)">Estimated time spent this week on repeated explanations: ~2-3 hours (partial — Outlook down removes email-thread evidence)</div>
         <table class="p-table" style="width:100%">
           <thead><tr><th>Topic</th><th>Est. Time</th><th>Recommended Asset</th></tr></thead>
           <tbody>
-            <tr><td>MagTek/Smarthub lead times</td><td>~1 hr</td><td>One-pager / status page</td></tr>
-            <tr><td>Tip withholding eligible-amount logic</td><td>~1.5 hr (cumulative, carried)</td><td>KB article or SOP</td></tr>
+            <tr><td>Tip withholding "eligible amount"</td><td>~1 hr/week</td><td>KB article</td></tr>
+            <tr><td>MagTek/Smarthub lead times</td><td>~1 hr/week</td><td>FAQ / SOP</td></tr>
           </tbody>
         </table>
-        <div class="alert-row info" style="margin-top:0"><div style="flex:1"><strong>Highest-leverage first action:</strong> Write the MagTek Transition Status one-pager — it's blocking three live conversations (Casey, April, Robert Tucker) right now and would let Casey/Tyler answer April directly without looping Brian in each time.</div></div>
+        <div class="alert-row info" style="margin-top:0"><div style="flex:1"><strong>Highest-leverage first action:</strong> Write the tip-withholding "eligible amount" KB article — it keeps resurfacing (most recently as the now-resolved Carolina Giangreco question) purely because it's never been documented.</div></div>
       </div>
-
 <!-- CC-DATA-END -->
     </div><!-- /page-command-center -->
 

@@ -1,6 +1,4 @@
 {"version":1,"items":[
-  {"id":"q-tip-withholding-carolina","method":"manual","source":"monday-mention"},
-  {"id":"q-audit-reports-tyler","method":"manual","source":"monday-mention"},
   {"id":"zoom-add-pappas-items","method":"manual","source":"zoom-ai-companion"},
   {"id":"zoom-audit-reports-list","method":"manual","source":"zoom-ai-companion"},
   {"id":"zoom-penny-rounding","method":"manual","source":"zoom-ai-companion"},
