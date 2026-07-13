@@ -1,11 +1,16 @@
 {"version":1,"items":[
-  {"id":"zoom-add-pappas-items","method":"manual","source":"zoom-ai-companion"},
   {"id":"zoom-audit-reports-list","method":"manual","source":"zoom-ai-companion"},
-  {"id":"zoom-penny-rounding","method":"manual","source":"zoom-ai-companion"},
-  {"id":"zoom-george-sub-to-urls","method":"manual","source":"zoom-ai-companion"},
   {"id":"zoom-pad-permissions","method":"manual","source":"zoom-ai-companion"},
+  {"id":"zoom-add-pappas-items","method":"manual","source":"zoom-ai-companion"},
   {"id":"zoom-pappas-bbq","method":"manual","source":"zoom-ai-companion"},
-  {"id":"q-liz-hanasis-pc","method":"manual","source":"slack-dm"},
   {"id":"q-april-magtek-transition","method":"manual","source":"outlook-email"},
-  {"id":"zoom-jessica-andrea-departure","method":"manual","source":"zoom-ai-companion"}
+  {"id":"q-rotem-training-content","method":"manual","source":"slack-dm"},
+  {"id":"commit-casey-pappas-send","method":"manual","source":"slack-dm"},
+  {"id":"commit-burgers-bar-test-review","method":"manual","source":"zoom-native"},
+  {"id":"commit-corner-cafe-gabby-priority","method":"manual","source":"slack-dm"},
+  {"id":"commit-mtech-lead-times-casey","method":"manual","source":"slack-dm"},
+  {"id":"commit-magtek-cable-neil","method":"manual","source":"slack-dm"},
+  {"id":"commit-alon-payroll-gap","method":"manual","source":"slack-dm"},
+  {"id":"commit-tab35002-priority","method":"manual","source":"slack-dm"},
+  {"id":"commit-share-siteserver-john","method":"manual","source":"slack-dm"}
 ]}
