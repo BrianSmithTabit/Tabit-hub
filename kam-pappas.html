@@ -98,12 +98,12 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:14
     <div class="stat-card danger">
       <div class="stat-label">Health Score</div>
       <div class="stat-value danger">CRITICAL</div>
-      <div class="stat-sub">4 active clusters today</div>
+      <div class="stat-sub">3 active clusters today</div>
     </div>
     <div class="stat-card warn">
       <div class="stat-label">Open SUP Tickets</div>
-      <div class="stat-value warn">9</div>
-      <div class="stat-sub">0 Highest · 2 High · 7 Med/Low</div>
+      <div class="stat-value warn">8</div>
+      <div class="stat-sub">0 Highest · 2 High · 6 Med/Low</div>
     </div>
     <div class="stat-card warn">
       <div class="stat-label">Open Commitments</div>
@@ -113,7 +113,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:14
     <div class="stat-card blue">
       <div class="stat-label">Last Contact</div>
       <div class="stat-value blue" style="font-size:20px">Today</div>
-      <div class="stat-sub">Jira: SUP-10273, SUP-10197 updated today</div>
+      <div class="stat-sub">Jira: SUP-10197 updated today</div>
     </div>
   </div>
 
@@ -131,16 +131,15 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:14
     <div>
       <!-- OPEN ESCALATIONS -->
       <div class="panel" style="margin-bottom:14px">
-        <div class="panel-header"><span class="panel-title">Open Escalations</span><span class="panel-badge danger" id="pappas-esc-badge">14</span></div>
+        <div class="panel-header"><span class="panel-title">Open Escalations</span><span class="panel-badge danger" id="pappas-esc-badge">13</span></div>
         <div id="pappas-escalations" style="padding:0">
           <div class="alert-row info"><div><strong>[Account]</strong> — iOS deployment in motion as of Jun 29 2026. ~67% of sites complete per Daniel Hasse. Not a blocking issue — monitoring only.</div></div>
           <div class="alert-row warn"><div><strong>SUP-10202</strong> — Pappadeaux 04 (025): Large Spacing Print Jobs across all printers. High. Accepted. Spooler network drop triggered it; restart resolved, ticket open for RCA.</div></div>
           <div class="alert-row warn"><div><strong>SUP-10188</strong> — Pappas HQ, 5 sites: ToGo KDS Stuck on White Screen. High. Accepted. stomp_websocket_error spiking since 6/20; restart is the workaround.</div></div>
-          <div class="alert-row warn"><div><strong>Printing/Spooler cluster</strong> — 3 items active this week: PDX 9 ToGo Printer Que, PDX 10 Bar1 A Printer que, Little Pappasito's Spooler.</div></div>
+          <div class="alert-row warn"><div><strong>Printing/Spooler cluster</strong> — 2 items active this week: PDX 9 ToGo Printer Que, PDX 10 Bar1 A Printer que.</div></div>
           <div class="alert-row warn"><div><strong>Gift Card/SVS cluster</strong> — 2 items active this week: Pappadeaux 23 (071) Test Gift Card Error, FW: SVS SOAP/XML transaction protocol upgrade notice (cutover 7/29).</div></div>
           <div class="alert-row warn"><div><strong>Payment Assist cluster</strong> — Pappasito's 11 (035) Payment Assist Not Unlocking, active this week.</div></div>
-          <div class="alert-row warn"><div><strong>MediaExchange cluster</strong> — 2 items active this week: Pappasito's 02 (012) MediaExchange reward-card abort, Yiayia's Greek Kitchen (084) MediaExchange audit.</div></div>
-          <div class="alert-row info"><div><strong>SUP-10273</strong> — Pappadeaux 05 (028): Email displays as first/last name in Tabit Shift for manually-added employees. Medium. In Progress. Workaround: re-save user a second time. Updated today.</div></div>
+          <div class="alert-row warn"><div><strong>[Slack]</strong> — PAPPR reward-card test cards failing to activate on SVS ("action failed" response). Tyler/Vincente coordinating with SVS since 7/1; SVS claimed a fix 7/7, still pending confirmed test result as of 7/10. Not yet in Jira/Monday.</div></div>
           <div class="alert-row info"><div><strong>SUP-10260</strong> — Pappadeaux 23 (071): SVS Test Gift Card Error. Medium. Accepted. "Sequence contains no elements" intermittent, multiple sites, spike Jul 3.</div></div>
           <div class="alert-row info"><div><strong>SUP-10203</strong> — Pappasito's 02 (012): Magtek ARQC Failed on rapid reward-card swipe. Medium. New. Reproducible, no fix yet.</div></div>
           <div class="alert-row info"><div><strong>SUP-10198</strong> — Yiayia's Greek Kitchen (084): MediaExchange order froze ~4 min during ClientTip process. Medium. New. No crash logged; order closed.</div></div>
