@@ -95,15 +95,15 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:14
 
   <!-- EXEC SNAPSHOT -->
   <div class="grid-4" style="margin-bottom:20px">
-    <div class="stat-card danger">
+    <div class="stat-card warn">
       <div class="stat-label">Health Score</div>
-      <div class="stat-value danger">CRITICAL</div>
-      <div class="stat-sub">3 active clusters today</div>
+      <div class="stat-value warn">WARN</div>
+      <div class="stat-sub">2 active clusters today</div>
     </div>
     <div class="stat-card warn">
       <div class="stat-label">Open SUP Tickets</div>
       <div class="stat-value warn">8</div>
-      <div class="stat-sub">0 Highest · 2 High · 6 Med/Low</div>
+      <div class="stat-sub">0 Highest · 3 High · 5 Med/Low</div>
     </div>
     <div class="stat-card warn">
       <div class="stat-label">Open Commitments</div>
@@ -113,7 +113,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:14
     <div class="stat-card blue">
       <div class="stat-label">Last Contact</div>
       <div class="stat-value blue" style="font-size:20px">Today</div>
-      <div class="stat-sub">Email from April Lozano (Magtek hardware ask)</div>
+      <div class="stat-sub">Email from April Lozano (Kiosk hardware ask for new DFW location)</div>
     </div>
   </div>
 
@@ -134,20 +134,20 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:14
         <div class="panel-header"><span class="panel-title">Open Escalations</span><span class="panel-badge danger" id="pappas-esc-badge">13</span></div>
         <div id="pappas-escalations" style="padding:0">
           <div class="alert-row info"><div><strong>[Account]</strong> — iOS deployment in motion as of Jun 29 2026. ~67% of sites complete per Daniel Hasse. Not a blocking issue — monitoring only.</div></div>
+          <div class="alert-row warn"><div><strong>SUP-10260</strong> — Pappadeaux 23 (071): SVS Test Gift Card Error. High (raised from Medium). Accepted. "Sequence contains no elements" intermittent, multiple sites, spike Jul 3 — still active as of 7/14.</div></div>
           <div class="alert-row warn"><div><strong>SUP-10202</strong> — Pappadeaux 04 (025): Large Spacing Print Jobs across all printers. High. Accepted. Spooler network drop triggered it; restart resolved, ticket open for RCA.</div></div>
           <div class="alert-row warn"><div><strong>SUP-10188</strong> — Pappas HQ, 5 sites: ToGo KDS Stuck on White Screen. High. Accepted. stomp_websocket_error spiking since 6/20; restart is the workaround.</div></div>
           <div class="alert-row warn"><div><strong>Printing/Spooler cluster</strong> — 3 items active this week: PDX 9 ToGo Printer Que, PDX 10 Bar1 A Printer que, Little Pappasito's Spooler.</div></div>
           <div class="alert-row warn"><div><strong>Gift Card/SVS cluster</strong> — 2 items active this week: Pappadeaux 23 (071) Test Gift Card Error, FW: SVS SOAP/XML transaction protocol upgrade notice (cutover 7/29).</div></div>
-          <div class="alert-row warn"><div><strong>Payment Assist cluster</strong> — Pappasito's 11 (035) Payment Assist Not Unlocking, active this week.</div></div>
+          <div class="alert-row warn"><div><strong>[Email]</strong> — Kiosk hardware ask: April Lozano (7/14) says Cameron announced the DFW opening will require a kiosk, asking for wall-mount specs and pricing. Not yet a Jira ticket.</div></div>
           <div class="alert-row warn"><div><strong>[Email]</strong> — Magtek Transition: April Lozano (7/13) says she "really need[s] some answers" on Smart Hub hardware availability, with 10 stores remaining on the Ingenico→Magtek replacement and a planning meeting imminent. Not yet a Jira ticket.</div></div>
           <div class="alert-row warn"><div><strong>[Slack]</strong> — PAPPR reward-card test cards inconsistent on SVS: Vincente confirmed 1 of 3 replacement boxes working, 2 still failing as of 7/7 despite SVS's claimed fix. Tyler coordinating; no confirmed resolution as of 7/13. Not yet in Jira/Monday.</div></div>
+          <div class="alert-row info"><div><strong>[Commitment]</strong> — OFC 9.5 / PAD version update: Casey emailed Pappas (7/14) — OFC 9.5 released to BETA 7/13, DEMO 7/14, targeting PROD Monday 7/20.</div></div>
+          <div class="alert-row info"><div><strong>[Commitment]</strong> — DoorDash exempt-flag fix: Tyler (Slack, 7/14) says release is targeted for PROD next Monday (7/20); Casey has already told Pappas to prepare to test/validate.</div></div>
+          <div class="alert-row info"><div><strong>[Commitment]</strong> — Version/Firmware Control planning call: April Lozano (7/13–7/14) requesting to get this on next week's calendar; Leslie back only half days, 2 go-lives in progress.</div></div>
           <div class="alert-row green"><div><strong>[Resolved]</strong> — Employee ID mismatch between Attendance API and Office (raised by Ken 7/13) diagnosed by Liz as a Shift-vs-Office edit workflow gap, not an API bug. No dev action needed.</div></div>
-          <div class="alert-row info"><div><strong>SUP-10260</strong> — Pappadeaux 23 (071): SVS Test Gift Card Error. Medium. Accepted. "Sequence contains no elements" intermittent, multiple sites, spike Jul 3.</div></div>
           <div class="alert-row info"><div><strong>SUP-10203</strong> — Pappasito's 02 (012): Magtek ARQC Failed on rapid reward-card swipe. Medium. New. Reproducible, no fix yet.</div></div>
-          <div class="alert-row info"><div><strong>SUP-10198</strong> — Yiayia's Greek Kitchen (084): MediaExchange order froze ~4 min during ClientTip process. Medium. New. No crash logged; order closed.</div></div>
-          <div class="alert-row info"><div><strong>SUP-10197</strong> — Pappasito's 03 (016): Spooler shows offline in Site Profile UI despite printing successfully in logs. Medium. New. UI-only issue; restart recommended.</div></div>
-          <div class="alert-row info"><div><strong>SUP-8745</strong> — Pappadeaux 27 (078): API Call Missing Order Data. Low. Accepted. Oldest open Pappas ticket (filed 9/26/25, 290 days open). Waiting on new occurrence before investigation resumes — staleness is intentional, do not flag as overdue.</div></div>
-          <div style="padding:10px 14px;font-size:11px;color:var(--muted);border-top:1px solid var(--border)">1 additional item tracked — SUP-10068 (Medium, Cash Drawer Assignment Error).</div>
+          <div style="padding:10px 14px;font-size:11px;color:var(--muted);border-top:1px solid var(--border)">4 additional items tracked — SUP-10198 (Medium, MediaExchange Order Freezing), SUP-10197 (Medium, Spooler Offline UI), SUP-10068 (Medium, Cash Drawer Assignment Error), SUP-8745 (Low, API Call Missing Order Data, 290+ days — staleness intentional per standing note).</div>
         </div>
       </div>
       <!-- COMMITMENTS: US -->
@@ -319,7 +319,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:14
       </div>
     </div>
     <div style="padding:10px 16px;border-top:1px solid var(--border);font-family:var(--mono);font-size:10px;color:var(--muted)">
-      Slack: <span style="color:var(--accent)">#prj-pappas-ops-n-support</span> &nbsp;·&nbsp; Jira refs: <span style="color:var(--accent)">PRI</span> or <span style="color:var(--accent)">Pappas</span> &nbsp;·&nbsp; Monday: <span style="color:var(--accent)">PRI Support</span> (9079142933) &nbsp;·&nbsp; <span style="color:var(--accent)">Pappas TABs</span> (18410953571) &nbsp;·&nbsp; <span style="color:var(--accent)">Pappas | Roll Out</span> (8752028456) &nbsp;·&nbsp; Last refreshed: <span style="color:var(--accent2)" id="pappas-last-refreshed">Jul 13 2026</span>
+      Slack: <span style="color:var(--accent)">#prj-pappas-ops-n-support</span> &nbsp;·&nbsp; Jira refs: <span style="color:var(--accent)">PRI</span> or <span style="color:var(--accent)">Pappas</span> &nbsp;·&nbsp; Monday: <span style="color:var(--accent)">PRI Support</span> (9079142933) &nbsp;·&nbsp; <span style="color:var(--accent)">Pappas TABs</span> (18410953571) &nbsp;·&nbsp; <span style="color:var(--accent)">Pappas | Roll Out</span> (8752028456) &nbsp;·&nbsp; Last refreshed: <span style="color:var(--accent2)" id="pappas-last-refreshed">Jul 14 2026</span>
     </div>
   </div>
 
